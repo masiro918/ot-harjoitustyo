@@ -1,6 +1,9 @@
-# Tervehdys
+# Tehtävät
 
-Moi! Olen harjoitellut **Git**:n käyttöä. Alan pikkuhiljaa päästä Git:n saloihin. Tämä on hyvin mielenkintoista!
+## viikko 1
 
-terveisin,_
-*masiro*
+[gitlog.txt](https://github.com/masiro918/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+[komentorivi.txt](https://github.com/masiro918/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+
+
+
