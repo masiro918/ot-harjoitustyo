@@ -1,5 +1,7 @@
 # ohjelmistotekniikka, harjoitustyö
 
+[linkki työaikakirjanpitoon](https://github.com/masiro918/ot-harjoitustyo/blob/master/tyoaikakirjanpito.md)
+
 ## tehtävät
 
 ### viikko 1
