@@ -2,3 +2,4 @@
 | ----- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 24.3. | 1h    | tutustuin viikon 2 materiaaleihin, aloitin vaatimusmäärittelyn tekoa ja loin uuden projektin NetBeansissa harjoitustyölleni ja lisäsin se GitHubiin       |
 | 25.3. | 45min | aloitin opettelemaan testausta tutustumalla viikon 2 tehtäviin. lisäksi loin tämän työaikakirjanpidon ja lisäsin sen repositorioon                        |
+| 26.3. | 1h    | tein harjoitusten 2 tehtäviä, jotka liittyivät testaamiseen												    |
