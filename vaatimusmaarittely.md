@@ -12,3 +12,7 @@ maanantaista sunnuntaihin. Tilan voi varata klo 8 -> klo 16. Jotta voi tehdä va
 käyttäjätunnus. Käyttäjätunnus liitetään aina varaukseen. Luonnollisesti päällekäisiä varauksia
 ei voi tehdä. Jos haluaa varata tilan useammaksi tunniksi, on jokainen tunti varattava erikeen.
 Ylläpitäjä käyttäjä voi poistaa minkä tahansa varauksen. “Normaalikäyttäjä” ei siis voi tehdä tätä.  
+
+## luonnos käyttöliittymästä
+
+![kuvaluonnos käyttöliittymästä](https://github.com/masiro918/ot-harjoitustyo/blob/master/luonnos_kayttoliittymasta.jpg)  

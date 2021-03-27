@@ -1,6 +1,6 @@
 # ohjelmistotekniikka, harjoitustyö
 
-[linkki työaikakirjanpitoon](https://github.com/masiro918/ot-harjoitustyo/blob/master/tyoaikakirjanpito.md)
+[linkki työaikakirjanpitoon](https://github.com/masiro918/ot-harjoitustyo/blob/master/tyoaikakirjanpito.md)  
 [linkki vaatimusmäärittelyyn](https://github.com/masiro918/ot-harjoitustyo/blob/master/vaatimusmaarittely.md)
 
 ## tehtävät
