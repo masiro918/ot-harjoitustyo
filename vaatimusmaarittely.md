@@ -1,10 +1,10 @@
-#Vaatimusmäärittely harjoitystyölle - ohjelmistotekniikka  
+# Vaatimusmäärittely harjoitystyölle - ohjelmistotekniikka  
 
-###Matias Siro 2021 
+### Matias Siro 2021 
 
  
 
-##Toiminnallisuuksia 
+## Toiminnallisuuksia 
 
 Ideana on, että jossain päin on olemassa jokin tila (esim. Kokoustila tai liikuntasali), johon voi
 tehdä varauksia tunniksi tai pidemmäksi aikaa. Tilan voi varata mille päivälle tahansa, siis
