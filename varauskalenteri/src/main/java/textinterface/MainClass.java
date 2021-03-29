@@ -13,7 +13,7 @@ public class MainClass {
         // ensin kirjautudaan sisään
         
         System.out.println("================");
-        System.out.println("Varasjärjestelmä");
+        System.out.println("Varausjärjestelmä");
         System.out.println("================");
         
         String choice, username, password;
@@ -31,13 +31,24 @@ public class MainClass {
         
         // kirjaudutaan sisään
         
-        System.out.print("käyttäjätunnus: ");
-        username = inputScanner.nextLine();
+        while (true) {
+            System.out.print("käyttäjätunnus: ");
+            username = inputScanner.nextLine();
+
+            System.out.print("salasana: ");
+            password = inputScanner.nextLine();
+
+            boolean accountCheck = checkAccount(username, password);
+            
+            if (accountCheck == false) {
+                System.out.println("Käyttäjätunnus tai salasana oli väärin! Yritä uudelleen.");
+                continue;
+            }
+            
+            break;
+        }
         
-        System.out.print("salasana: ");
-        password = inputScanner.nextLine();
         
-        boolean accountCheck = checkAccount(username, password);
         
         // pääsilmukka
         
@@ -72,22 +83,29 @@ public class MainClass {
                 System.out.println("Käyttäjätunnus on jo olemassa. Valitse jokin toinen.");
                 continue;
             }
-            System.out.print("salasana: ");
-            String password1, password2;
-            password1 = inputScanner.nextLine();
             
-            System.out.println("salasana uudelleen: ");
-            password2 = inputScanner.nextLine();
-            
-            boolean passwordCheck = checkPasswords(password1, password2);
-            
-            if (passwordCheck == true) {
-                // käyttäjätunnus luodaan
-                break;
+            while (true) {
+                System.out.print("salasana: ");
+                String password1, password2;
+                password1 = inputScanner.nextLine();
+
+                System.out.print("salasana uudelleen: ");
+                password2 = inputScanner.nextLine();
+
+                boolean passwordCheck = checkPasswords(password1, password2);
+
+                if (passwordCheck == true) {
+                    // käyttäjätunnus luodaan
+                    System.out.println("");
+                    System.out.println("Tunnukset luotu! Kirjaudu nyt luomillasi tunnuksilla sisään, ole hyvä.");
+                    System.out.println("");
+                    break;
+                }
+
+                // salasanat eivät täsmänneet
+                // TODO: tämä uudelleen
+                System.out.println("Salasanat eivät täsmänneet! Yritä uudelleen.");
             }
-            
-            // salasanat eivät täsmänneet
-            // TODO: tämä uudelleen
         }
     }
 
@@ -107,6 +125,7 @@ public class MainClass {
      * @return true, jos ovat samat, muulloin false
      */
     private static boolean checkPasswords(String password1, String password2) {
-        return true;
+        if (password1.equals(password2)) return true;
+        return false;
     }
 }
