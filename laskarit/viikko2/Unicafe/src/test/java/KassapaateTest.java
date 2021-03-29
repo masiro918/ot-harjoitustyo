@@ -5,6 +5,7 @@
  */
 
 import com.mycompany.unicafe.Kassapaate;
+import com.mycompany.unicafe.Maksukortti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,6 +20,7 @@ import static org.junit.Assert.*;
 public class KassapaateTest {
     
     Kassapaate kassapaate;
+    Maksukortti maksukortti;
     
     public KassapaateTest() {
     }
@@ -34,6 +36,7 @@ public class KassapaateTest {
     @Before
     public void setUp() {
         kassapaate = new Kassapaate();
+        maksukortti = new Maksukortti(10000);
     }
     
     @After
@@ -111,5 +114,75 @@ public class KassapaateTest {
         
         assertTrue(vaihtoraha == 100);
         assertTrue(kassapaate.maukkaitaLounaitaMyyty() == 0);
+    }
+    
+    @Test
+    public void korttiostoSyoEdullisestiRahaaOnKortilla() {
+        // pitäisi palauttaa true eli oston pitäisi onnistua, koska kortilla on tarpeeksi rahaa
+        boolean b = kassapaate.syoEdullisesti(maksukortti);
+        
+        // koska osto onnituu, myytyjen lounaiden määrän pitäisi kasvaa
+        int lounaita = kassapaate.edullisiaLounaitaMyyty();
+        int rahaaKortilla = maksukortti.saldo();
+        
+        // kortilla pitäisi olla nyt rahaa 10000 - 240
+        assertTrue(b);
+        assertTrue(lounaita == 1);
+        assertTrue(rahaaKortilla == 9760);
+    }
+    
+    @Test
+    public void korttiostoSyoMaukkaastiRahaaOnKortilla() {
+        // pitäisi palauttaa true eli oston pitäisi onnistua, koska kortilla on tarpeeksi rahaa
+        boolean b = kassapaate.syoMaukkaasti(maksukortti);
+        
+        // koska osto onnituu, myytyjen lounaiden määrän pitäisi kasvaa
+        int lounaita = kassapaate.maukkaitaLounaitaMyyty();
+        int rahaaKortilla = maksukortti.saldo();
+        
+        // kortilla pitäisi olla nyt rahaa 10000 - 400
+        assertTrue(b);
+        assertTrue(lounaita == 1);
+        assertTrue(rahaaKortilla == 9600);
+    }
+    
+    @Test
+    public void korttiOstoSyoEdullisestiRahaaEiOleTarpeeksi() {
+        // pitäisi palautta false eli osto ei onnistua, koska rahaa ei ole kortilla tarpeeksi
+        // luodaan uusi Maksukortti-olio
+        maksukortti = new Maksukortti(1000);
+        
+        kassapaate.syoMaukkaasti(maksukortti);
+        kassapaate.syoMaukkaasti(maksukortti);
+        
+        // pitäisi olla false
+        boolean b = kassapaate.syoMaukkaasti(maksukortti);
+        
+        // tarkistetaan vielä, että kassassa on myytynä 2kpl maukkaita lounaita
+        int lounaita = kassapaate.maukkaitaLounaitaMyyty();
+        
+        // kassassa pitäisi olla 100000 rahaa, koska ollaan tehty vain korttiostoja
+        
+        assertTrue(kassapaate.kassassaRahaa() == 100000);
+        assertTrue(b == false);
+        assertTrue(lounaita == 2);
+    }
+    
+    @Test
+    public void lataaRahaaKortilleToimii() {
+        kassapaate.lataaRahaaKortille(maksukortti, 500);
+        assertTrue(kassapaate.kassassaRahaa() == 100500);
+    }
+    
+    @Test
+    public void lataaRahaaKortilleNollalla() {
+        kassapaate.lataaRahaaKortille(maksukortti, 0);
+        assertTrue(kassapaate.kassassaRahaa() == 100000);
+    }
+    
+    @Test
+    public void lataaRahaaKortilleNegSumma() {
+        kassapaate.lataaRahaaKortille(maksukortti, -2);
+        assertTrue(kassapaate.kassassaRahaa() == 100000);
     }
 }
