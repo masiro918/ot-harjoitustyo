@@ -169,6 +169,23 @@ public class KassapaateTest {
     }
     
     @Test
+    public void korttiostoSyoEdullisestiRahaaEiOleTarpeeksi() {
+        // pitäisi palautta false eli osto ei onnistua, koska rahaa ei ole kortilla tarpeeksi
+        // luodaan uusi Maksukortti-olio
+        maksukortti = new Maksukortti(450);
+        kassapaate.syoEdullisesti(maksukortti);
+        
+        // pitäisi olla false
+        boolean b = kassapaate.syoEdullisesti(maksukortti);
+        
+        // tarkistetaan vielä, että kassassa on myytynä 1kpl edullisia lounaita
+        int lounaita = kassapaate.edullisiaLounaitaMyyty();
+        assertTrue(kassapaate.kassassaRahaa() == 100000);
+        assertTrue(b == false);
+        assertTrue(lounaita == 1);
+    }
+    
+    @Test
     public void lataaRahaaKortilleToimii() {
         kassapaate.lataaRahaaKortille(maksukortti, 500);
         assertTrue(kassapaate.kassassaRahaa() == 100500);
