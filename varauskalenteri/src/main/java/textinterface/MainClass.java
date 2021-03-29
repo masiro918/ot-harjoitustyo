@@ -8,6 +8,7 @@ import java.util.Scanner;
  */
 public class MainClass {
     public static Scanner inputScanner = new Scanner(System.in);
+    public static String loggedInUsername = null;
     
     public static void main(String[] args) {
         // ensin kirjautudaan sisään
@@ -45,20 +46,29 @@ public class MainClass {
                 continue;
             }
             
+            loggedInUsername = username;
             break;
         }
         
         
         
         // pääsilmukka
-        
-        System.out.println("Olet kirjautunut sisään. Voit poistua ohjelmasta kirjoittamalla komentoriville quit.");
+       
+        System.out.println("Olet kirjautunut sisään nimellä " + loggedInUsername + ". Voit poistua ohjelmasta kirjoittamalla komentoriville quit.");
         
         String input;
         while (true) {
             System.out.print("> ");
             input = inputScanner.nextLine();
             
+            if (input.equals("del-r")) {
+                boolean isAdmin = checkIfAdmin(loggedInUsername);
+                
+                if (isAdmin == false) {
+                    System.out.println("Vain admin-käyttäjä saa tehdä tämän toimenpiteen.");
+                    continue;
+                }
+            }
             if (input.equals("quit")) break;
         }
     }
@@ -126,6 +136,10 @@ public class MainClass {
      */
     private static boolean checkPasswords(String password1, String password2) {
         if (password1.equals(password2)) return true;
+        return false;
+    }
+
+    private static boolean checkIfAdmin(String loggedInUsername) {
         return false;
     }
 }
