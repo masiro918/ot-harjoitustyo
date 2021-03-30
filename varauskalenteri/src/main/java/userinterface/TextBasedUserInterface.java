@@ -1,12 +1,12 @@
-package textinterface;
+package userinterface;
 
 import java.util.Scanner;
 
 /**
  * Tässä luokassa on toiminnallisuudet tekstikäyttöliittymälle.
- * @author user
+ * @author Matias Siro
  */
-public class MainClass {
+public class TextBasedUserInterface {
     public static Scanner inputScanner = new Scanner(System.in);
     public static String loggedInUsername = null;
     
