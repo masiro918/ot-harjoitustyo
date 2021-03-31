@@ -2,7 +2,8 @@
 package domain;
 
 /**
- * Sisältää yhden varauksen tiedot. Vastaa tietokantataulua Reservation.
+ * Sisältää yhden varauksen tiedot. Vastaa tietokantataulua Reservation. 
+ * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
  * @author Matias Siro 
  */
 public class Reservation {

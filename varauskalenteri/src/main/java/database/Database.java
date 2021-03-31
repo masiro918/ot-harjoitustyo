@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.sql.*;
 
 /**
- * Tässä luokassa käsitellään tietokanta-operaatioita.
+ * Tässä luokassa käsitellään tietokanta-operaatioita. Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
  * @author Matias Siro
  */
 public class Database {

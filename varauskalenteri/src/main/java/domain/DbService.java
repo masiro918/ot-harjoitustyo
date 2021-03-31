@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 /**
  * Tämä luokka sisältää ne haut ja lisäykset tietokantaa, joita tässä ohjelmassa tarvitaan.
+ * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
  * @author Matias Siro
  */
 public class DbService {

@@ -22,7 +22,7 @@ import database.Database;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- *
+ * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm.
  * @author user
  */
 public class DatabaseTest {
