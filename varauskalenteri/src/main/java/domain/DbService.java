@@ -1,6 +1,9 @@
 package domain;
 
 import database.Database;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 /**
  * Tämä luokka sisältää ne haut ja lisäykset tietokantaa, joita tässä ohjelmassa tarvitaan.
  * @author Matias Siro
@@ -13,8 +16,16 @@ public class DbService {
     /**
      * Konstruktori.
      */
-    public DbService() {
+    public DbService() throws Exception {
         this.database = new Database();
+    }
+    
+    public void createTables() throws Exception {
+        // tarkistetaan, onko tietokantataulut jo olemassa
+        boolean exists = Files.exists(Paths.get("database.db"));
+        if (exists == true) throw new Exception("Tietokanta on jo olemassa");
+        
+        this.database.createTables();
     }
     
     /**
