@@ -80,5 +80,9 @@ public class DatabaseTest {
         
         resultSet = statement.executeQuery("select * from reservation;");
         System.out.println(resultSet.toString());
+        
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 }
