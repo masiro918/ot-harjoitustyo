@@ -10,6 +10,7 @@ import java.sql.*;
 
 /**
  * Tässä luokassa käsitellään tietokanta-operaatioita. Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
+ * ja täältä: https://www.sqlitetutorial.net/sqlite-java/create-table/
  * @author Matias Siro
  */
 public class Database {
@@ -28,15 +29,34 @@ public class Database {
      * @throws Exception 
      */
     public void createTables() throws Exception {
-        String sql1 = "CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL);";
-        boolean table1 = updateData(sql1);
+        String sql1 = "CREATE TABLE user (id INTEGER PRIMARY KEY NOT NULL, username TEXT NOT NULL, password TEXT NOT NULL, role TEXT NOT NULL);";
+        try {
+            createTable(sql1);
+        } catch (Exception e) {
+            throw new Exception("Epäonnistuttiin luodessa tietokantataulua USER: " + e.getMessage());
+        }
         
-        if (table1 == false) throw new Exception("Epäonnistuttiin luodessa tietokantataulua USER!");
-        
-        String sql2 = "CREATE TABLE reservation (id INTEGER PRIMARY KEY NOT NULL, user_id INTEGER FOREIGN KEY(user_id) REFERENCES user(id), time TEXT, day INTEGER, mounth TEXT, year INTEGER);";
-        boolean table2 = updateData(sql2);
-        
-        if (table2 == false) throw new Exception("Epäonnistuttiin luodessa tietokantataulua RESERVATION!");
+        String sql2 = "CREATE TABLE reservation (id INTEGER PRIMARY KEY NOT NULL, user_id INTEGER, hour TEXT, day INTEGER, mounth TEXT, year INTEGER);";
+        try {
+            createTable(sql2);
+        } catch (Exception e) {
+            throw new Exception("Epäonnistuttiin luodessa tietokantataulua RESERVATION: " + e.getMessage());
+        }
+    }
+    
+    /**
+     * Luo uuden tietokantataulun. 
+     * @param sql luontilauseke
+     * @throws Exception 
+     */
+    public void createTable(String sql) throws Exception {
+        try {
+            Statement statement = this.connection.createStatement();
+            statement.execute(sql);
+            statement.close();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
     
     /**
@@ -44,14 +64,13 @@ public class Database {
      * @param sql sql-lause
      * @return true, jos onnistui, muulloin false
      */
-    public boolean updateData(String sql) {
+    public void updateData(String sql) throws Exception {
         try {
             Statement statement = this.connection.createStatement();
             statement.executeUpdate(sql);
         } catch (Exception e) {
-            return false;
+            throw new Exception(e.getMessage());
         }
-        return true;
     }
     
     /**
@@ -61,6 +80,23 @@ public class Database {
      */
     public ArrayList<String> getData(String sql) {
         return null;
+    }
+  
+    /**
+     * Poistaa molemmat taulut.
+     * @throws Exception 
+     */
+    public void dropTables() throws Exception {
+        try {
+            Statement statement = this.connection.createStatement();
+            statement.executeUpdate("drop table user;");
+            statement.close();
+            
+            statement = this.connection.createStatement();
+            statement.executeUpdate("drop table reservation;");
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
     }
     
     /**

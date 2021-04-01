@@ -8,18 +8,10 @@ package database;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import database.Database;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+//import database.Database;
+import static org.junit.Assert.*;
 
 /**
  * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm.
@@ -33,32 +25,20 @@ public class DatabaseTest {
         
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        database = new Database();
+        
+        // poistetaan ensin jo olemassa olevat taulut
+        database.dropTables();
+        /*
         try {
             database = new Database();
         } catch (Exception ex) {
             Logger.getLogger(DatabaseTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+*/
     }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
     
     @Test
     public void databaseCreated() throws Exception {
@@ -76,13 +56,16 @@ public class DatabaseTest {
         Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from user;");
-        System.out.println(resultSet.toString());
+        String output1 = "output: " + resultSet.getRow();
         
         resultSet = statement.executeQuery("select * from reservation;");
-        System.out.println(resultSet.toString());
+        String output2 = "output: " + resultSet.getRow();
         
         resultSet.close();
         statement.close();
         connection.close();
+        
+        assertEquals(output1, "output: 0");
+        assertEquals(output2, "output: 0");
     }
 }
