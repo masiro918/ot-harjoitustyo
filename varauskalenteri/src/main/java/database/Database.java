@@ -62,12 +62,14 @@ public class Database {
     /**
      * Lisää/päivittää/poistaa dataa tietokannasta.
      * @param sql sql-lause
-     * @return true, jos onnistui, muulloin false
+     * @throws Exception 
      */
     public void updateData(String sql) throws Exception {
         try {
             Statement statement = this.connection.createStatement();
             statement.executeUpdate(sql);
+            //statement.execute(sql);
+            statement.close();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -80,6 +82,67 @@ public class Database {
      */
     public ArrayList<String> getData(String sql) {
         return null;
+    }
+    
+    /**
+     * Tulostaa ArrayListiin koko user-taulun.
+     * @return user-taulun sisältö
+     * @throws SQLException 
+     */
+    public ArrayList<String> printTableUser() throws SQLException {
+        Statement statement = this.connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("select * from user;");
+        
+        ArrayList<String> results = new ArrayList<>();
+        
+        while (resultSet.next()) {
+            String row = "";
+            
+            int id = resultSet.getInt("id");
+            String username = resultSet.getString("username");
+            String password = resultSet.getString("password");
+            String role = resultSet.getString("role");
+            
+            row = id + "|" + username + "|" + password + "|" + role;
+            
+            //System.out.println(row);
+            results.add(row);
+        }
+        
+        statement.close();
+        
+        return results;
+    }
+    
+    /**
+     * Tulostaa ArrayListiin reservation-taulun.
+     * @return reservation-taulun sisältö
+     * @throws SQLException 
+     */
+    public ArrayList<String> printTableReservation() throws SQLException {
+        Statement statement = this.connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("select * from reservation;");
+        
+        ArrayList<String> results = new ArrayList<>();
+        
+        while (resultSet.next()) {
+            String row = "";
+            
+            int id = resultSet.getInt("id");
+            int user_id = resultSet.getInt("user_id");
+            String hour = resultSet.getString("hour");
+            int day = resultSet.getInt("day");
+            String mounth = resultSet.getString("mounth");
+            int year = resultSet.getInt("year");
+            
+            row = id + "|" + user_id + "|" + hour + "|" + day + "|" + mounth + "|" + year;
+            results.add(row);
+            //System.out.println(row);
+        }
+        
+        statement.close();
+        
+        return results;
     }
   
     /**
@@ -94,6 +157,7 @@ public class Database {
             
             statement = this.connection.createStatement();
             statement.executeUpdate("drop table reservation;");
+            statement.close();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
@@ -104,5 +168,13 @@ public class Database {
      */
     public void close() throws SQLException {
         this.connection.close();
+    }
+    
+    public static void main(String[] args) throws Exception {
+        /*
+        Database db = new Database();
+        db.createTables();
+        db.close();
+        */
     }
 }
