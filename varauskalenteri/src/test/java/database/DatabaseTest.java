@@ -16,7 +16,8 @@ import static org.junit.Assert.*;
 
 /**
  * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm.
- * @author user
+ * Testaa luokkaa Database.
+ * @author Matias
  */
 public class DatabaseTest {
     
@@ -120,15 +121,46 @@ public class DatabaseTest {
         assertEquals(row1, "98112170|12345670|10-11|2|tammikuu|2021");
         assertEquals(row2, "99992170|12345671|11-12|2|helmikuu|2026");
     }
-    /*
+    
     @Test
     public void removeDataFromDatabaseUserTable() throws Exception {
+        database.createTables();
+        database.updateData("insert into user (id, username, password, role) values (98342170, 'test_user', 'salasana123', 'basic');");
+        database.updateData("insert into user (id, username, password, role) values (12345670, 'admin_user', 'password123', 'admin');");
+        
+        // poistetaan yksi alkio taulusta
+        database.updateData("delete from user where id = 98342170;");
+        
+        ArrayList<String> results = database.printTableUser();
+        
+        String lines = "" + results.size();
+                
+        database.close();
+        
+        // taulussa pitäisi olla nyt 1 rivi
+        assertEquals(lines, "1");
         
     }
     
+    
     @Test
     public void removeDataFromDatabaseReservationTable() throws Exception {
-
+        database.createTables();
+        database.updateData("insert into reservation (id, user_id, hour, day, mounth, year) values (98112170, 12345670, '10-11', 2, 'tammikuu', 2021);");
+        database.updateData("insert into reservation (id, user_id, hour, day, mounth, year) values (99992170, 12345671, '11-12', 2, 'helmikuu', 2026);");
+        
+        database.updateData("delete from reservation where id = 99992170");
+        
+        ArrayList<String> results = database.printTableReservation();
+        
+        database.close();
+        
+        String lines = "" + results.size();
+                
+        database.close();
+        
+        // taulussa pitäisi olla nyt 1 rivi
+        assertEquals(lines, "1");
     }
-    */
+    
 }

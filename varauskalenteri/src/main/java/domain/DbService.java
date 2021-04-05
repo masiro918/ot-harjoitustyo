@@ -4,6 +4,7 @@ import database.Database;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Random;
 /**
  * Tämä luokka sisältää ne haut ja lisäykset tietokantaa, joita tässä ohjelmassa tarvitaan.
  * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
@@ -35,7 +36,12 @@ public class DbService {
      * @throws Exception 
      */
     public void addUser(User user) throws Exception {
-        throw new Exception("metodi ei ole toistaiseksi käytössä!");
+        Integer id = user.getId();
+        String username = user.getUsername();
+        String role = user.getRole();
+        
+        // luodaan tunniste
+        
     }
     
     /**
@@ -68,5 +74,45 @@ public class DbService {
      */
     public void delReservation(int id) throws Exception {
         throw new Exception("metodi ei ole toistaiseksi käytössä!");
+    }
+    
+    /**
+     * Sulkee tietokantapalvelun.
+     * @throws Exception 
+     */
+    public void closeService() throws Exception {
+        this.database.close();
+    }
+    
+    /**
+     * Arpoo uuden tunnisteen. Apuja satunnaislukujen tekoon haettu täältä: https://mkyong.com/java/java-generate-random-integers-in-a-range/
+     * @return arvottu kokonaisluku väliltä [0, 99999999].
+     */
+    public Integer newId() {
+        Random random = new Random();
+        int id = random.nextInt((99999999 - 0) + 1) + 0;
+        return id;
+    }
+    
+    /**
+     * Tarkistaa, onko id vapaa.
+     * @param id tarkistettava id
+     * @return true, jos on vapaa, muulloin false
+     */
+    public boolean idExists(int id) throws Exception {
+        // TODO
+        throw new Exception("Metodi ei ole vielä käytössä!");
+    }
+    
+    public static void main(String[] args) throws Exception {
+        DbService dbs = null;
+        try {
+            dbs = new DbService();
+            dbs.createTables();
+        } catch (Exception e) {
+            System.err.println("Tapahtui poikkeus: " + e.getMessage());
+        } finally {
+            dbs.closeService();
+        }
     }
 }

@@ -169,12 +169,4 @@ public class Database {
     public void close() throws SQLException {
         this.connection.close();
     }
-    
-    public static void main(String[] args) throws Exception {
-        /*
-        Database db = new Database();
-        db.createTables();
-        db.close();
-        */
-    }
 }
