@@ -76,22 +76,14 @@ public class Database {
     }
     
     /**
-     * Hakee dataa tietokannasta ja antaa tulokset ArrayList-oliona.
+     * Hakee dataa tietokannan user-taulusta ja antaa tulokset ArrayList-oliona.
      * @param sql sql lause
      * @return haettu data
-     */
-    public ArrayList<String> getData(String sql) {
-        return null;
-    }
-    
-    /**
-     * Tulostaa ArrayListiin koko user-taulun.
-     * @return user-taulun sisältö
      * @throws SQLException 
      */
-    public ArrayList<String> printTableUser() throws SQLException {
+    public ArrayList<String> getDataUser(String sql) throws SQLException {
         Statement statement = this.connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from user;");
+        ResultSet resultSet = statement.executeQuery(sql);
         
         ArrayList<String> results = new ArrayList<>();
         
@@ -112,6 +104,15 @@ public class Database {
         statement.close();
         
         return results;
+    }
+    
+    /**
+     * Tulostaa ArrayListiin koko user-taulun.
+     * @return user-taulun sisältö
+     * @throws SQLException 
+     */
+    public ArrayList<String> printTableUser() throws SQLException {
+        return getDataUser("select * from user;");
     }
     
     /**

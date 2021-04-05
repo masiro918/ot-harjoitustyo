@@ -14,7 +14,7 @@ public class User {
     /**
      * Luo uuden User-olion.
      * @param id id-tunnus tietokannassa
-     * @param kayttajatunnus käyttjänimi
+     * @param username käyttäjänimi
      * @param password salasana
      * @param role rooli (ylläpitäjä tai normaali)
      */

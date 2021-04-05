@@ -4,7 +4,10 @@ import database.Database;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 /**
  * Tämä luokka sisältää ne haut ja lisäykset tietokantaa, joita tässä ohjelmassa tarvitaan.
  * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
@@ -36,12 +39,16 @@ public class DbService {
      * @throws Exception 
      */
     public void addUser(User user) throws Exception {
-        Integer id = user.getId();
         String username = user.getUsername();
         String role = user.getRole();
+        String password = user.getPassword();
         
         // luodaan tunniste
+        Integer id = newId();
         
+        String sql = "insert into user (id, username, password, role) values (" + id + ", '" + username +  "', '" + password + "', '" + role + "');";
+        //System.out.println(sql);
+        this.database.updateData(sql);
     }
     
     /**
@@ -88,9 +95,20 @@ public class DbService {
      * Arpoo uuden tunnisteen. Apuja satunnaislukujen tekoon haettu täältä: https://mkyong.com/java/java-generate-random-integers-in-a-range/
      * @return arvottu kokonaisluku väliltä [0, 99999999].
      */
-    public Integer newId() {
+    public Integer newId() throws Exception {
+        boolean idOk = false;
         Random random = new Random();
-        int id = random.nextInt((99999999 - 0) + 1) + 0;
+        int id = 12345678;
+        
+        while (idOk) {
+            int randomId = random.nextInt((99999999 - 0) + 1) + 0;
+            
+            if (idExists(randomId)) {
+                idOk = true;
+                id = randomId;
+            }
+        }
+        
         return id;
     }
     
@@ -100,15 +118,46 @@ public class DbService {
      * @return true, jos on vapaa, muulloin false
      */
     public boolean idExists(int id) throws Exception {
-        // TODO
-        throw new Exception("Metodi ei ole vielä käytössä!");
+        ArrayList<String> results = this.database.getDataUser("select * from user where id = " + id + ";");
+        if (results.size() > 0) return false;
+        return true;
+    }
+    
+    /**
+     * Tulostaa standarditulostusvirtaan user-taulun sisällön.
+     * @throws Exception 
+     */
+    public void printTableUser() throws Exception {
+        ArrayList<String> userTable = this.database.printTableUser();
+        
+        for (String user : userTable) System.out.println(user);
+    }
+    
+    /**
+     * Tulostaa standarditulostusvirtaan reservation-taulun sisällön.
+     * @throws Exception 
+     */
+    public void printReservationTable() throws Exception {
+        ArrayList<String> reservationTable = this.database.printTableReservation();
+        
+        for (String reservation : reservationTable) System.out.println(reservation);
     }
     
     public static void main(String[] args) throws Exception {
         DbService dbs = null;
         try {
             dbs = new DbService();
-            dbs.createTables();
+            /*User user = new User(null, "kalle", "salasana", "admin");
+            dbs.addUser(user);*/
+            Scanner s = new Scanner(System.in);
+            while (true) {
+                Integer id = Integer.parseInt(s.nextLine());
+                
+                if (id == -1) break;
+                System.out.println(dbs.idExists(id));
+            }
+            dbs.printTableUser();
+            dbs.closeService();
         } catch (Exception e) {
             System.err.println("Tapahtui poikkeus: " + e.getMessage());
         } finally {
