@@ -77,6 +77,8 @@ public class DbService {
         Integer year = reservation.getYear();
         
         Integer id = newId("reservation");
+        
+        //TODO: jatka tästä
     }
     
     /**
@@ -130,7 +132,10 @@ public class DbService {
             }
             
             if (table.equals("reservation")) {
-                
+                if (idExistsReservation(randomId)) {
+                    idOk = false;
+                    id = randomId;
+                }
             }
             
         }
@@ -145,6 +150,17 @@ public class DbService {
      */
     public boolean idExistsUser(int id) throws Exception {
         ArrayList<String> results = this.database.getDataUser("select * from user where id = " + id + ";");
+        if (results.size() > 0) return false;
+        return true;
+    }
+    
+    /**
+     * Tarkistaa, onko Reservation-taulun id vapaa.
+     * @param id  tarkistettava id
+     * @return true, jos on vapaa, muulloin false
+     */
+    public boolean idExistsReservation(int id) throws Exception {
+        ArrayList<String> results = this.database.getDataReservation("select * from reservation where id = " + id + ";");
         if (results.size() > 0) return false;
         return true;
     }
@@ -176,19 +192,22 @@ public class DbService {
         try {
             dbs = new DbService();
             dbs.createTablesWithoutChecking();
-            User user = new User(null, "kalle", "salasana", "admin");
-            dbs.addUser(user);
-           
-            ArrayList<String> users = dbs.printTableUser();
+            Reservation reservation = new Reservation();
+            reservation.setDay(6);
+            reservation.setMounth("huhtikuu");
+            reservation.setTime("10-11");
+            reservation.setUserId(12345678);
+            reservation.setYear(2021);
+            
+            dbs.addReservation(reservation);
+            
             dbs.closeService();
-            
-            String[] blocks = users.get(0).split("\\|");
-            
-            for (String s : blocks) System.out.println(s);
         } catch (Exception e) {
             System.err.println("Tapahtui poikkeus: " + e.getMessage());
         } finally {
             dbs.closeService();
         }
     }
+
+    
 }

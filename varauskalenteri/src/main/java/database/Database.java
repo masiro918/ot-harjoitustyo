@@ -129,6 +129,8 @@ public class Database {
             Integer year = resultSet.getInt("year");
             
             //TODO: merkkijono
+            row = id + "|" + time + "|" + day + "|" + mounth + "|" + year + "|" + userId;
+            results.add(row);
         }
         
         statement.close();
@@ -151,29 +153,7 @@ public class Database {
      * @throws SQLException 
      */
     public ArrayList<String> printTableReservation() throws SQLException {
-        Statement statement = this.connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from reservation;");
-        
-        ArrayList<String> results = new ArrayList<>();
-        
-        while (resultSet.next()) {
-            String row = "";
-            
-            int id = resultSet.getInt("id");
-            int user_id = resultSet.getInt("user_id");
-            String time = resultSet.getString("time");
-            int day = resultSet.getInt("day");
-            String mounth = resultSet.getString("mounth");
-            int year = resultSet.getInt("year");
-            
-            row = id + "|" + user_id + "|" + time + "|" + day + "|" + mounth + "|" + year;
-            results.add(row);
-            //System.out.println(row);
-        }
-        
-        statement.close();
-        
-        return results;
+        return getDataReservation("select * from reservation;");
     }
   
     /**
