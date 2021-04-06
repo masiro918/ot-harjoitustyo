@@ -36,7 +36,7 @@ public class Database {
             throw new Exception("Epäonnistuttiin luodessa tietokantataulua USER: " + e.getMessage());
         }
         
-        String sql2 = "CREATE TABLE reservation (id INTEGER PRIMARY KEY NOT NULL, user_id INTEGER, hour TEXT, day INTEGER, mounth TEXT, year INTEGER);";
+        String sql2 = "CREATE TABLE reservation (id INTEGER PRIMARY KEY NOT NULL, user_id INTEGER, time TEXT, day INTEGER, mounth TEXT, year INTEGER);";
         try {
             createTable(sql2);
         } catch (Exception e) {
@@ -77,7 +77,7 @@ public class Database {
     
     /**
      * Hakee dataa tietokannan user-taulusta ja antaa tulokset ArrayList-oliona.
-     * @param sql sql lause
+     * @param sql sql-lause
      * @return haettu data
      * @throws SQLException 
      */
@@ -99,6 +99,36 @@ public class Database {
             
             //System.out.println(row);
             results.add(row);
+        }
+        
+        statement.close();
+        
+        return results;
+    }
+    
+    /**
+     * Hakee dataa User-taulusta ja antaa tulokset ArrayList-oliona.
+     * @param sql sql-lause
+     * @return haettu data
+     * @throws SQLException 
+     */
+    public ArrayList<String> getDataReservation(String sql) throws SQLException {
+        Statement statement = this.connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        
+        ArrayList<String> results = new ArrayList<>();
+        
+        while (resultSet.next()) {
+            String row = "";
+            
+            Integer id = resultSet.getInt("id");
+            Integer userId = resultSet.getInt("user_id");
+            String time = resultSet.getString("time");
+            Integer day = resultSet.getInt("day");
+            String mounth = resultSet.getString("mounth");
+            Integer year = resultSet.getInt("year");
+            
+            //TODO: merkkijono
         }
         
         statement.close();
@@ -131,12 +161,12 @@ public class Database {
             
             int id = resultSet.getInt("id");
             int user_id = resultSet.getInt("user_id");
-            String hour = resultSet.getString("hour");
+            String time = resultSet.getString("time");
             int day = resultSet.getInt("day");
             String mounth = resultSet.getString("mounth");
             int year = resultSet.getInt("year");
             
-            row = id + "|" + user_id + "|" + hour + "|" + day + "|" + mounth + "|" + year;
+            row = id + "|" + user_id + "|" + time + "|" + day + "|" + mounth + "|" + year;
             results.add(row);
             //System.out.println(row);
         }

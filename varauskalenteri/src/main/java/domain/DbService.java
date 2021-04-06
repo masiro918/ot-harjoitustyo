@@ -46,7 +46,7 @@ public class DbService {
     }
     
     /**
-     * Lisää uuden User-olion (eli käytännössä uuden käyttäjätunnuksen) tietokantaa.
+     * Lisää uuden User-olion (eli käytännössä uuden käyttäjätunnuksen) tietokantaan.
      * @param user lisättävä käyttäjä
      * @throws Exception 
      */
@@ -56,13 +56,13 @@ public class DbService {
         String password = user.getPassword();
         
         // luodaan tunniste
-        Integer id = newId();
+        Integer id = newId("user");
         
         String sql = "insert into user (id, username, password, role) values (" + id + ", '" + username +  "', '" + password + "', '" + role + "');";
         //System.out.println(sql);
         this.database.updateData(sql);
     }
-    
+       
     /**
      * Lisää uuden varauksen, olettaen, että varaus on sallittu 
      * (eli käytännössä kukaan muu ei ole tehnyt samaa varausta aikaisemmin).
@@ -70,7 +70,13 @@ public class DbService {
      * @throws Exception 
      */
     public void addReservation(Reservation reservation) throws Exception {
-        throw new Exception("metodi ei ole toistaiseksi käytössä!");
+        Integer userId = reservation.getUserId();
+        String time = reservation.getTime();
+        Integer day = reservation.getDay();
+        String mounth = reservation.getMounth();
+        Integer year = reservation.getYear();
+        
+        Integer id = newId("reservation");
     }
     
     /**
@@ -105,9 +111,10 @@ public class DbService {
     
     /**
      * Arpoo uuden tunnisteen. Apuja satunnaislukujen tekoon haettu täältä: https://mkyong.com/java/java-generate-random-integers-in-a-range/
+     * @param table taulu, johon id luodaan
      * @return arvottu kokonaisluku väliltä [0, 99999999].
      */
-    public Integer newId() throws Exception {
+    public Integer newId(String table) throws Exception {
         boolean idOk = true;
         Random random = new Random();
         int id = 12345678;
@@ -115,21 +122,28 @@ public class DbService {
         while (idOk) {
             int randomId = random.nextInt((99999999 - 0) + 1) + 0;
             
-            if (idExists(randomId)) {
-                idOk = false;
-                id = randomId;
+            if (table.equals("user")) {
+                if (idExistsUser(randomId)) {
+                    idOk = false;
+                    id = randomId;
+                }
             }
+            
+            if (table.equals("reservation")) {
+                
+            }
+            
         }
         
         return id;
     }
     
     /**
-     * Tarkistaa, onko id vapaa.
+     * Tarkistaa, onko User-taulun id vapaa.
      * @param id tarkistettava id
      * @return true, jos on vapaa, muulloin false
      */
-    public boolean idExists(int id) throws Exception {
+    public boolean idExistsUser(int id) throws Exception {
         ArrayList<String> results = this.database.getDataUser("select * from user where id = " + id + ";");
         if (results.size() > 0) return false;
         return true;
