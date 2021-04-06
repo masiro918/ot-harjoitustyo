@@ -25,11 +25,23 @@ public class DbService {
         this.database = new Database();
     }
     
+    public void destroyTables() throws Exception {
+        this.database.dropTables();
+    }
+    
     public void createTables() throws Exception {
         // tarkistetaan, onko tietokantataulut jo olemassa
         boolean exists = Files.exists(Paths.get("database.db"));
         if (exists == true) throw new Exception("Tietokanta on jo olemassa");
         
+        this.database.createTables();
+    }
+    
+    /**
+     * Luo taulut tarkistamatta, että ne ovat olemassa.
+     * @throws Exception 
+     */
+    public void createTablesWithoutChecking() throws Exception {
         this.database.createTables();
     }
     
@@ -96,7 +108,7 @@ public class DbService {
      * @return arvottu kokonaisluku väliltä [0, 99999999].
      */
     public Integer newId() throws Exception {
-        boolean idOk = false;
+        boolean idOk = true;
         Random random = new Random();
         int id = 12345678;
         
@@ -104,7 +116,7 @@ public class DbService {
             int randomId = random.nextInt((99999999 - 0) + 1) + 0;
             
             if (idExists(randomId)) {
-                idOk = true;
+                idOk = false;
                 id = randomId;
             }
         }
@@ -125,12 +137,14 @@ public class DbService {
     
     /**
      * Tulostaa standarditulostusvirtaan user-taulun sisällön.
+     * @return user-taulu
      * @throws Exception 
      */
-    public void printTableUser() throws Exception {
+    public ArrayList<String> printTableUser() throws Exception {
         ArrayList<String> userTable = this.database.printTableUser();
         
         for (String user : userTable) System.out.println(user);
+        return userTable;
     }
     
     /**
@@ -147,17 +161,16 @@ public class DbService {
         DbService dbs = null;
         try {
             dbs = new DbService();
-            /*User user = new User(null, "kalle", "salasana", "admin");
-            dbs.addUser(user);*/
-            Scanner s = new Scanner(System.in);
-            while (true) {
-                Integer id = Integer.parseInt(s.nextLine());
-                
-                if (id == -1) break;
-                System.out.println(dbs.idExists(id));
-            }
-            dbs.printTableUser();
+            dbs.createTablesWithoutChecking();
+            User user = new User(null, "kalle", "salasana", "admin");
+            dbs.addUser(user);
+           
+            ArrayList<String> users = dbs.printTableUser();
             dbs.closeService();
+            
+            String[] blocks = users.get(0).split("\\|");
+            
+            for (String s : blocks) System.out.println(s);
         } catch (Exception e) {
             System.err.println("Tapahtui poikkeus: " + e.getMessage());
         } finally {
