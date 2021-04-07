@@ -78,7 +78,10 @@ public class DbService {
         
         Integer id = newId("reservation");
         
-        //TODO: jatka tästä
+        String sql = "insert into reservation (id, user_id, time, day, mounth, year) values (" + id + ", " + userId + ", '" + time + "', " + day + ", '" + mounth + "', " + year + ");";
+        //System.out.println(sql);
+        
+        this.database.updateData(sql);
     }
     
     /**
@@ -91,7 +94,12 @@ public class DbService {
      * @throws Exception 
      */
     public boolean checkIfReservationExist(String time, int day, String mounth, int year) throws Exception {
-        throw new Exception("metodi ei ole toistaiseksi käytössä!");
+        String sql = "select * from reservation where time = '" + time + "' and day = " + day + " and mounth = '" + mounth + "' and year = " + year + ";";
+        
+        ArrayList<String> results = this.database.getDataReservation(sql);
+        
+        if (results.size() > 0) return false;
+        return true;
     }
     
     /**
@@ -179,19 +187,21 @@ public class DbService {
     
     /**
      * Tulostaa standarditulostusvirtaan reservation-taulun sisällön.
+     * @return reservation-table
      * @throws Exception 
      */
-    public void printReservationTable() throws Exception {
+    public ArrayList<String> printReservationTable() throws Exception {
         ArrayList<String> reservationTable = this.database.printTableReservation();
         
         for (String reservation : reservationTable) System.out.println(reservation);
+        return reservationTable;
     }
     
     public static void main(String[] args) throws Exception {
         DbService dbs = null;
         try {
             dbs = new DbService();
-            dbs.createTablesWithoutChecking();
+            //dbs.createTablesWithoutChecking();
             Reservation reservation = new Reservation();
             reservation.setDay(6);
             reservation.setMounth("huhtikuu");
@@ -200,7 +210,6 @@ public class DbService {
             reservation.setYear(2021);
             
             dbs.addReservation(reservation);
-            
             dbs.closeService();
         } catch (Exception e) {
             System.err.println("Tapahtui poikkeus: " + e.getMessage());

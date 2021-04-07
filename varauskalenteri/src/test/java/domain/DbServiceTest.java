@@ -24,12 +24,16 @@ public class DbServiceTest {
     @Before
     public void setUp() throws Exception {
         this.dbService = new DbService();
-        //this.dbService.destroyTables();
+        this.dbService.destroyTables();
         this.dbService.createTablesWithoutChecking();
     }
     
+    /**
+     * Testaa, että user-olion tallennus tietokantaan onnistuu.
+     * @throws Exception 
+     */
     @Test
-    public void addUser() throws Exception {
+    public void addUserTest() throws Exception {
         User user = new User();
         user.setUsername("kalle");
         user.setPassword("salasana");
@@ -49,6 +53,47 @@ public class DbServiceTest {
         assertEquals("salasana", blocks[2]);
         assertEquals("basic", blocks[3]);
     }
+    
+    /**
+     * Testaa, että id-generaattori tuottaa luvun väliltä [0, 99999999].
+     * @throws Exception 
+     */
+    @Test
+    public void newIdUserTest() throws Exception {
+        Integer id = this.dbService.newId("user");
+        
+        if (id >= 0 && id <= 99999999) {
+            this.dbService.closeService();
+            assertTrue(true);
+        } else {
+            this.dbService.closeService();
+            assertTrue(false);
+        }
+    }
 
+    @Test
+    public void addReservationTest() throws Exception  {
+        Reservation reservation = new Reservation();
+        reservation.setDay(7);
+        reservation.setMounth("huhtikuu");
+        reservation.setUserId(12345678);
+        reservation.setTime("11-12");
+        reservation.setYear(2021);
+        
+        this.dbService.addReservation(reservation);
+        
+        ArrayList<String> reservationTable = this.dbService.printReservationTable();
+        this.dbService.closeService();
+        
+        String reservation1 = reservationTable.get(0);
+        
+        // poistetaan ensimmäinen tietue, koska se on arvottu id
+        
+        String[] blocks = reservation1.split("\\|");
+        
+        for (String s : blocks) System.out.println(s);
+        
+        //TODO: jatka tästä
+    }
 }
 

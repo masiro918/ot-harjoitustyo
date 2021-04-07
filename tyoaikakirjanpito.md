@@ -9,3 +9,5 @@
 | 2.4.  | 45min   | Tehty lisää testejä luokalle Database 														| 
 | 5.4.  | 1h15min | lisää toimintoja lisätty luokkaan database ja dbservice. Testejä tehty myös luokalle user kuten myös luokan user getterit ja setterit. 
 | 6.4.  | 1h15min | tehty testejä luokalle reservation. alettu tekemään mahdollisuutta lisätä reservation-olio tietokantaan. tämä ei ole vielä valmis                   |
+| 7.4.  | 45min   | jatkettu samasta aiheesta, mistä viimeksi lopetin: reservation-luokan testejä ja lisää ominaisuuksi itse reservation-luokkaan (=metodeja)|
+
