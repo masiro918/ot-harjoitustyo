@@ -38,6 +38,26 @@ public class DbService {
     }
     
     /**
+     * Hakee dataa reservation-taulusta.
+     * @param sql sql-lause, jolla dataa haetaan
+     * @return haettu data
+     * @throws Exception 
+     */
+    public ArrayList<String> getDataReservation(String sql) throws Exception {
+        return this.database.getDataReservation(sql);
+    }
+    
+    /**
+     * Hakee dataa user-taulusta
+     * @param sql sql-lause, jolla dataa haetaan
+     * @return haettu data
+     * @throws Exception 
+     */
+    public ArrayList<String> getDataUser(String sql) throws Exception {
+        return this.database.getDataUser(sql);
+    }
+    
+    /**
      * Luo taulut tarkistamatta, että ne ovat olemassa.
      * @throws Exception 
      */
@@ -108,7 +128,8 @@ public class DbService {
      * @throws Exception 
      */
     public void delReservation(int id) throws Exception {
-        throw new Exception("metodi ei ole toistaiseksi käytössä!");
+        String sql = "delete from reservation where id = " + id;
+        this.database.updateData(sql);
     }
     
     /**
