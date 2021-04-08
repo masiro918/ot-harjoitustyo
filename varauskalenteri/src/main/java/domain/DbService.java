@@ -66,7 +66,7 @@ public class DbService {
     }
     
     /**
-     * Lisää uuden User-olion (eli käytännössä uuden käyttäjätunnuksen) tietokantaan.
+     * Lisää uuden User-olion (eli käytännössä uuden käyttäjätunnuksen) tietokantaan. Ei tarkista, sisältääkö jo käyttäjätunnuksen.
      * @param user lisättävä käyttäjä
      * @throws Exception 
      */

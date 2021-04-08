@@ -11,6 +11,8 @@ import static org.junit.Assert.*;
 
 /**
  * Testaa luokkaa DbService.
+ * HUOM! kun testaat tätä luokkaa, sinulla tulee olla luotuna tietokanta database.db ja siellä taulut user ja reservation. Muuten testit eivät toimi.
+ * Aikaisempi sisältö tietokannasta tuhotaan!
  * @author Matias
  */
 public class DbServiceTest {
