@@ -1,5 +1,6 @@
 package main;
 
+import domain.*;
 import main.Controller;
 import java.util.ArrayList;
 import org.junit.After;
@@ -21,7 +22,20 @@ public class ControllerTest {
 
     @Before
     public void setUp() throws Exception {
+        Controller.deleteAllDataFromTables();
     }
     
+    /**
+     * Testaa, että käyttäjätunnus luodaan onnistuneesti tietokantaan. 
+     * Lisäksi testaa, että jo olemassa olevaa käyttäjätunnusta ei voi valita.
+     * @throws Exception 
+     */
+    @Test
+    public void newUserTest() throws Exception {
+        User user = new User(null, "eskoesimerkki", "salasana", "basic");
+        Controller.newUser(user);
+        
+        
+    }
 }
 
