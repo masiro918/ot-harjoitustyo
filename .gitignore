@@ -1,4 +1,7 @@
 /varauskalenteri/target/
+/varauskalenteri/database.db
+/varauskalenteri/database.db.bak
+/varauskalenteri/todo.txt
 /laskarit/viikko2/Maksukortti/nbproject/
 /laskarit/viikko2/Maksukortti/target/
 /laskarit/viikko2/Unicafe/target/
