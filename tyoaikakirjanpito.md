@@ -12,3 +12,4 @@
 | 7.4.  | 45min   | jatkettu samasta aiheesta, mistä viimeksi lopetin: reservation-luokan testejä ja lisää ominaisuuksi itse reservation-luokkaan (=metodeja)|
 | 8.4.  | 1h      | dbservice-luokka ja sen testit alkaa olla valmiit. aloitin tekemään uutta luokkaa controller. |
 | 10.4. | 15min   | contoller-luokan metodeja koodattu lisää. hieman hahmoteltu myös kyseiselle luokalle testejä |
+| 11.4. | 10min   | poistettu repositoriosta 'turhia' tiedostoja, jotka eivät kuulu sinne. |
