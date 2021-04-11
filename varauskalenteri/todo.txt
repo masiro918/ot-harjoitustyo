@@ -1,4 +1,0 @@
-Tee testit, että DbService-luokasta voidaan luoda uusi alkio user-tauluun.
-
-JATKA DBService luokan addreservation-metodista
-
