@@ -13,3 +13,4 @@
 | 8.4.  | 1h      | dbservice-luokka ja sen testit alkaa olla valmiit. aloitin tekemään uutta luokkaa controller. |
 | 10.4. | 15min   | contoller-luokan metodeja koodattu lisää. hieman hahmoteltu myös kyseiselle luokalle testejä |
 | 11.4. | 10min   | poistettu repositoriosta 'turhia' tiedostoja, jotka eivät kuulu sinne. |
+| 12.4. | 2h40min | ohjelmaa muokattu niin, että se toimii yliopiston koneilla. hash-arvo generaattoria alettu tekemään, mutta huomasin juuri että se ei täysin toimi, vaikka testit jotka tein sille toimivat. käyttöliittymästä voi luoda uuden käyttäjän tietokantaan. jouduin tekemään muutaman muutoksen: jotta kuka tahansa voisi ajaa testit, joka kerta kun ohjelma käynnistetään, tietokannan sisältö tuhotaan. jos tietokantaa ei ole olemassa, ajetaan ensin ohjelma ja tämän jälkeen testit. näin varmistutaan, että tietokanta on olemassa ja se sisältää tarvittavat taulut |
