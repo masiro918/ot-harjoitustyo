@@ -137,10 +137,5 @@ public class Controller {
     }
     
     public static void main(String[] args) {
-        try {
-            Controller.getUsers();
-        } catch (Exception e) {
-            System.err.println("Poikkeus: " + e.getMessage());
-        }
     }
 }

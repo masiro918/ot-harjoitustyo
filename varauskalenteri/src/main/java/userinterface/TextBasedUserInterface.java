@@ -81,11 +81,11 @@ public class TextBasedUserInterface {
      * @param password salasana
      * @return true, jos tunnukset löytyvät tietokannasta, muulloin false
      */
-    private static boolean checkAccount(String username, String password) {
+    public static boolean checkAccount(String username, String password) {
         return true;
     }
 
-    private static void createAccount() {  
+    public static void createAccount() {  
         while (true) {
             System.out.print("käyttäjätunnus:");
             String username = inputScanner.nextLine();
@@ -141,7 +141,7 @@ public class TextBasedUserInterface {
      * @param username käyttäjätunnus
      * @return true, jos on varattu, muulloin false
      */
-    private static boolean checkIfUsernameExists(String username) {
+    public static boolean checkIfUsernameExists(String username) {
         return false;
     }
 
@@ -151,12 +151,17 @@ public class TextBasedUserInterface {
      * @param password2 salasana2
      * @return true, jos ovat samat, muulloin false
      */
-    private static boolean checkPasswords(String password1, String password2) {
+    public static boolean checkPasswords(String password1, String password2) {
         if (password1.equals(password2)) return true;
         return false;
     }
 
-    private static boolean checkIfAdmin(String loggedInUsername) {
+    /**
+     * Tarkistaa, onko käyttäjä admin-käyttäjä.
+     * @param username käyttäjätunnus
+     * @return 
+     */
+    public static boolean checkIfAdmin(String username) {
         return false;
     }
 
@@ -166,7 +171,7 @@ public class TextBasedUserInterface {
      * @return
      * @throws Exception 
      */
-    private static String createHash(String password) throws Exception {
+    public static String createHash(String password) throws Exception {
         String hash = Controller.createHash(password);
         return hash;
     }
