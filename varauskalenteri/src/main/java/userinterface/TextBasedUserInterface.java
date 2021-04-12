@@ -25,7 +25,7 @@ public class TextBasedUserInterface {
         System.out.println("");
         
         System.out.println("Jos haluat luoda uudet tunnuket, kirjoita 1. Jos taas haluat kirjautua sisään, kirjoita 2.");
-        System.out.print(">");
+        //System.out.print(">");
         choice = inputScanner.nextLine();
         
         if (choice.equals("1")) {
@@ -35,10 +35,10 @@ public class TextBasedUserInterface {
         // kirjaudutaan sisään
         
         while (true) {
-            System.out.print("käyttäjätunnus: ");
+            System.out.println("käyttäjätunnus: ");
             username = inputScanner.nextLine();
 
-            System.out.print("salasana: ");
+            System.out.println("salasana: ");
             password = inputScanner.nextLine();
 
             boolean accountCheck = checkAccount(username, password);
@@ -60,7 +60,7 @@ public class TextBasedUserInterface {
         
         String input;
         while (true) {
-            System.out.print("> ");
+            //System.out.printl("> ");
             input = inputScanner.nextLine();
             
             if (input.equals("del-r")) {
@@ -87,7 +87,7 @@ public class TextBasedUserInterface {
 
     public static void createAccount() {  
         while (true) {
-            System.out.print("käyttäjätunnus:");
+            System.out.println("käyttäjätunnus:");
             String username = inputScanner.nextLine();
 
             // tarkistetaan, onko käyttäjätunnus jo olemassa
@@ -97,11 +97,11 @@ public class TextBasedUserInterface {
             }
             
             while (true) {
-                System.out.print("salasana: ");
+                System.out.println("salasana: ");
                 String password1, password2;
                 password1 = inputScanner.nextLine();
 
-                System.out.print("salasana uudelleen: ");
+                System.out.println("salasana uudelleen: ");
                 password2 = inputScanner.nextLine();
 
                 boolean passwordCheck = checkPasswords(password1, password2);
