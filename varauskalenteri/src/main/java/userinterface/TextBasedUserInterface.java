@@ -168,7 +168,7 @@ public class TextBasedUserInterface {
     /**
      * Luo salasanasta hash-arvon.
      * @param password
-     * @return
+     * @return luotu hash-arvo
      * @throws Exception 
      */
     public static String createHash(String password) throws Exception {
