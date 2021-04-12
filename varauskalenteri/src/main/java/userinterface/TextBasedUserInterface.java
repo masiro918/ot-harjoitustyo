@@ -133,6 +133,7 @@ public class TextBasedUserInterface {
                 // TODO: tämä uudelleen
                 System.out.println("Salasanat eivät täsmänneet! Yritä uudelleen.");
             }
+            break;
         }
     }
 

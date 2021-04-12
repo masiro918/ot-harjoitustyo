@@ -136,6 +136,16 @@ public class Controller {
         return new String(hashBytes);
     }
     
+    /**
+     * Luo tietokannan, olettaenm, että sitä ei ole olemassa.
+     * @throws Exception 
+     */
+    public static void createDatabase() throws Exception {
+        DbService dbService = new DbService();
+        dbService.createTablesWithoutChecking();
+        dbService.closeService();
+    }
+    
     public static void main(String[] args) {
     }
 }
