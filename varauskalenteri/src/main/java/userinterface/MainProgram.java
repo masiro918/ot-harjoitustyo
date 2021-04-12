@@ -1,5 +1,5 @@
 
-package main;
+package userinterface;
 
 import userinterface.TextBasedUserInterface;
 

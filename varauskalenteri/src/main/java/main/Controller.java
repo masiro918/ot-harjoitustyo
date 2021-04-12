@@ -3,6 +3,7 @@ package main;
 
 import domain.*;
 import java.util.ArrayList;
+import java.security.*;
 
 /**
  * Tällä luokalla tehdään ne toimenpiteet, joita kutsutaan käyttöliittymästä.
@@ -86,11 +87,23 @@ public class Controller {
     public static ArrayList<User> getUsers() throws Exception {
         DbService dbService = new DbService();
         
-        ArrayList<String> userList = dbService.printTableUser();
+        ArrayList<String> userList = dbService.getDataUser("select * from user;");
         ArrayList<User> users = new ArrayList<>();
         
         for (String userStr : userList) {
+            String[] blocks = userStr.split("\\|");
+            Integer id = Integer.parseInt(blocks[0]);
+            String username = blocks[1];
+            String password = blocks[2];
+            String role = blocks[3];
             
+            User user = new User();
+            user.setId(id);
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setRole(role);
+            
+            users.add(user);
         }
         
         dbService.closeService();
@@ -108,9 +121,24 @@ public class Controller {
         dbService.closeService();
     }
     
+    /**
+     * Luo salasanasta hash-arvon. Apuja hash:n generoimiseen on haettu täältä: 
+     * https://stackoverflow.com/questions/415953/how-can-i-generate-an-md5-hash
+     * @param password salasana, josta hash luodaan
+     * @return luotu hash
+     * @throws Exception 
+     */
+    public static String createHash(String password) throws Exception {
+        byte[] passwordBytes = password.getBytes("UTF-8");
+        MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+        byte[] hashBytes = messageDigest.digest(passwordBytes);
+        
+        return new String(hashBytes);
+    }
+    
     public static void main(String[] args) {
         try {
-            Controller.deleteAllDataFromTables();
+            Controller.getUsers();
         } catch (Exception e) {
             System.err.println("Poikkeus: " + e.getMessage());
         }

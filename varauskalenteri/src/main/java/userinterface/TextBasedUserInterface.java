@@ -1,6 +1,8 @@
 package userinterface;
 
 import java.util.Scanner;
+import main.*;
+import domain.*;
 
 /**
  * Tässä luokassa on toiminnallisuudet tekstikäyttöliittymälle.
@@ -105,10 +107,25 @@ public class TextBasedUserInterface {
                 boolean passwordCheck = checkPasswords(password1, password2);
 
                 if (passwordCheck == true) {
-                    // käyttäjätunnus luodaan
-                    System.out.println("");
-                    System.out.println("Tunnukset luotu! Kirjaudu nyt luomillasi tunnuksilla sisään, ole hyvä.");
-                    System.out.println("");
+                    try {
+                        String hash = createHash(password1);
+                        // käyttäjätunnus luodaan
+                        User user = new User();
+                        user.setPassword(hash);
+                        user.setRole("basic");
+                        user.setUsername(username);
+                    
+                    
+                        Controller.newUser(user);
+                        System.out.println("");
+                        System.out.println("Tunnukset luotu! Kirjaudu nyt luomillasi tunnuksilla sisään, ole hyvä.");
+                        System.out.println("");
+                    } catch (Exception e) {
+                        System.out.println("");
+                        System.err.println("Tapahtui poikkeus lisätessä uutta käyttäjää: " + e.getMessage());
+                        System.out.println("");
+                    }
+                    
                     break;
                 }
 
@@ -141,5 +158,16 @@ public class TextBasedUserInterface {
 
     private static boolean checkIfAdmin(String loggedInUsername) {
         return false;
+    }
+
+    /**
+     * Luo salasanasta hash-arvon.
+     * @param password
+     * @return
+     * @throws Exception 
+     */
+    private static String createHash(String password) throws Exception {
+        String hash = Controller.createHash(password);
+        return hash;
     }
 }

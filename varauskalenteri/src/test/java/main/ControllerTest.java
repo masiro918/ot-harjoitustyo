@@ -32,10 +32,28 @@ public class ControllerTest {
      */
     @Test
     public void newUserTest() throws Exception {
-        User user = new User(null, "eskoesimerkki", "salasana", "basic");
+        User user = new User(null, "eskoesimerkki", Controller.createHash("salasana"), "basic");
         Controller.newUser(user);
         
+        ArrayList<User> users = Controller.getUsers();
+        User user1 = users.get(0);
+        String username = user1.getUsername();
         
+        assertEquals(username, "eskoesimerkki");        
+    }
+    
+    /**
+     * Testaa, että hash-arvon luonti toimii.
+     * @throws Exception 
+     */
+    @Test
+    public void hashTest() throws Exception {
+        String s1 = Controller.createHash("salasana");
+        String s2 = Controller.createHash("salasana");
+        String s3 = Controller.createHash("syyskuu");
+        
+        assertEquals(s1, s2);
+        if (s1.equals(s3) == false) assertTrue(true);
     }
 }
 
