@@ -218,6 +218,20 @@ public class DbService {
         return reservationTable;
     }
     
+    /**
+     * Suorittaa kyselyn reservation-tauluun.Kysytään, montako varausta löytyy tietynlaisella haulla.
+     * @param day
+     * @param year
+     * @return
+     * @throws Exception 
+     */
+    public int getCountReservation(int day, int year, String mounth, String time) throws Exception {
+        String sql = "select count(*) from reservation where day = " + day + " and  year = " + year +" and mounth = '" + mounth + "' and time = '" + time + "';";
+        
+        int count = this.database.getCount(sql);
+        return count;
+    }
+    
     public static void main(String[] args) throws Exception {
         DbService dbs = null;
         try {

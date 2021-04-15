@@ -42,6 +42,11 @@ public class ControllerTest {
         assertEquals(username, "eskoesimerkki");        
     }
     
+    @Test
+    public void newReservationTest() {
+        
+    }
+    
     /**
      * Testaa, että hash-arvon luonti toimii.
      * @throws Exception 

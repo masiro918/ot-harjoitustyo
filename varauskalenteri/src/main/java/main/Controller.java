@@ -2,8 +2,10 @@
 package main;
 
 import domain.*;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.security.*;
+import java.util.Scanner;
 
 /**
  * Tällä luokalla tehdään ne toimenpiteet, joita kutsutaan käyttöliittymästä.
@@ -73,10 +75,42 @@ public class Controller {
      * @param day päivä, jolta varaukset haetaan
      * @param year vuosi, jolta varaukset haetaan
      * @param mounth kuukausi, jolta varaukset haketaan
+     * @return haetut varaukset
      * @throws Exception 
      */
     public static ArrayList<Reservation> getReservations(int day, int year, String mounth) throws Exception {
-        throw new Exception("Ei toimi vielä!");
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        
+        String sql = "select * from reservation where day = " + day + " and  year = " + year + " and mounth = '" + mounth + "';";
+        
+        DbService dbService = new DbService();
+        ArrayList<String> results = dbService.getDataReservation(sql);
+        dbService.closeService();
+        
+        for (String row : results) {
+            String[] blocks = row.split("\\|");
+            
+            Integer rowId = Integer.parseInt(blocks[0]);
+            String rowTime = blocks[1];
+            Integer rowDay = Integer.parseInt(blocks[2]);
+            String rowMounth = blocks[3];
+            Integer rowYear = Integer.parseInt(blocks[4]);
+            Integer rowUserId = Integer.parseInt(blocks[5]);
+            
+            
+            
+            Reservation reservation = new Reservation();
+            reservation.setDay(rowDay);
+            reservation.setId(rowId);
+            reservation.setUserId(rowUserId);
+            reservation.setYear(year);
+            reservation.setMounth(rowMounth);
+            reservation.setTime(rowTime);
+            
+            reservations.add(reservation);
+        }
+        
+        return reservations;
     }
     
     /**
@@ -122,7 +156,7 @@ public class Controller {
     }
     
     /**
-     * Luo salasanasta hash-arvon. Apuja hash:n generoimiseen on haettu täältä: 
+     * Luo salasanasta hash-arvon. Algoritmi hash:n generoimiseen on haettu täältä: 
      * https://stackoverflow.com/questions/415953/how-can-i-generate-an-md5-hash
      * @param password salasana, josta hash luodaan
      * @return luotu hash
@@ -131,9 +165,9 @@ public class Controller {
     public static String createHash(String password) throws Exception {
         byte[] passwordBytes = password.getBytes("UTF-8");
         MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-        byte[] hashBytes = messageDigest.digest(passwordBytes);
-        
-        return new String(hashBytes);
+        messageDigest.update(passwordBytes);
+                
+        return String.format("%032x", new BigInteger(1, messageDigest.digest()));
     }
     
     /**
@@ -146,6 +180,31 @@ public class Controller {
         dbService.closeService();
     }
     
-    public static void main(String[] args) {
+    /**
+     * Tarkistaa, onko haettua varausta olemassa, eli onko varausta ajalle, joka määritellään parametreissa.
+     * @param mounth varauksen kuukausi
+     * @param year varauksen vuosi
+     * @param day varauksen päivä
+     * @param time varauksen kellonaika
+     * @return true, jos on varaus olemassa, muulloin false
+     */
+    public static boolean ifReservationExists(String mounth, int year, int day, String time) throws Exception {
+        String sql = "select count(*) from reservation where day = " + day + " and  year = " + year + " and mounth = '" + mounth + "' and time = '" + time + "';";
+        
+        System.out.println(sql);
+        DbService dbService = new DbService();
+        ArrayList<String> results = dbService.getDataReservation(sql);
+        dbService.closeService();
+        
+        System.out.println("answer: " + results.get(0));
+        
+        return false;
+    }
+    
+    public static void main(String[] args) throws Exception {
+        //ifReservationExists("huhtikuu", 2021, 15, "11-12");
+        DbService dbs = new DbService();
+        int count = dbs.getCountReservation(15, 2021, "huhtikuu", "11-12");
+        System.out.println("count: " + count);
     }
 }

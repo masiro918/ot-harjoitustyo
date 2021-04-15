@@ -101,6 +101,7 @@ public class Database {
             results.add(row);
         }
         
+        resultSet.close();
         statement.close();
         
         return results;
@@ -133,9 +134,28 @@ public class Database {
             results.add(row);
         }
         
+        resultSet.close();
         statement.close();
         
         return results;
+    }
+    
+    /**
+     * Ilmoittaa, montako "löydöstä" haettiin tietokannasta.
+     * @param sql sql-lause
+     * @return haettujen rivien määrä
+     * @throws Exception 
+     */
+    public int getCount(String sql) throws Exception {
+        Statement statement = this.connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        
+        int count = Integer.parseInt(resultSet.getString(1));
+        
+        resultSet.close();
+        statement.close();
+        
+        return count;
     }
     
     /**
