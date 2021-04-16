@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package database;
 
 import java.util.ArrayList;
@@ -50,12 +46,14 @@ public class Database {
      * @throws Exception 
      */
     public void createTable(String sql) throws Exception {
+        Statement statement = null;
         try {
-            Statement statement = this.connection.createStatement();
+            statement = this.connection.createStatement();
             statement.execute(sql);
-            statement.close();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
+        } finally {
+            statement.close();
         }
     }
     
@@ -65,13 +63,15 @@ public class Database {
      * @throws Exception 
      */
     public void updateData(String sql) throws Exception {
+        Statement statement = null;
         try {
-            Statement statement = this.connection.createStatement();
+            statement = this.connection.createStatement();
             statement.executeUpdate(sql);
             //statement.execute(sql);
-            statement.close();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
+        } finally {
+            statement.close();
         }
     }
     
@@ -181,16 +181,23 @@ public class Database {
      * @throws Exception 
      */
     public void dropTables() throws Exception {
+        Statement statement = null;
         try {
-            Statement statement = this.connection.createStatement();
+            statement = this.connection.createStatement();
+            System.out.println("dropataan user");
             statement.executeUpdate("drop table user;");
+            System.out.println("OK");
             statement.close();
             
             statement = this.connection.createStatement();
+            System.out.println("dropataan reservation");
             statement.executeUpdate("drop table reservation;");
+            System.out.println("OK");
             statement.close();
         } catch (Exception e) {
             throw new Exception(e.getMessage());
+        } finally {
+            statement.close();
         }
     }
     

@@ -37,9 +37,12 @@ public class Controller {
      * @param reservation reservation olio, jossa id-arvo on null
      */
     public static void newReservation(Reservation reservation) throws Exception {
-        DbService dbService = new DbService();
-        
         // TODO: tarkista, että varausta ei ole jo tietokannassa kyseiseltä ajalta
+        if (Controller.ifReservationExists(reservation.getMounth(), reservation.getYear(), reservation.getDay(), reservation.getTime())) {
+            throw new Exception("Tapahtui poikkeus tehdessä varausta tietokantaan: varaus on jo olemassa!");
+        }
+        
+        DbService dbService = new DbService();
         
         try {
             dbService.addReservation(reservation);
@@ -149,6 +152,9 @@ public class Controller {
      * Tyjentää tietokannan kaikesta sisällöstä.
      */
     public static void deleteAllDataFromTables() throws Exception {
+        /**
+         * TODO: paermmaksi!
+         */
         DbService dbService = new DbService();
         dbService.destroyTables();
         dbService.createTablesWithoutChecking();
@@ -191,20 +197,49 @@ public class Controller {
     public static boolean ifReservationExists(String mounth, int year, int day, String time) throws Exception {
         String sql = "select count(*) from reservation where day = " + day + " and  year = " + year + " and mounth = '" + mounth + "' and time = '" + time + "';";
         
-        System.out.println(sql);
+        //System.out.println(sql);
         DbService dbService = new DbService();
         ArrayList<String> results = dbService.getDataReservation(sql);
         dbService.closeService();
         
-        System.out.println("answer: " + results.get(0));
+        //System.out.println("answer: " + results.get(0));
         
+        int reservations = Integer.parseInt(results.get(0));
+        if (reservations > 0) return true;
         return false;
     }
     
     public static void main(String[] args) throws Exception {
-        //ifReservationExists("huhtikuu", 2021, 15, "11-12");
-        DbService dbs = new DbService();
-        int count = dbs.getCountReservation(15, 2021, "huhtikuu", "11-12");
-        System.out.println("count: " + count);
+        Reservation reservation1 = new Reservation();
+        reservation1.setUserId(12345);
+        reservation1.setDay(16);
+        reservation1.setMounth("huhtikuu");
+        reservation1.setTime("11-12");
+        reservation1.setYear(2021);
+        
+        Reservation reservation2 = new Reservation();
+        reservation1.setUserId(12345);
+        reservation2.setDay(16);
+        reservation2.setMounth("huhtikuu");
+        reservation2.setTime("11-12");
+        reservation2.setYear(2021);
+        
+        try {
+            Controller.newReservation(reservation1);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        ArrayList<Reservation> reservations = new ArrayList<>();
+        
+        try {
+            reservations = Controller.getReservations(16, 2021, "huhtikuu");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        Reservation savedReservation = reservations.get(0);
+        String savedReservationStr = savedReservation.getDay() + "|" + savedReservation.getYear() + "|" + savedReservation.getMounth();
+        System.out.println(savedReservationStr);
     }
 }

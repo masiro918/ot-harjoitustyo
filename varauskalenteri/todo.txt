@@ -1,0 +1,1 @@
+Virhe tulee, kun kysytään COUNT(*) reservation tauluun. Korjaa se ja lisää closet try-catch:n sisälle.
