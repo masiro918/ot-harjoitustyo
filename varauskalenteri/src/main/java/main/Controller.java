@@ -199,47 +199,16 @@ public class Controller {
         
         //System.out.println(sql);
         DbService dbService = new DbService();
-        ArrayList<String> results = dbService.getDataReservation(sql);
+        int results = dbService.getCountReservation(day, year, mounth, time);
         dbService.closeService();
         
         //System.out.println("answer: " + results.get(0));
         
-        int reservations = Integer.parseInt(results.get(0));
+        int reservations = results;
         if (reservations > 0) return true;
         return false;
     }
     
     public static void main(String[] args) throws Exception {
-        Reservation reservation1 = new Reservation();
-        reservation1.setUserId(12345);
-        reservation1.setDay(16);
-        reservation1.setMounth("huhtikuu");
-        reservation1.setTime("11-12");
-        reservation1.setYear(2021);
-        
-        Reservation reservation2 = new Reservation();
-        reservation1.setUserId(12345);
-        reservation2.setDay(16);
-        reservation2.setMounth("huhtikuu");
-        reservation2.setTime("11-12");
-        reservation2.setYear(2021);
-        
-        try {
-            Controller.newReservation(reservation1);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        ArrayList<Reservation> reservations = new ArrayList<>();
-        
-        try {
-            reservations = Controller.getReservations(16, 2021, "huhtikuu");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        Reservation savedReservation = reservations.get(0);
-        String savedReservationStr = savedReservation.getDay() + "|" + savedReservation.getYear() + "|" + savedReservation.getMounth();
-        System.out.println(savedReservationStr);
     }
 }

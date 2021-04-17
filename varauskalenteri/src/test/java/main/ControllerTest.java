@@ -51,12 +51,14 @@ public class ControllerTest {
     @Test
     public void newReservationTest() {
         Reservation reservation1 = new Reservation();
+        reservation1.setUserId(1324);
         reservation1.setDay(16);
         reservation1.setMounth("huhtikuu");
         reservation1.setTime("11-12");
         reservation1.setYear(2021);
         
         Reservation reservation2 = new Reservation();
+        reservation2.setUserId(1324);
         reservation2.setDay(16);
         reservation2.setMounth("huhtikuu");
         reservation2.setTime("11-12");
@@ -79,6 +81,61 @@ public class ControllerTest {
         Reservation savedReservation = reservations.get(0);
         String savedReservationStr = savedReservation.getDay() + "|" + savedReservation.getYear() + "|" + savedReservation.getMounth();
         assertEquals(savedReservationStr, "16|2021|huhtikuu");
+        
+         // testataan, että pällekäistä varausta ei voi tehdä
+         
+        Reservation reservation3 = new Reservation();
+        reservation3.setDay(16);
+        reservation3.setUserId(1324);
+        reservation3.setMounth("huhtikuu");
+        reservation3.setTime("11-12");
+        reservation3.setYear(2021);
+        
+       try {
+           Controller.newReservation(reservation3);
+           // jos tullaan tämän rivin alle, testi ei mene läpi
+           // koska tapahtuu päällekkäinen varaus
+           assertTrue(false);
+       } catch (Exception e) {
+           assertTrue(true);
+       }
+    }
+    
+    /**
+     * Testaa, että varaus poistuu onnistuneesti.
+     * @throws Exception 
+     */
+    @Test
+    public void delReservationTest() throws Exception {
+        Reservation r1 = new Reservation();
+        r1.setDay(17);
+        r1.setMounth("huhtikuu");
+        r1.setTime("12-13");
+        r1.setUserId(1234);
+        r1.setYear(2021);
+        
+        Reservation r2 = new Reservation();
+        r2.setDay(17);
+        r2.setMounth("huhtikuu");
+        r2.setTime("14-11");
+        r2.setUserId(1234);
+        r2.setYear(2021);
+        
+        Controller.newReservation(r1);
+        Controller.newReservation(r2);
+        
+        ArrayList<Reservation> reservations = Controller.getReservations(17, 2021, "huhtikuu");
+        
+        int r1Id = reservations.get(0).getId();
+        int r2Id = reservations.get(1).getId();
+        
+        Controller.delReservation("admin", r1Id);
+        
+        String s1 = "varauksia pitäisi olla tietokannassa 1 kpl";
+        
+        reservations = Controller.getReservations(17, 2021, "huhtikuu");
+        
+        assertEquals(s1, "varauksia pitäisi olla tietokannassa " + reservations.size() + " kpl");
     }
     
     /**
