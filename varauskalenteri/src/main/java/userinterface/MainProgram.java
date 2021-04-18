@@ -17,6 +17,7 @@ import java.nio.file.Paths;
  */
 public class MainProgram {
     public static void main(String[] args) {
+        
         try {
             // poistetaan vahna tietokanta
             Path dbPath = Paths.get("database.db");

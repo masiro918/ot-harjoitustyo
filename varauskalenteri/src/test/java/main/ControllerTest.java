@@ -151,5 +151,36 @@ public class ControllerTest {
         assertEquals(s1, s2);
         if (s1.equals(s3) == false) assertTrue(true);
     }
+    
+    /**
+     * Testaa, että syötteentarkistaja toimii oikein.
+     * @throws Exception 
+     */
+    @Test
+    public void checkInputsTest() throws Exception {
+        int year = 2021;
+        int day = 20;
+        String mounth = "huhtikuu";
+        String time = "09-10";
+        
+        try {
+            Controller.checkInputs(day, year, mounth, time);
+            assertTrue(true);
+        } catch (Exception e) {
+            assertTrue(false);
+        }
+        
+        year =2010;
+        day = 33;
+        mounth = "juustokuu";
+        time = "06-07";
+        
+        try {
+            Controller.checkInputs(day, year, mounth, time);
+            assertTrue(false);
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
 }
 

@@ -3,6 +3,7 @@ package userinterface;
 import java.util.Scanner;
 import main.*;
 import domain.*;
+import java.util.ArrayList;
 
 /**
  * Tässä luokassa on toiminnallisuudet tekstikäyttöliittymälle.
@@ -11,6 +12,8 @@ import domain.*;
 public class TextBasedUserInterface {
     public static Scanner inputScanner = new Scanner(System.in);
     public static String loggedInUsername = null;
+    public static String loggedInUserType = null;
+    public static int loggedInUserId = -1;
     
     public static void main(String[] args) {
         // ensin kirjautudaan sisään
@@ -40,29 +43,46 @@ public class TextBasedUserInterface {
 
             System.out.println("salasana: ");
             password = inputScanner.nextLine();
-
-            boolean accountCheck = checkAccount(username, password);
             
-            if (accountCheck == false) {
-                System.out.println("Käyttäjätunnus tai salasana oli väärin! Yritä uudelleen.");
-                continue;
+            try {
+                boolean accountCheck = checkAccount(username, password);
+                
+                if (accountCheck == false) {
+                    System.out.println("Käyttäjätunnus tai salasana oli väärin! Yritä uudelleen.");
+                    continue;
+                }
+            
+                loggedInUsername = username;
+                loggedInUserType = Controller.getUserType(username);
+                loggedInUserId = Controller.getUserId(username);
+                
+                break;
+            } catch (Exception e) {
+                System.err.println("Tapahtui poikkeus kirjautuessa sisään: " + e.getMessage());
             }
             
-            loggedInUsername = username;
-            break;
+            continue;
         }
         
         
         
         // pääsilmukka
        
+        System.out.println("");
         System.out.println("Olet kirjautunut sisään nimellä " + loggedInUsername + ". Voit poistua ohjelmasta kirjoittamalla komentoriville quit.");
+        System.out.println("Käyttäjätunnuksen rooli: " + loggedInUserType);
+        System.out.println("Käyttäjätunnuksen id on " + loggedInUserId);
+        System.out.println("");
         
         String input;
         while (true) {
-            //System.out.printl("> ");
+            System.out.println("Syötä komento, ole hyvä. Apuja saat kirjoittamalla 'help'.");
+            System.out.println(">>");
             input = inputScanner.nextLine();
             
+            /**
+             * Varauksen poisto.
+             */
             if (input.equals("del-r")) {
                 boolean isAdmin = checkIfAdmin(loggedInUsername);
                 
@@ -70,6 +90,79 @@ public class TextBasedUserInterface {
                     System.out.println("Vain admin-käyttäjä saa tehdä tämän toimenpiteen.");
                     continue;
                 }
+            }
+            
+            /**
+             * Manuaali ohjelman käyttöön.
+             */
+            if (input.equals("help")) {
+                viewHelp();
+                continue;
+            }
+            
+            /**
+             * Näyttää kaikki varaukset.
+             */
+            if (input.equals("all-r")) {
+                try {
+                    String mounth;
+                    int day, year;
+
+                    System.out.println("päivä (luku)");
+                    day = Integer.parseInt(inputScanner.nextLine());
+
+                    System.out.println("vuosi (luku)");
+                    year = Integer.parseInt(inputScanner.nextLine());
+
+                    System.out.println("kuukausi (muotoa esim. 'huhtikuu')");
+                    mounth = inputScanner.nextLine();
+                    
+                    Controller.checkInputs(day, year, mounth);
+                    
+                    viewAllReservations(day, year, mounth);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+            
+            /**
+             * Uusi varaus.
+             */
+            if (input.equals("new-r")) {
+                String mounth, time;
+                int day, year;
+                
+                System.out.println("päivä (luku)");
+                day = Integer.parseInt(inputScanner.nextLine());
+                
+                System.out.println("vuosi (luku)");
+                year = Integer.parseInt(inputScanner.nextLine());
+                
+                System.out.println("kuukausi (muotoa esim. 'huhtikuu')");
+                mounth = inputScanner.nextLine();
+                
+                System.out.println("kellonaika (muotoa '11-12' tai '08-09')");
+                time =  inputScanner.nextLine();
+                
+                try {
+                    Controller.checkInputs(day, year, mounth, time);
+                    
+                    Reservation newReserv = new Reservation();
+                    newReserv.setDay(day);
+                    newReserv.setMounth(mounth);
+                    newReserv.setTime(time);
+                    newReserv.setUserId(loggedInUserId);
+                    newReserv.setYear(year);
+                    
+                    System.out.println(newReserv.toString());
+                    
+                    Controller.newReservation(newReserv);
+                    System.out.println("Uusi varaus lisätty onnistuneesti!");
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+                
+                continue;
             }
             if (input.equals("quit")) break;
         }
@@ -81,10 +174,21 @@ public class TextBasedUserInterface {
      * @param password salasana
      * @return true, jos tunnukset löytyvät tietokannasta, muulloin false
      */
-    public static boolean checkAccount(String username, String password) {
-        return true;
+    public static boolean checkAccount(String username, String password) throws Exception {
+        ArrayList<User> users = Controller.getUsers();
+        
+        for (User user : users) {
+            String userUsername = user.getUsername();
+            String userPassword = user.getPassword();
+            
+            if (userUsername.equals(username) && userPassword.equals(Controller.createHash(password))) return true;
+        }
+        return false;
     }
 
+    /**
+     * Luodaan uusi käyttäjä.
+     */
     public static void createAccount() {  
         while (true) {
             System.out.println("käyttäjätunnus:");
@@ -133,7 +237,6 @@ public class TextBasedUserInterface {
                 // TODO: tämä uudelleen
                 System.out.println("Salasanat eivät täsmänneet! Yritä uudelleen.");
             }
-            break;
         }
     }
 
@@ -175,5 +278,34 @@ public class TextBasedUserInterface {
     public static String createHash(String password) throws Exception {
         String hash = Controller.createHash(password);
         return hash;
+    }
+
+    public static void viewHelp() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Näyttää kaikki varaukset ja niiden varaajat kyseiseltä päivältä.
+     * @param day päivä
+     * @param year vuosi 
+     * @param mounth kuukausi
+     * @throws Exception 
+     */
+    public static void viewAllReservations(int day, int year, String mounth) throws Exception {
+        ArrayList<Reservation> reservations = Controller.getReservations(day, year, mounth);
+        
+        System.out.println("Kyseisellä päivälle (" + day + "." + mounth + "." + year + " olevat varaukse:");
+        System.out.println("");
+        
+        for (Reservation reservation : reservations) {
+            String ownerOfReservation = null;
+            int userId = reservation.getUserId();
+            ownerOfReservation = Controller.getUsername(userId);
+            
+            String time = reservation.getTime();
+            
+            System.out.println(time + " varaajalta " + ownerOfReservation);
+        }
+        System.out.println("");
     }
 }

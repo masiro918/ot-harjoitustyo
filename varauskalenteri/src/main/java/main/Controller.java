@@ -208,7 +208,142 @@ public class Controller {
         if (reservations > 0) return true;
         return false;
     }
+
+    /**
+     * Tarkistaa, että varauksen syöte on oikean kaltainen.
+     * @param day päivä
+     * @param year vuosi
+     * @param mounth kuukausi
+     * @param time aika
+     */
+    public static void checkInputs(int day, int year, String mounth, String time) throws Exception {
+        // päivä
+        if (day < 0 && day > 31) throw new Exception("Päivämäärä ei ole sallittu!");
+        
+        // vuosi
+        if (year < 2021) throw new Exception("Vuosi ei ole sallittu!");
+        
+        // kuukausi
+        while (true) {
+            if (mounth.equals("tammikuu")) break;
+            if (mounth.equals("helmikuu")) break;
+            if (mounth.equals("maaliskuu")) break;
+            if (mounth.equals("huhtikuu")) break;
+            if (mounth.equals("toukokuu")) break;
+            if (mounth.equals("kesäkuu")) break;
+            if (mounth.equals("heinäkuu")) break;
+            if (mounth.equals("elokuu")) break;
+            if (mounth.equals("syyskuu")) break;
+            if (mounth.equals("lokakuu")) break;
+            if (mounth.equals("marraskuu")) break;
+            if (mounth.equals("joulukuu")) break;
+            
+            throw new Exception("Kuukausi ei ole sallittu!");
+        }
+        
+        // kellonaika
+        while (true) {
+            if (time.equals("08-09")) break;
+            if (time.equals("09-10")) break;
+            if (time.equals("10-11")) break;
+            if (time.equals("11-12")) break;
+            if (time.equals("12-13")) break;
+            if (time.equals("13-14")) break;
+            if (time.equals("14-15")) break;
+            if (time.equals("15-16")) break;
+            
+            throw new Exception("Kellonaika ei ole sallittu!");
+        }
+    }
+    
+    /**
+     * Tarkistaa, että varauksen syöte on oikean kaltainen. Kellonaika ei ole mukana.
+     * @param day päivä
+     * @param year vuosi
+     * @param mounth kuukausi
+     */
+    public static void checkInputs(int day, int year, String mounth) throws Exception {
+        // päivä
+        if (day < 0 && day > 31) throw new Exception("Päivämäärä ei ole sallittu!");
+        
+        // vuosi
+        if (year < 2021) throw new Exception("Vuosi ei ole sallittu!");
+        
+        // kuukausi
+        while (true) {
+            if (mounth.equals("tammikuu")) break;
+            if (mounth.equals("helmikuu")) break;
+            if (mounth.equals("maaliskuu")) break;
+            if (mounth.equals("huhtikuu")) break;
+            if (mounth.equals("toukokuu")) break;
+            if (mounth.equals("kesäkuu")) break;
+            if (mounth.equals("heinäkuu")) break;
+            if (mounth.equals("elokuu")) break;
+            if (mounth.equals("syyskuu")) break;
+            if (mounth.equals("lokakuu")) break;
+            if (mounth.equals("marraskuu")) break;
+            if (mounth.equals("joulukuu")) break;
+            
+            throw new Exception("Kuukausi ei ole sallittu!");
+        }
+    }
+    
+    /**
+     * Etsii käyttäjätunnusta vastaavan id:n.
+     * @param username käyttäjätunnus, jonka id haetaan
+     * @return haettu id
+     * @throws Exception 
+     */
+    public static int getUserId(String username) throws Exception {
+        ArrayList<User> users = Controller.getUsers();
+        
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user.getId();
+            }
+        }
+        
+        throw new Exception("Ei löydetty käyttäjätunnuksen id:tä!");
+    }
+    
+    /**
+     * Hakee userId:tä vastaavan käyttäjätunnuksen käyttäjänimen.
+     * @param id haettavan käyttäjätunnuksen id
+     * @return haettu käyttäjänimi
+     * @throws Exception 
+     */
+    public static String getUsername(int id) throws Exception {
+        ArrayList<User> users = Controller.getUsers();
+        
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user.getUsername();
+            }
+        }
+        
+        throw new Exception("Ei löydetty id:tä vastaavaa käyttäjätunnusta!");
+    }
+    
+    /**
+     * Hakee käyttäjän roolin.
+     * @param username käyttäjätunnus, jonka rooli haetaan
+     * @return käyttäjätunnuksen rooli
+     * @throws Exception 
+     */
+    public static String getUserType(String username) throws Exception {
+        ArrayList<User> users = Controller.getUsers();
+        
+        for (User user : users) {
+            String userUsername = user.getUsername();
+            
+            if (userUsername.equals(username)) {
+                return user.getRole();
+            }
+        }
+        throw new Exception("Epäonnistuttiin käyttäjätunnuksen tyypin haussa!");
+    }
     
     public static void main(String[] args) throws Exception {
+        
     }
 }
