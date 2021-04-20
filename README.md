@@ -30,7 +30,8 @@ Toiminnot, jotka ohjelmalta vaaditaan:
 -käyttäjätunnuksen luonti (vain basic-käyttäjä) **[tehty]**  
 -kaikkien varausten tarkistaminen tietyltä päivältä **[tehty]**  
 -käyttäjätunnus liitetään varaukseen **[tehty]**  
--admin-käyttäjä pystyy poistamaan varauksen **[ei ole tehty]**    
+-admin-käyttäjä pystyy poistamaan varauksen **[ei ole tehty]**  
+-graafinen käyttöliittymä **[ei ole tehty]**    
 
 Myös hash-arvon muodostaminen onnistuu nyt mille tahansa salasanalle.  
 Lisäksi tekstikäyttöliittymässä on vielä sellainen bugi, että jos rekisteröityessä
