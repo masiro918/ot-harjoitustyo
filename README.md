@@ -1,7 +1,7 @@
 # ohjelmistotekniikka, harjoitustyö
 
 [linkki työaikakirjanpitoon](https://github.com/masiro918/ot-harjoitustyo/blob/master/tyoaikakirjanpito.md)  
-[linkki vaatimusmäärittelyyn](https://github.com/masiro918/ot-harjoitustyo/blob/master/vaatimusmaarittely.md)
+[linkki vaatimusmäärittelyyn](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/vaatimusmaarittely.md)
 
 ## ohjelman tämänhetinen tilanne
 
@@ -9,6 +9,7 @@ viikon 4 tilanne:
 
 ## projektin nykyinen tilanne
 
+### viikon 4 tilanne:
 Toiminnot, jotka ohjelmalta vaaditaan:    
 
 (toistaiseksi vain tekstikäyttöliittymässä)    
@@ -25,7 +26,7 @@ ei toimi oikein. Tämä täytyy siis myös korjata.
 
 Edelleenkin (testien toimiviiden takia) aina kun ohjelma käynnistetään, kaikki aikaisempi sisältö tietokannasta tuhotaan.    
 
-viikon 3 tilanne:    
+### viikon 3 tilanne:    
 Kyseessä on Maven-projekti. Javan versio on 11. Ohjelma toimii toistaiseksi vain siten, että voit luoda uuden
 käyttäjätunnuksen, joka tallennetaan tietokantaan. Salasanan hash-arvo ei toimi kaikille salasanoille (täytyy
 selvittää miksi). Kun luot testikäytäjän, käytä vaikka salasanaa 'salasana'. Se ainakin toimii.    
