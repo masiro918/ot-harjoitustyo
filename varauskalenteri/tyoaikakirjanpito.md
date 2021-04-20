@@ -18,3 +18,4 @@
 | 16.4. | 50min	  | eipä juuri mitään uutta. debuggerilla tutkin ongelmaa, jossa tietokanta on "lukossa" (locked) |
 | 17.4. | 35min   | Controller-luokan tesit valmiit, ja tämän luokan testit menävät läpi. Seuraavaksi tekstikäyttöliittymän pariin |
 | 18.4. | 1h      | Viety lisää toiminnallisuuksia tekstikäyttöliittymään. Käyttöliittymästä pystyy nyt reksiteröitymään, kirjautumaan, lisäämään varauksen ja etsimään varauksia. Jouduin tekemään lisämetodeja Conroller-luokkaan, kuten esim. metodin, joka tarkistaa käyttäjän syötteet valideiksi kuten. päivämäärät, kellonajat yms. Lisäksi mm. saanti metodit, joilla etsitään tietokannasta käyttäjätunnusta vastaava id ja toisinpäin. |
+| 20.4. | 2h40min | tehty ne vaatimuksen harjoitustyöhön, jotka vaaditaan viikon 4 kohdalla |
