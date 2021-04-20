@@ -41,7 +41,7 @@ Lisäksi tekstikäyttöliittymässä on vielä sellainen bugi, että jos rekiste
 kirjoittaa tarkistussalasanan väärin tai haluttu käyttäjänimi on jo olemassa, tekstikäyttöliittymä
 ei toimi oikein. Tämä täytyy siis myös korjata.    
 
-Edelleenkin (testien toimiviiden takia) aina kun ohjelma käynnistetään, kaikki aikaisempi sisältö tietokannasta tuhotaan.    
+Edelleenkin (testien toimivuuden takia) aina kun ohjelma käynnistetään, kaikki aikaisempi sisältö tietokannasta tuhotaan.    
 
 ### viikon 3 tilanne:
     
