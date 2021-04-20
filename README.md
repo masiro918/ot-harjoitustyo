@@ -14,10 +14,10 @@ Toiminnot, jotka ohjelmalta vaaditaan:
 
 (toistaiseksi vain tekstikäyttöliittymässä)    
 
--varauksen tekeminen (sis tarkistuksen, kuten ei päällekkäisiä varauksia ja varauksia ennen klo 8 tai jälkeen klo 16)  [tehty]
--käyttäjätunnuksen luonti (vain basic-käyttäjä) [tehty]
--kaikkien varausten tarkistaminen tietyltä päivältä [tehty]
--käyttäjätunnus liitetään varaukseen [tehty]
+-varauksen tekeminen (sis tarkistuksen, kuten ei päällekkäisiä varauksia ja varauksia ennen klo 8 tai jälkeen klo 16)  [tehty]  
+-käyttäjätunnuksen luonti (vain basic-käyttäjä) [tehty]  
+-kaikkien varausten tarkistaminen tietyltä päivältä [tehty]  
+-käyttäjätunnus liitetään varaukseen [tehty]  
 -admin-käyttäjä pystyy poistamaan varauksen [ei ole tehty]    
 
 Lisäksi tekstikäyttöliittymässä on vielä sellainen bugi, että jos rekisteröityessä
