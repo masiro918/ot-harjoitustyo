@@ -9,6 +9,17 @@ viikon 4 tilanne:
 
 ## projektin nykyinen tilanne
 
+ohjelma käännetään ja ajetaan komennolla:  
+**mvn compile exec:java -Dexec.mainClass=userinterface.MainProgram**  
+
+testit ajetaan komennolla:  
+**mvn test**  
+
+testikattavuusraportti saadaan komennolla:  
+**mvn test jacoco:report**
+
+***HUOM! Toistaiseksi aina kun ohjelma käynnistetään, aikaisempi sisältö tietokannassa tuhotaan. Tämä siksi, jotta testit toimisivat.***
+
 ### viikon 4 tilanne:
 Toiminnot, jotka ohjelmalta vaaditaan:    
 
