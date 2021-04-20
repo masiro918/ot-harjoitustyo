@@ -5,9 +5,7 @@
 
 ## ohjelman tämänhetinen tilanne
 
-viikon 4 tilanne:    
-
-## projektin nykyinen tilanne
+Jotta voisit suorittaa alla olevat toimenpiteet, siirry ensin hakemistoon varauskalenteri/  
 
 ohjelma käännetään ja ajetaan komennolla:  
 **mvn compile exec:java -Dexec.mainClass=userinterface.MainProgram**  
@@ -19,6 +17,9 @@ testikattavuusraportti saadaan komennolla:
 **mvn test jacoco:report**
 
 ***HUOM! Toistaiseksi aina kun ohjelma käynnistetään, aikaisempi sisältö tietokannassa tuhotaan. Tämä siksi, jotta testit toimisivat.***
+
+## projektin nykyinen tilanne
+
 
 ### viikon 4 tilanne:
 Toiminnot, jotka ohjelmalta vaaditaan:    
