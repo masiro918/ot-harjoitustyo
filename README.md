@@ -7,7 +7,7 @@
 
 Jotta voisit suorittaa alla olevat toimenpiteet, siirry ensin hakemistoon varauskalenteri/  
 
-HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät.  
+HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät. Muuten testit eivät men läpi, koska oikeankaltaista tietokantaa ei ole luotu.    
 
 ohjelma käännetään ja ajetaan komennolla:  
 **mvn compile exec:java -Dexec.mainClass=userinterface.MainProgram**  
