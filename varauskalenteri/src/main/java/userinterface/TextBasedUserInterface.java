@@ -27,13 +27,19 @@ public class TextBasedUserInterface {
         
         System.out.println("");
         
-        System.out.println("Jos haluat luoda uudet tunnuket, kirjoita 1. Jos taas haluat kirjautua sisään, kirjoita 2.");
-        //System.out.print(">");
-        choice = inputScanner.nextLine();
-        
-        if (choice.equals("1")) {
-            createAccount();
+        while (true) {
+            System.out.println("Jos haluat luoda uudet tunnuket, kirjoita 1. Jos taas haluat kirjautua sisään, kirjoita 2.");
+            //System.out.print(">");
+            choice = inputScanner.nextLine();
+
+            if (choice.equals("1")) {
+                createAccount();
+                continue;
+            }
+            
+            if (choice.equals("2")) break;
         }
+        
         
         // kirjaudutaan sisään
         
@@ -154,7 +160,7 @@ public class TextBasedUserInterface {
                     newReserv.setUserId(loggedInUserId);
                     newReserv.setYear(year);
                     
-                    System.out.println(newReserv.toString());
+                    //System.out.println(newReserv.toString());
                     
                     Controller.newReservation(newReserv);
                     System.out.println("Uusi varaus lisätty onnistuneesti!");
@@ -224,9 +230,10 @@ public class TextBasedUserInterface {
                         System.out.println("");
                         System.out.println("Tunnukset luotu! Kirjaudu nyt luomillasi tunnuksilla sisään, ole hyvä.");
                         System.out.println("");
+                        return;
                     } catch (Exception e) {
                         System.out.println("");
-                        System.err.println("Tapahtui poikkeus lisätessä uutta käyttäjää: " + e.getMessage());
+                        System.err.println(e.getMessage());
                         System.out.println("");
                     }
                     
@@ -280,8 +287,15 @@ public class TextBasedUserInterface {
         return hash;
     }
 
+    /**
+     * Näyttää komentokäyttöliittymän käyttöohjeen.
+     */
     public static void viewHelp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("");
+        System.out.println("Kirjoittamalla 'new-r', voit tehdä uuden varauksen.");
+        System.out.println("Kirjoittamalla 'all-r', voit tarkistaa tietyn päivän kaikki varaukset.");
+        System.out.println("Kirjoittamalla 'quit', pääset pois sovelluksesta.");
+        System.out.println("");
     }
 
     /**
@@ -304,7 +318,7 @@ public class TextBasedUserInterface {
             
             String time = reservation.getTime();
             
-            System.out.println(time + " varaajalta " + ownerOfReservation);
+            System.out.println(time + " varaajalta: " + ownerOfReservation);
         }
         System.out.println("");
     }
