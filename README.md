@@ -35,6 +35,7 @@ Toiminnot, jotka ohjelmalta vaaditaan:
 -käyttäjätunnus liitetään varaukseen **[tehty]**  
 -admin-käyttäjä pystyy poistamaan varauksen **[ei ole tehty]**  
 -graafinen käyttöliittymä **[ei ole tehty]**    
+-bugi: jotkut virhe ilmoituksen ovat vääriä (esim. jos kuukauden kohdalle kirjoittaa 1234, väittää että vuosi olisi väärä)  
 
 Myös hash-arvon muodostaminen onnistuu nyt mille tahansa salasanalle.  
 Lisäksi tekstikäyttöliittymässä on vielä sellainen bugi, että jos rekisteröityessä
