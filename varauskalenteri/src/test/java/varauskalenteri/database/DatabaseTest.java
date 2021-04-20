@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package database;
+package varauskalenteri.database;
 
+import varauskalenteri.database.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
-//import database.Database;
+import varauskalenteri.database.Database;
 import static org.junit.Assert.*;
 
 /**

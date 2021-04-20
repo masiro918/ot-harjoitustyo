@@ -1,5 +1,7 @@
 
-package domain;
+package varauskalenteri.domain;
+
+import varauskalenteri.domain.*;
 
 /**
  * Sisältää yhden varauksen tiedot. Vastaa tietokantataulua Reservation. 

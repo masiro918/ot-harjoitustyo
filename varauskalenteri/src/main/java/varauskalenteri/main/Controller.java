@@ -1,7 +1,8 @@
 
-package main;
+package varauskalenteri.main;
 
-import domain.*;
+import varauskalenteri.main.*;
+import varauskalenteri.domain.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.security.*;

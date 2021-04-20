@@ -1,6 +1,7 @@
-package domain;
+package varauskalenteri.domain;
 
-import domain.User;
+import varauskalenteri.domain.*;
+import varauskalenteri.domain.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

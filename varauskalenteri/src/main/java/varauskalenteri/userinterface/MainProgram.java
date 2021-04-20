@@ -1,10 +1,11 @@
 
-package userinterface;
+package varauskalenteri.userinterface;
 
+import varauskalenteri.userinterface.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import userinterface.TextBasedUserInterface;
-import main.Controller;
+import varauskalenteri.userinterface.TextBasedUserInterface;
+import varauskalenteri.main.Controller;
 import java.nio.file.Paths;
 
 /**

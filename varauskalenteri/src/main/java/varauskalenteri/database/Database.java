@@ -1,6 +1,7 @@
 
-package database;
+package varauskalenteri.database;
 
+import varauskalenteri.database.*;
 import java.util.ArrayList;
 import java.sql.*;
 

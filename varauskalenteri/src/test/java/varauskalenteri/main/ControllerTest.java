@@ -1,7 +1,8 @@
-package main;
+package varauskalenteri.main;
 
-import domain.*;
-import main.Controller;
+import varauskalenteri.main.*;
+import varauskalenteri.domain.*;
+import varauskalenteri.main.Controller;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

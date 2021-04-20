@@ -1,8 +1,9 @@
-package userinterface;
+package varauskalenteri.userinterface;
 
+import varauskalenteri.userinterface.*;
 import java.util.Scanner;
-import main.*;
-import domain.*;
+import varauskalenteri.main.*;
+import varauskalenteri.domain.*;
 import java.util.ArrayList;
 
 /**

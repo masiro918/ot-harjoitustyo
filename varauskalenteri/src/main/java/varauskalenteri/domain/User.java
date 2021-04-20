@@ -1,5 +1,7 @@
 
-package domain;
+package varauskalenteri.domain;
+
+import varauskalenteri.domain.*;
 
 /**
  * Sisältää User-olion ominaisuudet. Vastaa tietokantataulua User.

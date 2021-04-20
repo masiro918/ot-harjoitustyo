@@ -1,6 +1,7 @@
-package domain;
+package varauskalenteri.domain;
 
-import database.Database;
+import varauskalenteri.domain.*;
+import varauskalenteri.database.Database;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
