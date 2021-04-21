@@ -97,6 +97,24 @@ public class TextBasedUserInterface {
                     System.out.println("Vain admin-käyttäjä saa tehdä tämän toimenpiteen.");
                     continue;
                 }
+                System.out.println("varauksen vuosi");
+                int year = Integer.parseInt(inputScanner.nextLine());
+                
+                System.out.println("varauksen kuukausi");
+                String mounth = inputScanner.nextLine();
+                
+                System.out.println("varauksen päivä");
+                int day = Integer.parseInt(inputScanner.nextLine());
+                
+                System.out.println("varauksen kellonaika");
+                String time = inputScanner.nextLine();
+                
+                try {
+                    // haetaan ensin varauksen id
+                    
+                } catch (Exception e) {
+                    System.err.println("Epäonnistuttiin varauksen poistossa: " + e.getMessage());
+                }
             }
             
             /**

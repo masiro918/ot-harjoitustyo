@@ -75,6 +75,24 @@ public class Controller {
     }
     
     /**
+     * Poistaa varauksen tietokannasta
+     * @param year vuosi
+     * @param mounth kuukausi
+     * @param day päivä
+     * @param time aika
+     * @throws Exception
+     */
+    public static void delReservations(String userType, int year, String mounth, int day, String time) throws Exception {
+        // haetaan poistettavan varauksen id
+        try {
+            int id = Controller.getReservationId(year, mounth, day, time);
+            Controller.delReservation(userType, id);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+    
+    /**
      * Hakee tietyn päivän kaikki varauksen.
      * @param day päivä, jolta varaukset haetaan
      * @param year vuosi, jolta varaukset haetaan
@@ -323,6 +341,29 @@ public class Controller {
         }
         
         throw new Exception("Ei löydetty id:tä vastaavaa käyttäjätunnusta!");
+    }
+    
+    /**
+     * Hakee tietyn varauksen id:n.
+     * @param year varauksen vuosi
+     * @param mounth varauksen kuukausu
+     * @param day varauksen päivä
+     * @param time varauksen kellonaika
+     * @return haettu id
+     * @throws Exception 
+     */
+    public static int getReservationId(int year, String mounth, int day, String time) throws Exception {
+        // haetaan kyseisen päivän kaikki varaukset
+        ArrayList<Reservation> reservations = Controller.getReservations(day, year, mounth);
+        
+        // etsitään oikea kellonaika
+        for (Reservation reservation : reservations) {
+            if (reservation.getTime().equals(time)) {
+                return reservation.getId();
+            }
+        }
+        
+        throw new Exception("Ei löytynyt haettavaa varausta!");
     }
     
     /**
