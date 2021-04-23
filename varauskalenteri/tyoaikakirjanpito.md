@@ -20,3 +20,5 @@
 | 18.4. | 1h      | Viety lisää toiminnallisuuksia tekstikäyttöliittymään. Käyttöliittymästä pystyy nyt reksiteröitymään, kirjautumaan, lisäämään varauksen ja etsimään varauksia. Jouduin tekemään lisämetodeja Conroller-luokkaan, kuten esim. metodin, joka tarkistaa käyttäjän syötteet valideiksi kuten. päivämäärät, kellonajat yms. Lisäksi mm. saanti metodit, joilla etsitään tietokannasta käyttäjätunnusta vastaava id ja toisinpäin. |
 | 20.4. | 2h40min | tehty ne vaatimuksen harjoitustyöhön, jotka vaaditaan viikon 4 kohdalla |
 | 21.4. | 10min   | alettu tekemään käyttöliittymään toimintoa, jossa admin-käyttäjä pystyy poistamaan varauksen |
+| 23.4. | 25min   | Tehty lisää metodeja käyttäjätunnuksen tietojen tarkistamisesta Controller-luokassa. Myös testejä lisätty. |
+

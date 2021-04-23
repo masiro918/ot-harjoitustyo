@@ -140,6 +140,33 @@ public class ControllerTest {
     }
     
     /**
+     * Testaa, että käyttäjätunnuksen tarkistus toimii (testaa metodia ifUserExists).
+     */
+    @Test
+    public void ifUserExistsTest() throws Exception {
+        User user1 = new User();
+        user1.setPassword("salasana");
+        user1.setRole("basic");
+        user1.setUsername("username1");
+        
+        User user2 = new User();
+        user2.setPassword("salasana");
+        user2.setRole("basic");
+        user2.setUsername("username2");
+        
+        Controller.newUser(user1);
+        Controller.newUser(user2);
+        
+        boolean b1 = Controller.ifUserExists("username1");
+        boolean b2 = Controller.ifUserExists("username2");
+        boolean b3 = Controller.ifUserExists("kalle");
+        
+        assertTrue(b1);
+        assertTrue(b2);
+        assertFalse(b3);
+    }
+    
+    /**
      * Testaa, että hash-arvon luonti toimii.
      * @throws Exception 
      */
@@ -182,6 +209,31 @@ public class ControllerTest {
         } catch (Exception e) {
             assertTrue(true);
         }
+    }
+    
+    /**
+     * Testaa metodia, joka tarkistaa käyttäjätunnuksen tyypin.
+     */
+    @Test
+    public void ifAdminTest() throws Exception {
+        User user1 = new User();
+        user1.setPassword("salasana");
+        user1.setRole("admin");
+        user1.setUsername("username1");
+        
+        User user2 = new User();
+        user2.setPassword("salasana");
+        user2.setRole("basic");
+        user2.setUsername("username2");
+        
+        Controller.newUser(user1);
+        Controller.newUser(user2);
+        
+        boolean b1 = Controller.ifAdmin("username1");
+        boolean b2 = Controller.ifAdmin("username2");
+        
+        assertTrue(b1);
+        assertFalse(b2);
     }
 }
 

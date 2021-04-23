@@ -384,6 +384,35 @@ public class Controller {
         }
         throw new Exception("Epäonnistuttiin käyttäjätunnuksen tyypin haussa!");
     }
+
+    /**
+     * Tarkistaa, onko käyttäjätunnusta tietokannassa.
+     * @param username käyttäjätunnus
+     * @return true, jos löytyi, muulloin false
+     * @throws Exception 
+     */
+    public static boolean ifUserExists(String username) throws Exception {
+        ArrayList<User> users = Controller.getUsers();
+        
+        for (User user : users) {
+            if (user.getUsername().equals(username)) return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Tarkistaa, onko käyttäjätunnus admin.
+     * @param username käyttäjätunnuksen käyttäjänimi
+     * @return true, jos on admin, muulloin false
+     * @throws Exception 
+     */
+    public static boolean ifAdmin(String username) throws Exception {
+        String userType = Controller.getUserType(username);
+        
+        if (userType.equals("admin")) return true;
+        return false;
+    }
     
     public static void main(String[] args) throws Exception {
         

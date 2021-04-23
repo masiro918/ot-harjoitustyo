@@ -91,12 +91,20 @@ public class TextBasedUserInterface {
              * Varauksen poisto.
              */
             if (input.equals("del-r")) {
-                boolean isAdmin = checkIfAdmin(loggedInUsername);
+               
+                boolean isAdmin = false;
+                
+                try {
+                    isAdmin = checkIfAdmin(loggedInUsername);
+                } catch (Exception e) {
+                    System.err.println("Epäonnistuttiin tarkistaessa käyttäjäntyyppiä.");
+                }
                 
                 if (isAdmin == false) {
                     System.out.println("Vain admin-käyttäjä saa tehdä tämän toimenpiteen.");
                     continue;
                 }
+                
                 System.out.println("varauksen vuosi");
                 int year = Integer.parseInt(inputScanner.nextLine());
                 
@@ -146,7 +154,8 @@ public class TextBasedUserInterface {
                     
                     viewAllReservations(day, year, mounth);
                 } catch (Exception e) {
-                    System.err.println(e.getMessage());
+                    System.err.println("Epäonnistuttiin haettaessa varauksia. Luultavasti syötteet eivät olleet sallittuja.");
+                    System.err.println("Annoitko esimerkiksi vuosiluvun tai kuukauden väärin? Esim. kuukausi ei voi olla '2021'.");
                 }
             }
             
@@ -184,7 +193,8 @@ public class TextBasedUserInterface {
                     Controller.newReservation(newReserv);
                     System.out.println("Uusi varaus lisätty onnistuneesti!");
                 } catch (Exception e) {
-                    System.err.println(e.getMessage());
+                    System.err.println("Epäonnistuttiin varauksen lisäämisessä! Todennäköisesti syötteesi eivät olleet oikean kaltaisia.");
+                    System.err.println("Annoitko esimerkiksi vuosiluvun tai kuukauden väärin? Esim. kuukausi ei voi olla '2021'.");
                 }
                 
                 continue;
@@ -220,9 +230,14 @@ public class TextBasedUserInterface {
             String username = inputScanner.nextLine();
 
             // tarkistetaan, onko käyttäjätunnus jo olemassa
-            if (checkIfUsernameExists(username) == true) {
-                System.out.println("Käyttäjätunnus on jo olemassa. Valitse jokin toinen.");
-                continue;
+            try {
+                if (checkIfUsernameExists(username) == true) {
+                    System.out.println("Käyttäjätunnus on jo olemassa. Valitse jokin toinen.");
+                    continue;
+                }
+            } catch (Exception e) {
+                System.err.println("Epäonnistuttiin luotaessa käyttäjätunnusta.");
+                break;
             }
             
             while (true) {
@@ -271,8 +286,9 @@ public class TextBasedUserInterface {
      * @param username käyttäjätunnus
      * @return true, jos on varattu, muulloin false
      */
-    public static boolean checkIfUsernameExists(String username) {
-        return false;
+    public static boolean checkIfUsernameExists(String username) throws Exception {
+        boolean userExists = Controller.ifUserExists(username);
+        return userExists;
     }
 
     /**
@@ -289,10 +305,12 @@ public class TextBasedUserInterface {
     /**
      * Tarkistaa, onko käyttäjä admin-käyttäjä.
      * @param username käyttäjätunnus
-     * @return 
+     * @return true, jos on admin, muulloin false
+     * @throws java.lang.Exception
      */
-    public static boolean checkIfAdmin(String username) {
-        return false;
+    public static boolean checkIfAdmin(String username) throws Exception {
+        boolean isAdmin = Controller.ifAdmin(username);
+        return isAdmin;
     }
 
     /**
