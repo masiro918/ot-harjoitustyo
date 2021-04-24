@@ -147,7 +147,7 @@ public class TextBasedUserInterface {
                     System.out.println("vuosi (luku)");
                     year = Integer.parseInt(inputScanner.nextLine());
 
-                    System.out.println("kuukausi (muotoa esim. 'huhtikuu')");
+                    System.out.println("kuukausi (muotoa esim. 'huhtikuu' ILAMN ÄÄKKÖSIÄ eli eli esim. kesäkuu -> kesakuu)");
                     mounth = inputScanner.nextLine();
                     
                     Controller.checkInputs(day, year, mounth);
@@ -156,6 +156,7 @@ public class TextBasedUserInterface {
                 } catch (Exception e) {
                     System.err.println("Epäonnistuttiin haettaessa varauksia. Luultavasti syötteet eivät olleet sallittuja.");
                     System.err.println("Annoitko esimerkiksi vuosiluvun tai kuukauden väärin? Esim. kuukausi ei voi olla '2021'.");
+                    System.err.println(e.getMessage());
                 }
             }
             
@@ -172,7 +173,7 @@ public class TextBasedUserInterface {
                 System.out.println("vuosi (luku)");
                 year = Integer.parseInt(inputScanner.nextLine());
                 
-                System.out.println("kuukausi (muotoa esim. 'huhtikuu')");
+                System.out.println("kuukausi (muotoa esim. 'huhtikuu' ILAMN ÄÄKKÖSIÄ eli eli esim. kesäkuu -> kesakuu)");
                 mounth = inputScanner.nextLine();
                 
                 System.out.println("kellonaika (muotoa '11-12' tai '08-09')");
@@ -226,6 +227,8 @@ public class TextBasedUserInterface {
      */
     public static void createAccount() {  
         while (true) {
+            System.out.println("");
+            System.out.println("Huom! Heittomerkit eivät ole sallittuja käyttäjätunnukessa tai salasanss.");
             System.out.println("käyttäjätunnus:");
             String username = inputScanner.nextLine();
 
@@ -236,7 +239,7 @@ public class TextBasedUserInterface {
                     continue;
                 }
             } catch (Exception e) {
-                System.err.println("Epäonnistuttiin luotaessa käyttäjätunnusta.");
+                System.err.println("Epäonnistuttiin luotaessa käyttäjätunnusta: " + e.getMessage());
                 break;
             }
             
@@ -345,7 +348,7 @@ public class TextBasedUserInterface {
     public static void viewAllReservations(int day, int year, String mounth) throws Exception {
         ArrayList<Reservation> reservations = Controller.getReservations(day, year, mounth);
         
-        System.out.println("Kyseisellä päivälle (" + day + "." + mounth + "." + year + " olevat varaukse:");
+        System.out.println("Kyseisellä päivälle (" + day + "." + mounth + "." + year + ") olevat varaukset:");
         System.out.println("");
         
         for (Reservation reservation : reservations) {

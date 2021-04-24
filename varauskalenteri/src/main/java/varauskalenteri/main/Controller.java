@@ -295,8 +295,8 @@ public class Controller {
             if (mounth.equals("maaliskuu")) break;
             if (mounth.equals("huhtikuu")) break;
             if (mounth.equals("toukokuu")) break;
-            if (mounth.equals("kesäkuu")) break;
-            if (mounth.equals("heinäkuu")) break;
+            if (mounth.equals("kesakuu")) break;
+            if (mounth.equals("heinakuu")) break;
             if (mounth.equals("elokuu")) break;
             if (mounth.equals("syyskuu")) break;
             if (mounth.equals("lokakuu")) break;

@@ -21,4 +21,4 @@
 | 20.4. | 2h40min | tehty ne vaatimuksen harjoitustyöhön, jotka vaaditaan viikon 4 kohdalla |
 | 21.4. | 10min   | alettu tekemään käyttöliittymään toimintoa, jossa admin-käyttäjä pystyy poistamaan varauksen |
 | 23.4. | 25min   | Tehty lisää metodeja käyttäjätunnuksen tietojen tarkistamisesta Controller-luokassa. Myös testejä lisätty. |
-
+| 24.4. | 1h15min | Korjattu bugi tekstikäyttöliittymässä: ääkösten lukeminen. Korjattu niin, että kuukausi pitää syöttää ilman ä:tä tai ö:tä. Aloitettu tekemään graafista käyttöliittymää. |
