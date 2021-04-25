@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -21,6 +22,9 @@ public class LoginWindow extends Application implements ActionListener {
     
     Button buttonLogin = new Button();
     Button buttonRegister = new Button();
+    Text welcomeText = new Text("kirjaudu sisään tai luo uusi käyttäjätunnus");
+    TextField textFieldUsername = new TextField();
+    TextField textFieldUPassword = new TextField();
     
     @Override
     public void init() throws Exception {
@@ -31,19 +35,28 @@ public class LoginWindow extends Application implements ActionListener {
     @Override
     public void start(Stage stage) throws Exception {
         HBox hBox = new HBox();
-        hBox.setSpacing(10);
+        hBox.setSpacing(15);
         
-        Group root = new Group(hBox);
+        VBox vBox = new VBox();
+        vBox.setSpacing(15);
+        
+        Group root = new Group(vBox);
         Scene scene = new Scene(root, 400, 300);
         stage.setTitle("varauskalenteri");
+        
+        vBox.getChildren().add(welcomeText);
+        vBox.getChildren().add(textFieldUsername);
+        vBox.getChildren().add(textFieldUPassword);
+        
+        vBox.getChildren().add(hBox);
         
         hBox.getChildren().add(buttonLogin);
         hBox.getChildren().add(buttonRegister);
         
-        stage.setMaxWidth(400);
-        stage.setMaxHeight(300);
+        stage.setMaxWidth(300);
+        stage.setMaxHeight(180);
+        stage.setResizable(false);
         stage.setScene(scene);
-        stage.setMaximized(true);
         stage.show();
     }
 

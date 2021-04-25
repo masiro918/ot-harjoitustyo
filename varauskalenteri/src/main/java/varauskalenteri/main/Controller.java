@@ -234,6 +234,7 @@ public class Controller {
      * @param year vuosi
      * @param mounth kuukausi
      * @param time aika
+     * @throws java.lang.Exception
      */
     public static void checkInputs(int day, int year, String mounth, String time) throws Exception {
         // päivä
@@ -249,8 +250,8 @@ public class Controller {
             if (mounth.equals("maaliskuu")) break;
             if (mounth.equals("huhtikuu")) break;
             if (mounth.equals("toukokuu")) break;
-            if (mounth.equals("kesäkuu")) break;
-            if (mounth.equals("heinäkuu")) break;
+            if (mounth.equals("kesakuu")) break;
+            if (mounth.equals("heinakuu")) break;
             if (mounth.equals("elokuu")) break;
             if (mounth.equals("syyskuu")) break;
             if (mounth.equals("lokakuu")) break;

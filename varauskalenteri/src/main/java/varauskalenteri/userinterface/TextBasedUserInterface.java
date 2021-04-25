@@ -29,16 +29,21 @@ public class TextBasedUserInterface {
         System.out.println("");
         
         while (true) {
-            System.out.println("Jos haluat luoda uudet tunnuket, kirjoita 1. Jos taas haluat kirjautua sisään, kirjoita 2.");
+            System.out.println("Jos haluat luoda uudet tunnuket, kirjoita 1. Jos taas haluat kirjautua sisään, kirjoita 2. ");
+            System.out.println("Luodaksesi admin-käyttäjän, kirjoita 3.");
             //System.out.print(">");
             choice = inputScanner.nextLine();
 
             if (choice.equals("1")) {
-                createAccount();
+                createAccount("basic");
                 continue;
             }
             
             if (choice.equals("2")) break;
+            
+            if (choice.equals("3")) {
+                createAccount("admin");
+            }
         }
         
         
@@ -105,21 +110,27 @@ public class TextBasedUserInterface {
                     continue;
                 }
                 
-                System.out.println("varauksen vuosi");
-                int year = Integer.parseInt(inputScanner.nextLine());
                 
-                System.out.println("varauksen kuukausi");
-                String mounth = inputScanner.nextLine();
-                
-                System.out.println("varauksen päivä");
-                int day = Integer.parseInt(inputScanner.nextLine());
-                
-                System.out.println("varauksen kellonaika");
-                String time = inputScanner.nextLine();
                 
                 try {
-                    // haetaan ensin varauksen id
+                    System.out.println("varauksen vuosi");
+                    int year = Integer.parseInt(inputScanner.nextLine());
+
+                    System.out.println("varauksen kuukausi");
+                    String mounth = inputScanner.nextLine();
+
+                    System.out.println("varauksen päivä");
+                    int day = Integer.parseInt(inputScanner.nextLine());
+
+                    System.out.println("varauksen kellonaika");
+                    String time = inputScanner.nextLine();
+                
+                    // tarkistetaan ensin, että syötteet ovat valideja
+                    Controller.checkInputs(day, year, mounth);
                     
+                    // haetaan ensin varauksen id
+                    int reservationId = Controller.getReservationId(year, mounth, day, time);
+                    Controller.delReservation(loggedInUserType, reservationId);
                 } catch (Exception e) {
                     System.err.println("Epäonnistuttiin varauksen poistossa: " + e.getMessage());
                 }
@@ -167,19 +178,21 @@ public class TextBasedUserInterface {
                 String mounth, time;
                 int day, year;
                 
-                System.out.println("päivä (luku)");
-                day = Integer.parseInt(inputScanner.nextLine());
                 
-                System.out.println("vuosi (luku)");
-                year = Integer.parseInt(inputScanner.nextLine());
-                
-                System.out.println("kuukausi (muotoa esim. 'huhtikuu' ILAMN ÄÄKKÖSIÄ eli eli esim. kesäkuu -> kesakuu)");
-                mounth = inputScanner.nextLine();
-                
-                System.out.println("kellonaika (muotoa '11-12' tai '08-09')");
-                time =  inputScanner.nextLine();
                 
                 try {
+                    System.out.println("päivä (luku)");
+                    day = Integer.parseInt(inputScanner.nextLine());
+
+                    System.out.println("vuosi (luku)");
+                    year = Integer.parseInt(inputScanner.nextLine());
+
+                    System.out.println("kuukausi (muotoa esim. 'huhtikuu' ILMAN ÄÄKKÖSIÄ eli eli esim. kesäkuu -> kesakuu)");
+                    mounth = inputScanner.nextLine();
+
+                    System.out.println("kellonaika (muotoa '11-12' tai '08-09')");
+                    time =  inputScanner.nextLine();
+                
                     Controller.checkInputs(day, year, mounth, time);
                     
                     Reservation newReserv = new Reservation();
@@ -196,6 +209,7 @@ public class TextBasedUserInterface {
                 } catch (Exception e) {
                     System.err.println("Epäonnistuttiin varauksen lisäämisessä! Todennäköisesti syötteesi eivät olleet oikean kaltaisia.");
                     System.err.println("Annoitko esimerkiksi vuosiluvun tai kuukauden väärin? Esim. kuukausi ei voi olla '2021'.");
+                    System.out.println(e.getMessage());
                 }
                 
                 continue;
@@ -224,8 +238,9 @@ public class TextBasedUserInterface {
 
     /**
      * Luodaan uusi käyttäjä.
+     * @param type käyttäjätunnuksen tyyppi: joko 'basic' tai 'admin'
      */
-    public static void createAccount() {  
+    public static void createAccount(String type) {  
         while (true) {
             System.out.println("");
             System.out.println("Huom! Heittomerkit eivät ole sallittuja käyttäjätunnukessa tai salasanss.");
@@ -259,7 +274,7 @@ public class TextBasedUserInterface {
                         // käyttäjätunnus luodaan
                         User user = new User();
                         user.setPassword(hash);
-                        user.setRole("basic");
+                        user.setRole(type);
                         user.setUsername(username);
                     
                     
@@ -361,5 +376,9 @@ public class TextBasedUserInterface {
             System.out.println(time + " varaajalta: " + ownerOfReservation);
         }
         System.out.println("");
+    }
+
+    private static void createAdminAccount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
