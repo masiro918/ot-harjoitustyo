@@ -16,6 +16,9 @@ import javafx.stage.Stage;
  * Kirjautumisikkuna. Apuja graafisen käyttöliittymän tekoon on haettu täältä:
  * https://www.tutorialspoint.com/javafx/javafx_application.htm
  * https://docs.oracle.com/javafx/2/get_started/hello_world.htm
+ * 
+ * Apuja tapahtumakuuntelija käytössä haettu täältä:
+ * https://stackoverflow.com/questions/40757911/javafx-adding-actionlistener-to-button
  * @author Matias Siro
  */
 public class LoginWindow extends Application implements ActionListener {
@@ -52,6 +55,8 @@ public class LoginWindow extends Application implements ActionListener {
         
         hBox.getChildren().add(buttonLogin);
         hBox.getChildren().add(buttonRegister);
+        
+        
         
         stage.setMaxWidth(300);
         stage.setMaxHeight(180);
