@@ -33,7 +33,10 @@ public class DbService {
     public void createTables() throws Exception {
         // tarkistetaan, onko tietokantataulut jo olemassa
         boolean exists = Files.exists(Paths.get("database.db"));
-        if (exists == true) throw new Exception("Tietokanta on jo olemassa");
+        
+        if (exists == true) {
+            throw new Exception("Tietokanta on jo olemassa");
+        }
         
         this.database.createTables();
     }
@@ -119,7 +122,10 @@ public class DbService {
         
         ArrayList<String> results = this.database.getDataReservation(sql);
         
-        if (results.size() > 0) return false;
+        if (results.size() > 0) {
+            return false;
+        }
+        
         return true;
     }
     
@@ -167,7 +173,6 @@ public class DbService {
                     id = randomId;
                 }
             }
-            
         }
         
         return id;
@@ -180,7 +185,11 @@ public class DbService {
      */
     public boolean idExistsUser(int id) throws Exception {
         ArrayList<String> results = this.database.getDataUser("select * from user where id = " + id + ";");
-        if (results.size() > 0) return false;
+        
+        if (results.size() > 0) {
+            return false;
+        }
+        
         return true;
     }
     
@@ -191,7 +200,11 @@ public class DbService {
      */
     public boolean idExistsReservation(int id) throws Exception {
         ArrayList<String> results = this.database.getDataReservation("select * from reservation where id = " + id + ";");
-        if (results.size() > 0) return false;
+        
+        if (results.size() > 0) {
+            return false;
+        }
+        
         return true;
     }
     
@@ -203,7 +216,10 @@ public class DbService {
     public ArrayList<String> printTableUser() throws Exception {
         ArrayList<String> userTable = this.database.printTableUser();
         
-        for (String user : userTable) System.out.println(user);
+        for (String user : userTable) {
+            System.out.println(user);
+        }
+        
         return userTable;
     }
     
@@ -215,44 +231,26 @@ public class DbService {
     public ArrayList<String> printReservationTable() throws Exception {
         ArrayList<String> reservationTable = this.database.printTableReservation();
         
-        for (String reservation : reservationTable) System.out.println(reservation);
+        for (String reservation : reservationTable) {
+            System.out.println(reservation);
+        }
+        
         return reservationTable;
     }
     
     /**
      * Suorittaa kyselyn reservation-tauluun.Kysytään, montako varausta löytyy tietynlaisella haulla.
-     * @param day
-     * @param year
-     * @return
+     * @param day päivä
+     * @param year vuosi
+     * @param mounth kuukausi
+     * @param time aika
+     * @return löydettyjen tulosten lukumäärä
      * @throws Exception 
      */
     public int getCountReservation(int day, int year, String mounth, String time) throws Exception {
-        String sql = "select count(*) from reservation where day = " + day + " and  year = " + year +" and mounth = '" + mounth + "' and time = '" + time + "';";
+        String sql = "select count(*) from reservation where day = " + day + " and  year = " + year + " and mounth = '" + mounth + "' and time = '" + time + "';";
         
         int count = this.database.getCount(sql);
         return count;
     }
-    
-    public static void main(String[] args) throws Exception {
-        DbService dbs = null;
-        try {
-            dbs = new DbService();
-            //dbs.createTablesWithoutChecking();
-            Reservation reservation = new Reservation();
-            reservation.setDay(6);
-            reservation.setMounth("huhtikuu");
-            reservation.setTime("10-11");
-            reservation.setUserId(12345678);
-            reservation.setYear(2021);
-            
-            dbs.addReservation(reservation);
-            dbs.closeService();
-        } catch (Exception e) {
-            System.err.println("Tapahtui poikkeus: " + e.getMessage());
-        } finally {
-            dbs.closeService();
-        }
-    }
-
-    
 }
