@@ -16,4 +16,4 @@ Ylläpitäjä käyttäjä voi poistaa minkä tahansa varauksen. “Normaalikäyt
 
 ## luonnos käyttöliittymästä
 
-![kuvaluonnos käyttöliittymästä](https://github.com/masiro918/ot-harjoitustyo/blob/master/luonnos_kayttoliittymasta.jpg)  
+![kuvaluonnos käyttöliittymästä](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/luonnos_kayttoliittymasta.jpg)  
