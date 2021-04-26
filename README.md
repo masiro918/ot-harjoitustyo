@@ -21,7 +21,7 @@ testikattavuusraportti saadaan komennolla:
 
 ***HUOM! Toistaiseksi aina kun ohjelma käynnistetään, aikaisempi sisältö tietokannassa tuhotaan. Tämä siksi, jotta testit toimisivat.***
 
-## projektin nykyinen tilanne
+## projektin nykyinen tilanne (viikko 5)
 Toiminnot, jotka ohjelmalta vaaditaan:    
 
 (toistaiseksi vain tekstikäyttöliittymässä)    
