@@ -39,7 +39,9 @@ public class TextBasedUserInterface {
                 continue;
             }
             
-            if (choice.equals("2")) break;
+            if (choice.equals("2")) {
+                break;
+            }
             
             if (choice.equals("3")) {
                 createAccount("admin");
@@ -214,7 +216,10 @@ public class TextBasedUserInterface {
                 
                 continue;
             }
-            if (input.equals("quit")) break;
+            
+            if (input.equals("quit")) {
+                break;
+            }
         }
     }
 
@@ -231,7 +236,9 @@ public class TextBasedUserInterface {
             String userUsername = user.getUsername();
             String userPassword = user.getPassword();
             
-            if (userUsername.equals(username) && userPassword.equals(Controller.createHash(password))) return true;
+            if (userUsername.equals(username) && userPassword.equals(Controller.createHash(password))) {
+                return true;
+            }
         }
         return false;
     }
@@ -316,7 +323,10 @@ public class TextBasedUserInterface {
      * @return true, jos ovat samat, muulloin false
      */
     public static boolean checkPasswords(String password1, String password2) {
-        if (password1.equals(password2)) return true;
+        if (password1.equals(password2)) {
+            return true;
+        }
+        
         return false;
     }
 
@@ -349,6 +359,7 @@ public class TextBasedUserInterface {
         System.out.println("");
         System.out.println("Kirjoittamalla 'new-r', voit tehdä uuden varauksen.");
         System.out.println("Kirjoittamalla 'all-r', voit tarkistaa tietyn päivän kaikki varaukset.");
+        System.out.println("Jos olet admin, voit poistaa varauksen kirjoittamalla 'del-r'.");
         System.out.println("Kirjoittamalla 'quit', pääset pois sovelluksesta.");
         System.out.println("");
     }
@@ -377,8 +388,9 @@ public class TextBasedUserInterface {
         }
         System.out.println("");
     }
-
+    /*
     private static void createAdminAccount() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    */
 }

@@ -8,7 +8,7 @@
 
 Jotta voisit suorittaa alla olevat toimenpiteet, siirry ensin hakemistoon varauskalenteri/  
 
-HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät. Muuten testit eivät men läpi, koska oikeankaltaista tietokantaa ei ole luotu.    
+HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät. Muuten testit eivät men läpi, koska oikeankaltaista tietokantaa ei ole luotu. Jos haluat luoda jar-tiedoston, sinun täytyy ensin kääntää ohjelma alla olevalla komennolla ja sen jälkeen voit luoda jar-tiedoston komennolla 'mvn package'. Testien toimivuuden takia aina kun käynnistät ohjelman tietokannan aikaisempi sisältö tuhotaan. Tämä tosiaan siksi, että testit toimisivat.  
 
 ohjelma käännetään ja ajetaan komennolla:  
 **mvn compile exec:java -Dexec.mainClass=varauskalenteri.userinterface.MainProgram**  
@@ -22,7 +22,19 @@ testikattavuusraportti saadaan komennolla:
 ***HUOM! Toistaiseksi aina kun ohjelma käynnistetään, aikaisempi sisältö tietokannassa tuhotaan. Tämä siksi, jotta testit toimisivat.***
 
 ## projektin nykyinen tilanne
+Toiminnot, jotka ohjelmalta vaaditaan:    
 
+(toistaiseksi vain tekstikäyttöliittymässä)    
+
+-varauksen tekeminen (sis tarkistuksen, kuten ei päällekkäisiä varauksia ja varauksia ennen klo 8 tai jälkeen klo 16)  **[tehty]**  
+-käyttäjätunnuksen luonti (vain basic-käyttäjä) **[tehty]**  
+-kaikkien varausten tarkistaminen tietyltä päivältä **[tehty]**  
+-käyttäjätunnus liitetään varaukseen **[tehty]**  
+-admin-käyttäjä pystyy poistamaan varauksen **[tehty]**  
+-graafinen käyttöliittymä **[ei ole tehty]**    
+-bugi: jotkut virhe ilmoituksen ovat vääriä (esim. jos kuukauden kohdalle kirjoittaa 1234, väittää että vuosi olisi väärä) **[korjattu]**    
+
+Edelleenkin (testien toimivuuden takia) aina kun ohjelma käynnistetään, kaikki aikaisempi sisältö tietokannasta tuhotaan.  
 
 ### viikon 4 tilanne:
 Toiminnot, jotka ohjelmalta vaaditaan:    

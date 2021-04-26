@@ -24,7 +24,11 @@ public class Controller {
         // tarkistetaan, että käyttäjätunnus on vapaa
         try {
             ArrayList<String> results = dbService.getDataUser("select * from user where username = '" + user.getUsername() + "';");
-            if (results.size() > 0) throw new Exception("Käyttäjätunnus on jo olemassa! Valitse uusi.");
+            
+            if (results.size() > 0) {
+                throw new Exception("Käyttäjätunnus on jo olemassa! Valitse uusi.");
+            }
+            
             dbService.addUser(user);
         } catch (Exception e) {
             throw new Exception("Tapahtui poikkeus luodessa uutta käyttäjätunnusta: " + e.getMessage());
@@ -38,7 +42,6 @@ public class Controller {
      * @param reservation reservation olio, jossa id-arvo on null
      */
     public static void newReservation(Reservation reservation) throws Exception {
-        // TODO: tarkista, että varausta ei ole jo tietokannassa kyseiseltä ajalta
         if (Controller.ifReservationExists(reservation.getMounth(), reservation.getYear(), reservation.getDay(), reservation.getTime())) {
             throw new Exception("Tapahtui poikkeus tehdessä varausta tietokantaan: varaus on jo olemassa!");
         }
@@ -61,7 +64,9 @@ public class Controller {
      * @throws Exception 
      */
     public static void delReservation(String userType, int id) throws Exception {
-        if (userType.equals("admin") == false) throw new Exception("Vain admin voi poistaa varauksen!");
+        if (userType.equals("admin") == false) {
+            throw new Exception("Vain admin voi poistaa varauksen!");
+        }
         
         DbService dbService = new DbService();
         
@@ -171,9 +176,6 @@ public class Controller {
      * Tyjentää tietokannan kaikesta sisällöstä.
      */
     public static void deleteAllDataFromTables() throws Exception {
-        /**
-         * TODO: paermmaksi!
-         */
         DbService dbService = new DbService();
         dbService.destroyTables();
         dbService.createTablesWithoutChecking();
@@ -224,7 +226,11 @@ public class Controller {
         //System.out.println("answer: " + results.get(0));
         
         int reservations = results;
-        if (reservations > 0) return true;
+        
+        if (reservations > 0) {
+            return true;
+        }
+        
         return false;
     }
 
@@ -238,71 +244,163 @@ public class Controller {
      */
     public static void checkInputs(int day, int year, String mounth, String time) throws Exception {
         // päivä
-        if (day < 0 && day > 31) throw new Exception("Päivämäärä ei ole sallittu!");
+        if (day < 0 && day > 31) {
+            throw new Exception("Päivämäärä ei ole sallittu!");
+        }
         
         // vuosi
-        if (year < 2021) throw new Exception("Vuosi ei ole sallittu!");
+        if (year < 2021) {
+            throw new Exception("Vuosi ei ole sallittu!");
+        }
         
         // kuukausi
         while (true) {
-            if (mounth.equals("tammikuu")) break;
-            if (mounth.equals("helmikuu")) break;
-            if (mounth.equals("maaliskuu")) break;
-            if (mounth.equals("huhtikuu")) break;
-            if (mounth.equals("toukokuu")) break;
-            if (mounth.equals("kesakuu")) break;
-            if (mounth.equals("heinakuu")) break;
-            if (mounth.equals("elokuu")) break;
-            if (mounth.equals("syyskuu")) break;
-            if (mounth.equals("lokakuu")) break;
-            if (mounth.equals("marraskuu")) break;
-            if (mounth.equals("joulukuu")) break;
+            
+            if (mounth.equals("tammikuu")) {
+                break;
+            }
+            
+            if (mounth.equals("helmikuu")) {
+                break;
+            }
+            
+            if (mounth.equals("maaliskuu")) {
+                break;
+            }
+            
+            if (mounth.equals("huhtikuu")) {
+                break;
+            }
+            
+            if (mounth.equals("toukokuu")) {
+                break;
+            }
+            
+            if (mounth.equals("kesakuu")) {
+                break;
+            }
+            
+            if (mounth.equals("heinakuu")) {
+                break;
+            }
+            
+            if (mounth.equals("elokuu")) {
+                break;
+            }
+            
+            if (mounth.equals("syyskuu")) {
+                break;
+            }
+            
+            if (mounth.equals("lokakuu")) {
+                break;
+            }
+            
+            if (mounth.equals("marraskuu")) {
+                break;
+            }
+            
+            if (mounth.equals("joulukuu")) {
+                break;
+            }
             
             throw new Exception("Kuukausi ei ole sallittu!");
         }
         
         // kellonaika
         while (true) {
-            if (time.equals("08-09")) break;
-            if (time.equals("09-10")) break;
-            if (time.equals("10-11")) break;
-            if (time.equals("11-12")) break;
-            if (time.equals("12-13")) break;
-            if (time.equals("13-14")) break;
-            if (time.equals("14-15")) break;
-            if (time.equals("15-16")) break;
+            if (time.equals("08-09")) {
+                break;
+            }
+            
+            if (time.equals("09-10")) {
+                break;
+            }
+            
+            if (time.equals("10-11")) {
+                break;
+            }
+            
+            if (time.equals("11-12")) {
+                break;
+            }
+            
+            if (time.equals("12-13")) {
+                break;
+            }
+            
+            if (time.equals("13-14")) {
+                break;
+            }
+            
+            if (time.equals("14-15")) {
+                break;
+            }
+            
+            if (time.equals("15-16")) {
+                break;
+            }
             
             throw new Exception("Kellonaika ei ole sallittu!");
         }
     }
     
     /**
-     * Tarkistaa, että varauksen syöte on oikean kaltainen. Kellonaika ei ole mukana.
+     * Tarkistaa, että varauksen syöte on oikean kaltainen.Kellonaika ei ole mukana.
      * @param day päivä
      * @param year vuosi
      * @param mounth kuukausi
+     * @throws java.lang.Exception
      */
     public static void checkInputs(int day, int year, String mounth) throws Exception {
         // päivä
-        if (day < 0 && day > 31) throw new Exception("Päivämäärä ei ole sallittu!");
+        if (day < 0 && day > 31) {
+            throw new Exception("Päivämäärä ei ole sallittu!");
+        }
         
         // vuosi
-        if (year < 2021) throw new Exception("Vuosi ei ole sallittu!");
+        if (year < 2021) {
+            throw new Exception("Vuosi ei ole sallittu!");
+        }
         
         // kuukausi
         while (true) {
-            if (mounth.equals("tammikuu")) break;
-            if (mounth.equals("helmikuu")) break;
-            if (mounth.equals("maaliskuu")) break;
-            if (mounth.equals("huhtikuu")) break;
-            if (mounth.equals("toukokuu")) break;
-            if (mounth.equals("kesakuu")) break;
-            if (mounth.equals("heinakuu")) break;
-            if (mounth.equals("elokuu")) break;
-            if (mounth.equals("syyskuu")) break;
-            if (mounth.equals("lokakuu")) break;
-            if (mounth.equals("marraskuu")) break;
-            if (mounth.equals("joulukuu")) break;
+            if (mounth.equals("tammikuu")) {
+                break;
+            }
+            if (mounth.equals("helmikuu")) {
+                break;
+            }
+            if (mounth.equals("maaliskuu")) {
+                break;
+            }
+            if (mounth.equals("huhtikuu")) {
+                break;
+            }
+            if (mounth.equals("toukokuu")) {
+                break;
+            }
+            if (mounth.equals("kesakuu")) {
+                break;
+            }
+            if (mounth.equals("heinakuu")) {
+                break;
+            }
+            if (mounth.equals("elokuu")) {
+                break;
+            }
+            if (mounth.equals("syyskuu")) {
+                break;
+            }
+            if (mounth.equals("lokakuu")) {
+                break;
+            }
+            if (mounth.equals("marraskuu")) {
+                break;
+            }
+            if (mounth.equals("joulukuu")) {
+                break;
+            }
             
             throw new Exception("Kuukausi ei ole sallittu!");
         }
@@ -396,7 +494,9 @@ public class Controller {
         ArrayList<User> users = Controller.getUsers();
         
         for (User user : users) {
-            if (user.getUsername().equals(username)) return true;
+            if (user.getUsername().equals(username)) {
+                return true;
+            }
         }
         
         return false;
@@ -411,7 +511,9 @@ public class Controller {
     public static boolean ifAdmin(String username) throws Exception {
         String userType = Controller.getUserType(username);
         
-        if (userType.equals("admin")) return true;
+        if (userType.equals("admin")) {
+            return true;
+        }
         return false;
     }
     
