@@ -8,7 +8,7 @@
 
 Jotta voisit suorittaa alla olevat toimenpiteet, siirry ensin hakemistoon varauskalenteri/  
 
-HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät. Muuten testit eivät men läpi, koska oikeankaltaista tietokantaa ei ole luotu. Jos haluat luoda jar-tiedoston, sinun täytyy ensin kääntää ohjelma alla olevalla komennolla ja sen jälkeen voit luoda jar-tiedoston komennolla 'mvn package'. Testien toimivuuden takia aina kun käynnistät ohjelman tietokannan aikaisempi sisältö tuhotaan. Tämä tosiaan siksi, että testit toimisivat.  
+HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät. Muuten testit eivät men läpi, koska oikeankaltaista tietokantaa ei ole luotu. Jos haluat luoda jar-tiedoston, sinun täytyy ensin kääntää ohjelma alla olevalla komennolla ja sen jälkeen voit luoda jar-tiedoston komennolla 'mvn package'. Testien toimivuuden takia aina kun käynnistät ohjelman tietokannan aikaisempi sisältö tuhotaan.  
 
 ohjelma käännetään ja ajetaan komennolla:  
 **mvn compile exec:java -Dexec.mainClass=varauskalenteri.userinterface.MainProgram**  
