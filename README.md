@@ -17,7 +17,11 @@ testit ajetaan komennolla:
 **mvn test**  
 
 testikattavuusraportti saadaan komennolla:  
-**mvn test jacoco:report**
+**mvn test jacoco:report**  
+
+tämän jälkeen voit luoda jar-tiedoston komennolla  
+
+**mvn package**  
 
 ***HUOM! Toistaiseksi aina kun ohjelma käynnistetään, aikaisempi sisältö tietokannassa tuhotaan. Tämä siksi, jotta testit toimisivat.***
 
