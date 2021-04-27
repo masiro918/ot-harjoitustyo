@@ -24,3 +24,6 @@
 | 24.4. | 1h15min | Korjattu bugi tekstikäyttöliittymässä: ääkösten lukeminen. Korjattu niin, että kuukausi pitää syöttää ilman ä:tä tai ö:tä. Aloitettu tekemään graafista käyttöliittymää. |
 | 25.4. | 35min   | Jatkettu graafisen käyttöliittymän koodamista. Nyt admin pystyy poistamaan varauksia. Lisäksi korjattu bugi, joka koski metodia checkInputs. |
 | 26.4. | 50min   | Korjattu virheitä, joita checkstyle ilmoitti. Jar-tiedoston luonti onnistuu. Päivitetty edistyminen README-tiedostoon. |
+| 27.4. | 50min   | Tehty 1. relase. Päivitin README-tiedostoa, jossa on ohjeet ohjelman kännistämiseen mm. jar-tiedostosta. Testattu, että graafinen käyttöliittymä aukeaa etätyöpöydällä |
+  
+Yhteensä aikaa on kulunut: 23h 30min.
