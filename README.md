@@ -1,7 +1,7 @@
 # ohjelmistotekniikka, harjoitustyö
 
-[linkki työaikakirjanpitoon](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/tyoaikakirjanpito.md)  
-[linkki vaatimusmäärittelyyn](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/vaatimusmaarittely.md)  
+[linkki työaikakirjanpitoon](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/tyoaikakirjanpito.md)  
+[linkki vaatimusmäärittelyyn](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/vaatimusmaarittely.md)  
 [linkki arkkitehtuurikuvaukseen](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/arkkitehtuuri.md)  
 
 ## ohjelman tämänhetinen tilanne
