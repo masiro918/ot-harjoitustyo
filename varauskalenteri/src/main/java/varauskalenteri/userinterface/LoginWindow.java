@@ -36,7 +36,7 @@ public class LoginWindow extends Application implements ActionListener {
     Text welcomeText = new Text("kirjaudu sisään tai luo uusi käyttäjätunnus");
     
     TextField textFieldUsername = new TextField();
-    TextField textFieldUPassword = new TextField();
+    PasswordField textFieldUPassword = new PasswordField();
     
     @Override
     public void init() throws Exception {
@@ -147,7 +147,8 @@ public class LoginWindow extends Application implements ActionListener {
      */
     public void buttonRegisterActionHandler() {
         try {
-            RegisterWindow.show();
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.show();
         } catch (Exception ex) {
             MessageWindow.showMsgbox("tapahtui poikkeus: " + ex.getMessage());
         }

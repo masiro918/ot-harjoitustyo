@@ -26,5 +26,6 @@
 | 26.4. | 50min   | Korjattu virheitä, joita checkstyle ilmoitti. Jar-tiedoston luonti onnistuu. Päivitetty edistyminen README-tiedostoon. |
 | 27.4. | 50min   | Tehty 1. relase. Päivitin README-tiedostoa, jossa on ohjeet ohjelman kännistämiseen mm. jar-tiedostosta. Testattu, että graafinen käyttöliittymä aukeaa etätyöpöydällä |
 | 28.4. | 50min   | Rakennettu lisää graafisen käyttöliittymän kirjautumis- ja rekisteröitymisikkunaa. |  
+| 29.4. | 40min   | Nyt pystyy luomaan käyttäjätunnuksen graafista käyttöliittymää käyttäen. |
 
-Yhteensä aikaa on kulunut: 24h 20min.
+Yhteensä aikaa on kulunut: 25h.
