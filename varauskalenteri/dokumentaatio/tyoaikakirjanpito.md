@@ -27,5 +27,6 @@
 | 27.4. | 50min   | Tehty 1. relase. Päivitin README-tiedostoa, jossa on ohjeet ohjelman kännistämiseen mm. jar-tiedostosta. Testattu, että graafinen käyttöliittymä aukeaa etätyöpöydällä |
 | 28.4. | 50min   | Rakennettu lisää graafisen käyttöliittymän kirjautumis- ja rekisteröitymisikkunaa. |  
 | 29.4. | 40min   | Nyt pystyy luomaan käyttäjätunnuksen graafista käyttöliittymää käyttäen. |
+| 30.4. | 1h5min  | Graafinen käyttäliittymä on lähes valmis. Tosin mitään toiminnallisuutta siinä ei vielä ole, mutta ulkomuto on lähes valmis. |
 
-Yhteensä aikaa on kulunut: 25h.
+Yhteensä aikaa on kulunut: 26h 5min.

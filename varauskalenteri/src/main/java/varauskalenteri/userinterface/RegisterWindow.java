@@ -35,9 +35,9 @@ public class RegisterWindow {
     private TextField textFieldUsername = new TextField();
     private PasswordField textFieldUPassword = new PasswordField();
     private PasswordField textFieldUPassword2 = new PasswordField();
-    private Text textUsername = new Text("käyttäjätunnus:");
-    private Text textPassword = new Text("salasana:");
-    private Text textPassword2 = new Text("salasana uudelleen:");
+    private Text textUsername = new Text("käyttäjätunnus:          ");
+    private Text textPassword = new Text("salasana:                     ");
+    private Text textPassword2 = new Text("salasana uudelleen:    ");
     private Button buttonConfirm = new Button("luo tunnus!");
     /**
      * Parametritön konstruktori.
@@ -68,23 +68,42 @@ public class RegisterWindow {
         VBox vBox = new VBox();
         vBox.setSpacing(5);
         
+        HBox hBox1 = new HBox();
+        hBox1.setSpacing(5);
+        
+        HBox hBox2 = new HBox();
+        hBox2.setSpacing(5);
+        
+        HBox hBox3 = new HBox();
+        hBox3.setSpacing(5);
+        
+        HBox hBox4 = new HBox();
+        hBox4.setSpacing(5);
+        
         Group group = new Group(vBox);
-        Scene scene = new Scene(group, 500, 500, Color.RED);
+        Scene scene = new Scene(group, 400, 300, Color.RED);
  
         this.stage = new Stage();
         this.stage.setTitle("varauskalenteri");
         this.stage.setScene(scene);
+        this.stage.setMaxWidth(400);
+        this.stage.setMaxHeight(300);
+        this.stage.setResizable(false);
         
-        vBox.getChildren().add(this.textUsername);
-        vBox.getChildren().add(this.textFieldUsername);
+        vBox.getChildren().add(hBox1);
+        hBox1.getChildren().add(this.textUsername);
+        hBox1.getChildren().add(this.textFieldUsername);
         
-        vBox.getChildren().add(this.textPassword);
-        vBox.getChildren().add(this.textFieldUPassword);
+        vBox.getChildren().add(hBox2);
+        hBox2.getChildren().add(this.textPassword);
+        hBox2.getChildren().add(this.textFieldUPassword);
         
-        vBox.getChildren().add(this.textPassword2);
-        vBox.getChildren().add(this.textFieldUPassword2);
+        vBox.getChildren().add(hBox3);
+        hBox3.getChildren().add(this.textPassword2);
+        hBox3.getChildren().add(this.textFieldUPassword2);
         
-        vBox.getChildren().add(this.buttonConfirm);
+        vBox.getChildren().add(hBox4);
+        hBox4.getChildren().add(this.buttonConfirm);
         
         init();
         

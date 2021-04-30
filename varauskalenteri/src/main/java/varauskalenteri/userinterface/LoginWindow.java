@@ -136,7 +136,14 @@ public class LoginWindow extends Application implements ActionListener {
         }
             
         if (loginOk == true) {
-            MessageWindow.showMsgbox("käyttäjätunnus ja salasana olivat oikein!");
+            //MessageWindow.showMsgbox("käyttäjätunnus ja salasana olivat oikein!");
+            try {
+                String usertype = Controller.getUserType(username);
+                ReservationWindow reservationWindow = new ReservationWindow(username, usertype);
+                reservationWindow.show();
+            } catch (Exception ex) {
+                MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+            }
         } else {
             MessageWindow.showMsgbox("käyttäjätunnus ja salasana olivat väärin!");
         }
