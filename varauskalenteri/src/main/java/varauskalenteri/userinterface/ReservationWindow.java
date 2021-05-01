@@ -1,6 +1,7 @@
 
 package varauskalenteri.userinterface;
 
+import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +12,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import varauskalenteri.domain.Reservation;
+import varauskalenteri.main.Controller;
 
 /**
  * Ikkuna, josta voi tehdä varauksia ja katsella varaustilannetta.
@@ -22,15 +25,17 @@ public class ReservationWindow {
     private Stage stage = null;
     private Button buttonExit = new Button("lopeta");
     private Button buttonReservations = new Button("näytä varaukset");
+    private Button buttonAdd = new Button("lisää varaus");
     private Button buttonDelete = new Button("poista varaus");
     private Text textDay = new Text("syötä päivämäärä (muodossa päivä.kuukausi.vuosi):");
-    private Text textDeleteReservation = new Text("poista varaus:");
+    private Text textDeleteReservation = new Text("uusi varaus:");
     private TextField textfieldDay = new TextField();
     private TextArea textareaReservations = new TextArea();
-    private TextField textfieldDelDay = new TextField();
-    private TextField textfieldDelMounth = new TextField();
-    private TextField textfieldDelTime = new TextField();
-    private TextField textfieldDelYear = new TextField();
+    private TextField textfieldAddDay = new TextField();
+    private TextField textfieldAddMounth = new TextField();
+    private TextField textfieldAddTime = new TextField();
+    private TextField textfieldAddYear = new TextField();
+    
     /**
      * Konstruktori, jossa asetetaan käyttäjätunnus, jolla kirjautudaan sisään ja sen tyyppi.
      * @param username käyttäjätunnus
@@ -51,15 +56,20 @@ public class ReservationWindow {
         hBox1.getChildren().add(this.textDay);
         hBox1.getChildren().add(this.textfieldDay);
         hBox1.getChildren().add(this.textareaReservations);
+        hBox1.getChildren().add(this.buttonReservations);
         
         HBox hBox2 = new HBox();
         hBox2.setSpacing(5);
         hBox2.getChildren().add(this.textDeleteReservation);
-        hBox2.getChildren().add(this.textfieldDelDay);
-        hBox2.getChildren().add(this.textfieldDelMounth);
-        hBox2.getChildren().add(this.textfieldDelTime);
-        hBox2.getChildren().add(this.textfieldDelYear);
-        hBox2.getChildren().add(this.buttonReservations);
+        hBox2.getChildren().add(this.textfieldAddDay);
+        hBox2.getChildren().add(this.textfieldAddMounth);
+        hBox2.getChildren().add(this.textfieldAddTime);
+        hBox2.getChildren().add(this.textfieldAddYear);
+        hBox2.getChildren().add(this.buttonAdd);
+        
+        if (this.usertype.equals("admin")) {
+            hBox2.getChildren().add(this.buttonDelete);
+        }
         
         vBox.getChildren().add(hBox1);
         vBox.getChildren().add(hBox2);
@@ -85,15 +95,15 @@ public class ReservationWindow {
         
         vBox.getChildren().add(hBox3);
         
-        this.textfieldDelDay.setText("päivä");
-        this.textfieldDelMounth.setText("kuukausi");
-        this.textfieldDelTime.setText("kellonaika");
-        this.textfieldDelYear.setText("vuosi");
+        this.textfieldAddDay.setText("päivä");
+        this.textfieldAddMounth.setText("kuukausi");
+        this.textfieldAddTime.setText("kellonaika");
+        this.textfieldAddYear.setText("vuosi");
         
-        this.textfieldDelDay.setMaxWidth(80);
-        this.textfieldDelMounth.setMaxWidth(200);
-        this.textfieldDelTime.setMaxWidth(100);
-        this.textfieldDelYear.setMaxWidth(80);
+        this.textfieldAddDay.setMaxWidth(80);
+        this.textfieldAddMounth.setMaxWidth(200);
+        this.textfieldAddTime.setMaxWidth(100);
+        this.textfieldAddYear.setMaxWidth(80);
                
         init();
         
@@ -112,6 +122,32 @@ public class ReservationWindow {
                 MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
             }
         });
+        
+        this.buttonAdd.setOnAction(e -> {
+            try {
+                buttonAddActionHandler();
+            } catch (Exception ex) {
+                MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+            }
+        });
+        
+        this.buttonReservations.setOnAction(e -> {
+            try {
+                buttonViewReservationsActionHandler();
+            } catch (Exception ex) {
+                MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+            }
+        });
+        
+        this.buttonDelete.setOnAction(e -> {
+            if (this.usertype.equals("admin")) {
+                try {
+                    buttonDeleteReservationActionHandler();
+                } catch (Exception ex) {
+                    MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+                }
+            }
+        });
     }
 
     /**
@@ -119,5 +155,113 @@ public class ReservationWindow {
      */
     public void buttonExitActionHandler() {
         this.stage.close();
+    }
+
+    /**
+     * Käsittelee tapahtuman, jossa lisätään uusi varaus.
+     * @throws java.lang.Exception
+     */
+    public void buttonAddActionHandler() throws Exception {
+        String day = this.textfieldAddDay.getText();
+        String mounth = this.textfieldAddMounth.getText();
+        String time = this.textfieldAddTime.getText();
+        String year = this.textfieldAddYear.getText();
+        
+        try {
+            Controller.checkInputs(Integer.parseInt(day), Integer.parseInt(year), mounth, time);
+        } catch (Exception e) {
+            MessageWindow.showMsgbox(e.getMessage());
+            return;
+        }
+        
+        Reservation reservation = new Reservation();
+        reservation.setDay(Integer.parseInt(day));
+        reservation.setMounth(mounth);
+        reservation.setYear(Integer.parseInt(year));
+        reservation.setTime(time);
+        reservation.setUserId(Controller.getUserId(this.username));
+        
+        Controller.newReservation(reservation);
+        
+        MessageWindow.showMsgbox("varaus lisätty!");
+    }
+
+    /**
+     * Käsittelee tapahtuman, jossa näytetään haetut varaukset.
+     */
+    public void buttonViewReservationsActionHandler() throws Exception {
+        //TODO: järjestä kellonajanmukaan varaukset!
+        
+        String _day = this.textfieldDay.getText();
+        
+        String[] blocks = _day.split("\\.");
+        
+        int day = Integer.parseInt(blocks[0]);
+        int year = Integer.parseInt(blocks[2]);
+        String mounth = blocks[1];
+        
+        try {
+            Controller.checkInputs(day, year, mounth);
+        } catch (Exception e) {
+            MessageWindow.showMsgbox(e.getMessage());
+            return;
+        }
+        
+        ArrayList<Reservation> results = Controller.getReservations(day, year, mounth);
+        
+        String textareaContent = "";
+        
+        for (Reservation reservation : results) {
+            String reservator = Controller.getUsername(reservation.getUserId());
+            String line = reservation.getTime() + " varaajalta: " +  reservator;
+            
+            textareaContent = textareaContent + line + "\n";
+        }
+        
+        this.textareaReservations.setText(textareaContent);
+    }
+
+    /**
+     * Käsittelee tapahtuman, jossa poistetaan varaus.
+     */
+    public void buttonDeleteReservationActionHandler() throws Exception {
+        try {
+            int day = Integer.parseInt(this.textfieldAddDay.getText());
+            int year = Integer.parseInt(this.textfieldAddYear.getText());
+            String time = this.textfieldAddTime.getText();
+            String mounth = this.textfieldAddMounth.getText();
+            
+            int id = Controller.getReservationId(year, mounth, day, time);
+            Controller.delReservation("admin", id);
+            MessageWindow.showMsgbox("varaus poistettu!");
+            
+            // päivitetään vielä näkymä, josta on poistettu äskeinen varaus
+            updateReservations(day, year, time, mounth);
+        } catch (Exception e) {
+            MessageWindow.showMsgbox(e.getMessage());
+        }
+    }
+    
+    /**
+     * Päivittää varausnäkymän.
+     * @param day päivä
+     * @param year vuosi
+     * @param time kellonaika
+     * @param mounth kuukausi
+     * @throws java.lang.Exception
+     */
+    public void updateReservations(int day, int year, String time, String mounth) throws Exception {
+        ArrayList<Reservation> results = Controller.getReservations(day, year, mounth);
+        
+        String textareaContent = "";
+        
+        for (Reservation reservation : results) {
+            String reservator = Controller.getUsername(reservation.getUserId());
+            String line = reservation.getTime() + " varaajalta: " +  reservator;
+            
+            textareaContent = textareaContent + line + "\n";
+        }
+        
+        this.textareaReservations.setText(textareaContent);
     }
 }

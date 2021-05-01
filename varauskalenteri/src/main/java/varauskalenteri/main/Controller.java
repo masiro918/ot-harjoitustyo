@@ -244,7 +244,7 @@ public class Controller {
      */
     public static void checkInputs(int day, int year, String mounth, String time) throws Exception {
         // päivä
-        if (day < 0 && day > 31) {
+        if (day < 0 || day > 31) {
             throw new Exception("Päivämäärä ei ole sallittu!");
         }
         
