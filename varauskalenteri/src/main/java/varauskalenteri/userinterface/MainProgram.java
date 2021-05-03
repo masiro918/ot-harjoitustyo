@@ -1,6 +1,7 @@
 
 package varauskalenteri.userinterface;
 
+import java.io.File;
 import varauskalenteri.userinterface.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,15 +12,12 @@ import java.util.Scanner;
 
 /**
  * Tästä luokasta avataan, joko teksti- tai graafinenkäyttöliittymä.
- * HUOM! Tietokanta luodaan toistaiseksi joka ohjelman suorittaminen aikana uudelleen.
- * Eli vanhan tietokannan sisältö tuhotaan aina, kun ohjelma käynnistetään.
- * Kun ajat testejä, aja ensin ohjelma ja sitten vasta testit. Näin varmistut, että
- * testejä ajettaessa tietokanta on olmessa.
  * @author Matias Siro
  */
 public class MainProgram {
     public static void main(String[] args) {
         
+        /*
         try {
             // poistetaan vahna tietokanta
             Path dbPath = Paths.get("database.db");
@@ -27,12 +25,22 @@ public class MainProgram {
         } catch (Exception e) {
             System.err.println("Poikkeus tuhottaessa tietokantaa: " + e.getMessage());
         }
+        */
         
-        try {
-            // luodaan uusi tietokanta
-            Controller.createDatabase();
-        } catch (Exception e) {
-            System.err.println("Poikkeus luodessa tietokantaa: " + e.getMessage());
+        // tarkistetaan, onko tietokanta jo olemassa
+        
+        File dbFile = new File("database.db");
+        
+        if (dbFile.exists() == false) {
+            try {
+                // luodaan uusi tietokanta
+                System.out.println("luodaan tietokanta");
+                Controller.createDatabase();
+            } catch (Exception e) {
+                System.err.println("Poikkeus luodessa tietokantaa: " + e.getMessage());
+            }
+        } else {
+            System.out.println("tietokanta on jo olemassa!");
         }
         
         System.out.println("Kirjoita gui, jos haluat käyttää graafista käyttöliittymää.");

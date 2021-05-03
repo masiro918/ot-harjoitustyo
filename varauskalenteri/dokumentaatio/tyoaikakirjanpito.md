@@ -29,5 +29,6 @@
 | 29.4. | 40min   | Nyt pystyy luomaan käyttäjätunnuksen graafista käyttöliittymää käyttäen. |
 | 30.4. | 1h5min  | Graafinen käyttäliittymä on lähes valmis. Tosin mitään toiminnallisuutta siinä ei vielä ole, mutta ulkomuto on lähes valmis. |
 | 1.5.  | 1h5min  | Graafinen käyttöliittymä on hienosäätöä vaille valmis. |
+| 3.5.  | 1h20min | Lähdekoodia siistitty ja dokumentaatiota alettu kirjoittamaan |
 
-Yhteensä aikaa on kulunut: 27h 10min.
+Yhteensä aikaa on kulunut: 28h 30min.

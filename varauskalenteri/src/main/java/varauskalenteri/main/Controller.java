@@ -516,8 +516,4 @@ public class Controller {
         }
         return false;
     }
-    
-    public static void main(String[] args) throws Exception {
-        
-    }
 }

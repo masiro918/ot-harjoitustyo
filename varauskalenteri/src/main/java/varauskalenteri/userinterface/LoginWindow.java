@@ -29,8 +29,8 @@ import varauskalenteri.main.Controller;
  * https://www.tutorialkart.com/javafx/create-new-button-and-set-action-listener-in-javafx/
  * @author Matias Siro
  */
-public class LoginWindow extends Application implements ActionListener {
-    
+public class LoginWindow extends Application {
+// public class LoginWindow extends Application implements ActionListener {
     Button buttonLogin = new Button();
     Button buttonRegister = new Button();
     Text welcomeText = new Text("kirjaudu sisään tai luo uusi käyttäjätunnus");
@@ -83,6 +83,7 @@ public class LoginWindow extends Application implements ActionListener {
         stage.show();
     }
 
+    /*
     public void actionPerformed(ActionEvent arg0) {
         
     }
@@ -91,15 +92,8 @@ public class LoginWindow extends Application implements ActionListener {
     public void actionPerformed(java.awt.event.ActionEvent arg0) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    */
     
-    /**
-     * Pääohjelma.
-     * @param args 
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     /**
      * Kirjautuu sisään.
      * @param username käyttäjätunnus
@@ -159,5 +153,13 @@ public class LoginWindow extends Application implements ActionListener {
         } catch (Exception ex) {
             MessageWindow.showMsgbox("tapahtui poikkeus: " + ex.getMessage());
         }
+    }
+    
+    /**
+     * Pääohjelma.
+     * @param args 
+     */
+    public static void main(String[] args) {
+        launch(args);
     }
 }

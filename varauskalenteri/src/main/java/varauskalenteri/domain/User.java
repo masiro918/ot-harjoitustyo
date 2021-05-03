@@ -47,7 +47,7 @@ public class User {
         return this.username;
     }
     
-    /*
+    /**
     Huom! Ei palauta "todellista" salasanaa vaan hash-arvon siitä.
     */
     public String getPassword() {

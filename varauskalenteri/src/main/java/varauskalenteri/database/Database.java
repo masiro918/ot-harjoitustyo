@@ -16,6 +16,7 @@ public class Database {
     
     /**
      * Konstruktori.
+     * @throws java.lang.Exception
      */
     public Database() throws Exception { 
         connection = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -68,7 +69,6 @@ public class Database {
         try {
             statement = this.connection.createStatement();
             statement.executeUpdate(sql);
-            //statement.execute(sql);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         } finally {

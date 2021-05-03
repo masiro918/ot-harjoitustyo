@@ -26,10 +26,18 @@ public class DbService {
         this.database = new Database();
     }
     
+    /**
+     * Huhoaa taulut sisältöineen.
+     * @throws Exception 
+     */
     public void destroyTables() throws Exception {
         this.database.dropTables();
     }
     
+    /**
+     * Luo sovelluksessa tarvittavat taulut.
+     * @throws Exception 
+     */
     public void createTables() throws Exception {
         // tarkistetaan, onko tietokantataulut jo olemassa
         boolean exists = Files.exists(Paths.get("database.db"));
