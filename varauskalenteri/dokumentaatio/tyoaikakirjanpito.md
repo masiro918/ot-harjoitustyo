@@ -30,5 +30,6 @@
 | 30.4. | 1h5min  | Graafinen käyttäliittymä on lähes valmis. Tosin mitään toiminnallisuutta siinä ei vielä ole, mutta ulkomuto on lähes valmis. |
 | 1.5.  | 1h5min  | Graafinen käyttöliittymä on hienosäätöä vaille valmis. |
 | 3.5.  | 1h20min | Lähdekoodia siistitty ja dokumentaatiota alettu kirjoittamaan |
+| 4.5.  | 50min   | Tehty 2. release, siirretty luonnos dokumentaatiosta repositorioon, päivitetty readme-tiedostoon projektin etenemisestä ja uusista käyttöohjeista. |
 
-Yhteensä aikaa on kulunut: 28h 30min.
+Yhteensä aikaa on kulunut: 29h 20min.
