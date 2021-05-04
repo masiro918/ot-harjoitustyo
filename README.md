@@ -8,7 +8,7 @@
 
 Jotta voisit suorittaa alla olevat toimenpiteet, siirry ensin hakemistoon varauskalenteri/  
 
-HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät. Muuten testit eivät men läpi, koska oikeankaltaista tietokantaa ei ole luotu. Jos haluat luoda jar-tiedoston, sinun täytyy ensin kääntää ohjelma alla olevalla komennolla ja sen jälkeen voit luoda jar-tiedoston komennolla 'mvn package'. Testien toimivuuden takia aina kun käynnistät ohjelman tietokannan aikaisempi sisältö tuhotaan.  
+HUOM! Käännä ensin ohjelma, aja sitten vasta testit. Näin saadaan luotua tietokanta, joita myös testit käyttävät. Muuten testit eivät men läpi, koska oikeankaltaista tietokantaa ei ole luotu. Jos haluat luoda jar-tiedoston, sinun täytyy ensin kääntää ohjelma alla olevalla komennolla ja sen jälkeen voit luoda jar-tiedoston komennolla 'mvn package'.   
 
 ohjelma käännetään ja ajetaan komennolla:  
 **mvn compile exec:java -Dexec.mainClass=varauskalenteri.userinterface.MainProgram**  
@@ -21,9 +21,14 @@ testikattavuusraportti saadaan komennolla:
 
 tämän jälkeen voit luoda jar-tiedoston komennolla  
 
-**mvn package**  
+**mvn package**   
 
 ***HUOM! Toistaiseksi aina kun ohjelma käynnistetään, aikaisempi sisältö tietokannassa tuhotaan. Tämä siksi, jotta testit toimisivat.***
+
+## projektin nykyinen tilanne (viikko 6)
+Graafinen käyttöliittymä on hienosäätöä vaille valmis. Ainut toiminnallinen ero tekstikäyttöliittymään on se, että tekstikäyttöliittymästä voidaan luoda admin-käyttäjä.
+Graafisesta käyttöliittymästä voidaan luoda siis vain tavallisia käyttäjiä.    
+
 
 ## projektin nykyinen tilanne (viikko 5)
 Toiminnot, jotka ohjelmalta vaaditaan:    
