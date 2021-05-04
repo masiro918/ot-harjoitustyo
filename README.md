@@ -42,7 +42,9 @@ Toiminnot, jotka ohjelmalta vaaditaan:
 -kaikkien varausten tarkistaminen tietyltä päivältä **[tehty]**  
 -käyttäjätunnus liitetään varaukseen **[tehty]**  
 -admin-käyttäjä pystyy poistamaan varauksen **[tehty]**  
--graafinen käyttöliittymä **[tehty (tarvitsee vielä kuitenkin hinosäätöä)]**    
+-graafinen käyttöliittymä **[tehty (tarvitsee vielä kuitenkin hinosäätöä)]**
+-käyttöohje **[aloitettu, kesken]**  
+-dokumentaatio **[aloitettu, kesken]**  
 -bugi: jotkut virhe ilmoituksen ovat vääriä (esim. jos kuukauden kohdalle kirjoittaa 1234, väittää että vuosi olisi väärä) **[korjattu]**    
 
 
