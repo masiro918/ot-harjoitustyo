@@ -46,7 +46,23 @@ Kun olet kirjaunut sisään, avauttu sinulle alla oleva näkymä. Alla olevassa 
 
 **kuva_perusnäkymästä**
 
+## 2.3 uuden varauksen tekeminen
 
+Edellä oolleesta kuvasta näet, että toisen rivit tekstikentät ovat uuden varauksen luomista varten. Kirjoita kenttään "päivä" se päivä, jolle olet varauksen tekemässä (eli joku luku väliltä 1-31). Sitten
+kirjoita kenttään kuukausi varauksen kuukausi ilman mahdollisia ääkkösiä (esim heinäkuu -> heinakuu) ja kaikki kirjaimet pienellä. Sitten kellonaika kohtaan joku tuntiväli väliltä klo 8->16 tyyliin: 08-09,
+09-10 11-12 ... 15-16. Sen jälkeen kirjoita varauksen vuosi kenttään "vuosi" ja paina nappia "lisää varaus". Nyt varaus on kirjattu järjestelmään.    
+
+## 2.4 jo tehtyjen varausten haku
+
+Kun haluat tarkastellan tietyn päivän varauksia, kirjoita haluttu päivä ensimmäisen rivin tekstikenttään muodossa päivä.kuukausi.vuosi (ja kuukausi jälleen ilman ääkkösiä). Esim: 2.toukokuu.2022 tai 15.heinakuu.2021.  
+
+
+
+## 2.5 varausten poisto (onnistuu vain admin-käyttäjällä)
+
+**kuva_poista-nappi**
+
+Kirjoita toisella rivillä kohtaan päivä poistettavan varauksen päivä, kohtaan kuukausi kuukausi (kaikki samalla tavalla kuin olisit lisäämässä varausta, eli ilman ääkkösiä yms.). Lopuksi paika poista-nappia.    
 
 
 Avaa ohjelma komentoriviltä komennolla:    

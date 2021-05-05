@@ -31,5 +31,6 @@
 | 1.5.  | 1h5min  | Graafinen käyttöliittymä on hienosäätöä vaille valmis. |
 | 3.5.  | 1h20min | Lähdekoodia siistitty ja dokumentaatiota alettu kirjoittamaan |
 | 4.5.  | 50min   | Tehty 2. release, siirretty luonnos dokumentaatiosta repositorioon, päivitetty readme-tiedostoon projektin etenemisestä ja uusista käyttöohjeista. |
+| 5.4.  | 55min   | Alettu tekemään käyttöohjetta ohjelmalle. Lisäksi otin JavaDocin käyttöön |
 
-Yhteensä aikaa on kulunut: 29h 20min.
+Yhteensä aikaa on kulunut: 30h 10min.
