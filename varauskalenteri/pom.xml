@@ -47,6 +47,12 @@
             <artifactId>javafx-controls</artifactId>
     	    <version>12.0.2</version>
 	</dependency>
+	<dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.2.0</version>
+            <type>maven-plugin</type>
+        </dependency>
     </dependencies>
     <build>
     <plugins>
@@ -84,6 +90,14 @@
                 <mainClass>org.openjfx.App</mainClass>
 	    </configuration>
 	</plugin>
+	<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.0.1</version>
+            <configuration>
+                <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+            </configuration>
+        </plugin>
 	<plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
