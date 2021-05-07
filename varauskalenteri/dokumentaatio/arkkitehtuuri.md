@@ -3,7 +3,7 @@
 ## rakenne 
 
 Ohjelmistossa on 4 kerrosta. Jokainen kerros on yksi Javan pakkaus (=package).  
-**kuva kerrosarkkitehtuurista.  
+:![picture alt](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/pakkausarkkitehtuuri.jpg)  
 
 ## käyttöliittymä
 
