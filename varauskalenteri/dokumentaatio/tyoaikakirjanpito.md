@@ -32,5 +32,7 @@
 | 3.5.  | 1h20min | Lähdekoodia siistitty ja dokumentaatiota alettu kirjoittamaan |
 | 4.5.  | 50min   | Tehty 2. release, siirretty luonnos dokumentaatiosta repositorioon, päivitetty readme-tiedostoon projektin etenemisestä ja uusista käyttöohjeista. |
 | 5.4.  | 55min   | Alettu tekemään käyttöohjetta ohjelmalle. Lisäksi otin JavaDocin käyttöön |
+| 7.5.  | 1h10min | Dokumentaatiota laajennettu, muutettu pari elementtiä combobox-elementeiksi käyttöliittymässä, käyttöohjetta kehitetty jne. |
 
-Yhteensä aikaa on kulunut: 30h 10min.
+
+Yhteensä aikaa on kulunut: 31h 20min.
