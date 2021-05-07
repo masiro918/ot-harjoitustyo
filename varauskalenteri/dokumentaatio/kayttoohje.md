@@ -42,9 +42,9 @@ Valitse itsellesi käyttäjätunnus. Se voi olla mikä tahansa merkkijono. Valit
 
 ## 2.2 sisään kirjautuminen ja ohjelman perusnäkymä
 
-Kun olet kirjaunut sisään, avauttu sinulle alla oleva näkymä. Alla olevassa kuvassa on kerrottu, mitä mitkin elementit ovat kyseisessä ikkunassa.
+Kun olet kirjaunut sisään, avauttu sinulle alla oleva näkymä. Alla olevassa kuvassa on kerrottu, mitä mitkin elementit ovat kyseisessä ikkunassa.  
 
-**kuva_perusnäkymästä**
+:![picture alt](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/perusnakyma.jpg)
 
 ## 2.3 uuden varauksen tekeminen
 
@@ -60,7 +60,7 @@ Kun haluat tarkastellan tietyn päivän varauksia, kirjoita haluttu päivä ensi
 
 ## 2.5 varausten poisto (onnistuu vain admin-käyttäjällä)
 
-**kuva_poista-nappi**
+:![picture alt](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/poista-nappi.jpg)  
 
 Kirjoita toisella rivillä kohtaan päivä poistettavan varauksen päivä, kohtaan kuukausi kuukausi (kaikki samalla tavalla kuin olisit lisäämässä varausta, eli ilman ääkkösiä yms.). Lopuksi paika poista-nappia.    
 
