@@ -21,7 +21,7 @@ Sovelluksen kaksi olennaista luokaa ovat User ja Reservation. Niiden määrittel
 
 Luokkien suhde toisiinsa:    
 
-** kuva user-reservation **
+:![picture alt](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/user-reservation.jpg)  
 Ohjelman rakenteesta. Alimmassa pakkauksessa on toiminnallisuudet, jossa käsitellään tietokantaa sql-kielen tasolla. Kerrosta ylemässä pakkauksessa tietokantaa käsitellään luokkien (User ja Reservation) avulla. Näitä operaatioita tehdään luokan DbService avulla. Eli esimerkiksi, jos halutaan tehdä uusi varaus, muodostetaan ensiksi uusi Reservation-olio. Tämän jälkeen annetaan luotu Reservation-olio DbService-oliolle, joka antaa tiedon uudesta Reservation-oliosta kerrostaalemmalle Database-oliolle, joka suorittaa oikeanlaisen SQL-lauseen tietokannalle.  
 
 Yhtä ylempänä on main-pakkaus. Se sisältää vain yhden luokan. Tästä luokasta ei luoda oliota vaan kaikki tämän luokan metodit ovat staattisia. Tämä luokka tarjoaa metodeja, joita tarvitaan juuri tässä ohjelmassa (esim. uuden käyttäjätunnuksen luonti, varauksen lisäys ja poisto, varausten haku ja salasanan hash-arvon selvittäminen). Niissä tapauksissa kun käytetään tietokantaa, Controller-luokka tekee ne operaatiot antamalla ne DbService-oliolle.  
