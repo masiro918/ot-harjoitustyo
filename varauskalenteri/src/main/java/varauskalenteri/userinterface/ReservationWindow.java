@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -31,11 +32,19 @@ public class ReservationWindow {
     private Text textDeleteReservation = new Text("uusi varaus:");
     private TextField textfieldDay = new TextField();
     private TextArea textareaReservations = new TextArea();
+    
+    
     private TextField textfieldAddDay = new TextField();
+    /*
     private TextField textfieldAddMounth = new TextField();
     private TextField textfieldAddTime = new TextField();
+    */
     private TextField textfieldAddYear = new TextField();
     
+    //private ComboBox comboboxDay = new ComboBox();
+    private ComboBox comboboxMounth = new ComboBox();
+    private ComboBox comboboxTime = new ComboBox();
+    //private ComboBox comboboxYear = new ComboBox();
     /**
      * Konstruktori, jossa asetetaan käyttäjätunnus, jolla kirjautudaan sisään ja sen tyyppi.
      * @param username käyttäjätunnus
@@ -50,6 +59,9 @@ public class ReservationWindow {
      * Luo ja näyttää ikkunan.
      */
     public void show() throws Exception {
+        setMonths();
+        setTimes();
+        
         VBox vBox = new VBox();
         
         HBox hBox1 = new HBox();
@@ -62,8 +74,8 @@ public class ReservationWindow {
         hBox2.setSpacing(5);
         hBox2.getChildren().add(this.textDeleteReservation);
         hBox2.getChildren().add(this.textfieldAddDay);
-        hBox2.getChildren().add(this.textfieldAddMounth);
-        hBox2.getChildren().add(this.textfieldAddTime);
+        hBox2.getChildren().add(this.comboboxMounth);
+        hBox2.getChildren().add(this.comboboxTime);
         hBox2.getChildren().add(this.textfieldAddYear);
         hBox2.getChildren().add(this.buttonAdd);
         
@@ -96,13 +108,13 @@ public class ReservationWindow {
         vBox.getChildren().add(hBox3);
         
         this.textfieldAddDay.setText("päivä");
-        this.textfieldAddMounth.setText("kuukausi");
-        this.textfieldAddTime.setText("kellonaika");
+        //this.textfieldAddMounth.setText("kuukausi");
+        //this.textfieldAddTime.setText("kellonaika");
         this.textfieldAddYear.setText("vuosi");
         
         this.textfieldAddDay.setMaxWidth(80);
-        this.textfieldAddMounth.setMaxWidth(200);
-        this.textfieldAddTime.setMaxWidth(100);
+        //this.textfieldAddMounth.setMaxWidth(200);
+        //this.textfieldAddTime.setMaxWidth(100);
         this.textfieldAddYear.setMaxWidth(80);
                
         init();
@@ -119,7 +131,7 @@ public class ReservationWindow {
             try {
                 buttonExitActionHandler();
             } catch (Exception ex) {
-                MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+                MessageWindow.showMsgbox(ex.getMessage());
             }
         });
         
@@ -127,7 +139,7 @@ public class ReservationWindow {
             try {
                 buttonAddActionHandler();
             } catch (Exception ex) {
-                MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+                MessageWindow.showMsgbox(ex.getMessage());
             }
         });
         
@@ -135,7 +147,7 @@ public class ReservationWindow {
             try {
                 buttonViewReservationsActionHandler();
             } catch (Exception ex) {
-                MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+                MessageWindow.showMsgbox(ex.getMessage());
             }
         });
         
@@ -144,7 +156,7 @@ public class ReservationWindow {
                 try {
                     buttonDeleteReservationActionHandler();
                 } catch (Exception ex) {
-                    MessageWindow.showMsgbox("poikkeus: " + ex.getMessage());
+                    MessageWindow.showMsgbox(ex.getMessage());
                 }
             }
         });
@@ -163,8 +175,8 @@ public class ReservationWindow {
      */
     public void buttonAddActionHandler() throws Exception {
         String day = this.textfieldAddDay.getText();
-        String mounth = this.textfieldAddMounth.getText();
-        String time = this.textfieldAddTime.getText();
+        String mounth = (String)this.comboboxMounth.getValue();
+        String time = (String)this.comboboxTime.getValue();
         String year = this.textfieldAddYear.getText();
         
         try {
@@ -228,8 +240,8 @@ public class ReservationWindow {
         try {
             int day = Integer.parseInt(this.textfieldAddDay.getText());
             int year = Integer.parseInt(this.textfieldAddYear.getText());
-            String time = this.textfieldAddTime.getText();
-            String mounth = this.textfieldAddMounth.getText();
+            String time = (String)this.comboboxTime.getValue();
+            String mounth = (String)this.comboboxMounth.getValue();
             
             int id = Controller.getReservationId(year, mounth, day, time);
             Controller.delReservation("admin", id);
@@ -263,5 +275,37 @@ public class ReservationWindow {
         }
         
         this.textareaReservations.setText(textareaContent);
+    }
+
+    /**
+     * Asettaa kuukaudet comboboxiin.
+     */
+    public void setMonths() {
+        this.comboboxMounth.getItems().add("tammikuu");
+        this.comboboxMounth.getItems().add("helmikuu");
+        this.comboboxMounth.getItems().add("maaliskuu");
+        this.comboboxMounth.getItems().add("huhtikuu");
+        this.comboboxMounth.getItems().add("toukokuu");
+        this.comboboxMounth.getItems().add("kesakuu");
+        this.comboboxMounth.getItems().add("heinakuu");
+        this.comboboxMounth.getItems().add("elokuu");
+        this.comboboxMounth.getItems().add("syyskuu");
+        this.comboboxMounth.getItems().add("lokakuu");
+        this.comboboxMounth.getItems().add("marraskuu");
+        this.comboboxMounth.getItems().add("joulukuu");
+    }
+    
+    /**
+     * Asettaa kellonajat comboboxiin.
+     */
+    public void setTimes() {
+        this.comboboxTime.getItems().add("08-09");
+        this.comboboxTime.getItems().add("09-10");
+        this.comboboxTime.getItems().add("10-11");
+        this.comboboxTime.getItems().add("11-12");
+        this.comboboxTime.getItems().add("12-13");
+        this.comboboxTime.getItems().add("13-14");
+        this.comboboxTime.getItems().add("14-15");
+        this.comboboxTime.getItems().add("15-16");
     }
 }
