@@ -7,13 +7,13 @@ Ohjelmistossa on 4 kerrosta. Jokainen kerros on yksi Javan pakkaus (=package).
 
 ## käyttöliittymä
 
-Ohjelmassa on kaksi käyttöliittymää: graafinen ja tekstipohajainen. Ainut toiminnallinen ero näissä on, että jos käyttäjä haluaa luoda admin-käyttäjätunnuksen, on hänen luotava se käyttämällä graafista käyttöliittymää.  
+Ohjelmassa on kaksi käyttöliittymää: graafinen ja tekstipohajainen. Ainut toiminnallinen ero näissä on se, että jos käyttäjä haluaa luoda admin-käyttäjätunnuksen, on hänen luotava se käyttämällä tekstipohjaista käyttöliittymää.  
 
 Kun ohjelma käynnistetään, käyttäjältä kysytään komentorivillä, kumpaako käyttöliittymää hän haluaa käyttää.  
 
 Käyttöliittymä on rakennettu erilleen sovelluslogiikasta. Näin uusia käyttöliittymiä (esim. Java Swing) voidaan melko helposti toteuttaa.  
 
-Graafinen käyttöliittymä sisältää 3 erilaista ikkunaa: kirjautumisikkuna, rekisteröitymisikkuna ja varausikkuna. Ensimmäiseksi aukeaa kirjautumisikkuna (luokka LoginWindow). Tämän jälkeen käyttäjä voi kirjautua sisään tai luoda uuden käyttäjätunnuksen. Jos käyttäjä kirjautuu sisään, aukeaa varausikkuna (luokka ReservationWindow). Jos hän taas valitsee rekisteröitymisen, avautuu rekisteröitymisikkuna (luokka RegisterWindow). Rekisteröitymisen jälkeen palataan kirjautumisikkunaan (luokka LoginWindow). Kun poistutaan varausikkunasta, palataan kirjautumisikkunaan. Jos käyttäjä haluaa lopettaa käytön, hän painaa rastia kirjautumisikkunassa.  
+Graafinen käyttöliittymä sisältää 3 erilaista ikkunaa: kirjautumisikkuna, rekisteröitymisikkuna, viesti-ikkuna ja varausikkuna. Ensimmäiseksi aukeaa kirjautumisikkuna (luokka LoginWindow). Tämän jälkeen käyttäjä voi kirjautua sisään tai luoda uuden käyttäjätunnuksen. Jos käyttäjä kirjautuu sisään, aukeaa varausikkuna (luokka ReservationWindow). Jos hän taas valitsee rekisteröitymisen, avautuu rekisteröitymisikkuna (luokka RegisterWindow). Rekisteröitymisen jälkeen palataan kirjautumisikkunaan (luokka LoginWindow). Kun poistutaan varausikkunasta, palataan kirjautumisikkunaan. Jos käyttäjä haluaa lopettaa käytön, hän painaa rastia kirjautumisikkunassa. Ohjelman mahdolliset viestit käyttäjälle kerrotaan viesti-ikkunassa (luokka MessageWindow).  
 
 ## sovelluslogiikka
 
@@ -22,16 +22,16 @@ Sovelluksen kaksi olennaista luokaa ovat User ja Reservation. Niiden määrittel
 Luokkien suhde toisiinsa:    
 
 :![picture alt](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/user-reservation.jpg)  
-Ohjelman rakenteesta. Alimmassa pakkauksessa on toiminnallisuudet, jossa käsitellään tietokantaa sql-kielen tasolla. Kerrosta ylemässä pakkauksessa tietokantaa käsitellään luokkien (User ja Reservation) avulla. Näitä operaatioita tehdään luokan DbService avulla. Eli esimerkiksi, jos halutaan tehdä uusi varaus, muodostetaan ensiksi uusi Reservation-olio. Tämän jälkeen annetaan luotu Reservation-olio DbService-oliolle, joka antaa tiedon uudesta Reservation-oliosta kerrostaalemmalle Database-oliolle, joka suorittaa oikeanlaisen SQL-lauseen tietokannalle.  
+Ohjelman rakenteesta. Alimmassa pakkauksessa on toiminnallisuudet, jossa käsitellään tietokantaa sql-kielen tasolla. Kerrosta ylemässä pakkauksessa tietokantaa käsitellään luokkien (User ja Reservation) avulla. Näitä operaatioita tehdään luokan DbService avulla. Eli esimerkiksi, jos halutaan tehdä uusi varaus, muodostetaan ensiksi uusi Reservation-olio. Tämän jälkeen annetaan luotu Reservation-olio DbService-oliolle, joka antaa tiedon uudesta Reservation-oliosta kerrosta alemmalle Database-oliolle, joka suorittaa oikeanlaisen SQL-lauseen tietokannalle.  
 
-Yhtä ylempänä on main-pakkaus. Se sisältää vain yhden luokan. Tästä luokasta ei luoda oliota vaan kaikki tämän luokan metodit ovat staattisia. Tämä luokka tarjoaa metodeja, joita tarvitaan juuri tässä ohjelmassa (esim. uuden käyttäjätunnuksen luonti, varauksen lisäys ja poisto, varausten haku ja salasanan hash-arvon selvittäminen). Niissä tapauksissa kun käytetään tietokantaa, Controller-luokka tekee ne operaatiot antamalla ne DbService-oliolle.  
+Yhtä ylempänä on main-pakkaus. Se sisältää vain yhden luokan. Tästä luokasta ei luoda oliota vaan kaikki tämän luokan metodit ovat staattisia. Tämä luokka tarjoaa metodeja, joita tarvitaan juuri tässä ohjelmassa (esim. uuden käyttäjätunnuksen luonti, varauksen lisäys ja poisto, varausten haku ja salasanan hash-arvon selvittäminen). Niissä tapauksissa kun käytetään tietokantaa, Controller-luokka tekee ne operaatiot antamalla ne DbService-oliolle hoidettavaksi, joka antaa sitten puolestaan Database-luokalle.  
 
-Kaikkein ylempänä on userinterface-pakkaus. Tämä pakkaus sisältää kolme luokkaa: MainProgram, TextBasedUserInterface ja 3 muuta luokkaa, jotka kuuluvat graafiseen käyttöliittymään. Sovelluslogiikkaa käytetään näissä luokissa Controller-luokan avulla.  
+Kaikkein ylempänä on userinterface-pakkaus. Tämä pakkaus sisältää 6 luokkaa: MainProgram, TextBasedUserInterface ja 4 muuta luokkaa, jotka kuuluvat graafiseen käyttöliittymään. Sovelluslogiikkaa käytetään näissä luokissa Controller-luokan avulla. MainProgram on se luokka, joka käynnistyy ensimmäisenä, kun ohjelmaa aletaan ajaa. Se kysyy ainostaa, käytetäänkö graafista vai tekstipohjaista käyttöliittymää. Kun käyttäjä on tehnyt tämän valinnan, käynnistyy joko TextBasedUserInterface-luokka tai LoginWindow-luokka.  
 
 
 ## tietojen tallentaminen
 
-Tiedot tallennetaan tietokantaa kahteen eri tauluun: Reservation ja User. Näitä vastaavat luokat ovat domain-pallauksessa, jotka ovat saman nimiset.  
+Tiedot tallennetaan tietokantaa kahteen eri tauluun: Reservation ja User. Näitä vastaavat luokat ovat domain-pallauksessa, jotka ovat saman nimiset. Tässä ohjelmassa käytetään SQLite-tietokantaa.  
 
 ## ohjelman heikkoudet/puutteet
 
