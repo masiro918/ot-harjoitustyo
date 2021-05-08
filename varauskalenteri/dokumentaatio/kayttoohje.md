@@ -4,30 +4,30 @@
 
 Lataa ohjelman uusin release GitHubista. Pura ladattu paketti johonkin hakemistoon. Tämän jälkeen siirry komentorivillä alihakemistoon varauskalenteri/. Tämän jälkeen aja komento:    
 
-mvn compile exec:java -Dexec.mainClass=varauskalenteri.userinterface.MainProgram    
+**mvn compile exec:java -Dexec.mainClass=varauskalenteri.userinterface.MainProgram**    
 
 Tämä äskeinen komento kääntää ohjelman. Käännöksen jälkeen ohjelma käynnistyy. Kannattaa kuitenkin tässä kohtaan lopettaa ohjelman suoritus painamalla CTRL+D.  
 
 Aja sitten testit komennolla:    
 
-mvn test    
+**mvn test**    
 
 Tämän jälkeen voit luoda testikattavuusraportin komennolla:    
 
-mvn test jacoco:report    
+**mvn test jacoco:report**    
 
 Tämän jälkeen voit luoda JavaDocin komennolla:    
 
-mvn javadoc:javadoc    
+**mvn javadoc:javadoc**    
 
 Sitten siirrytään itse jar-tiedoston luontiin. Saat generoitua jar-tiedoston, joka luodaan alihakemistoon target/, komennolla:    
 
-mav package    
+**mav package**    
 
 Siirry sitten target-hakemistoon. Siellä pitäisi olla nyt tiedosto **varauskalenteri-1.0-SNAPSHOT.jar**. Tämä on nyt pysyvä ohjelmatiedosto. Saat nyt käynnistettyä milloin tahansa ohjelman, siirtymällä
 tähän hakemistoon ja ajamalla komomennon:    
 
-java -jar varauskalenteri-1.0-SNAPSHOT.jar    
+**java -jar varauskalenteri-1.0-SNAPSHOT.jar**    
 
 Ohjelma on nyt asennettu.    
 
@@ -67,7 +67,7 @@ Kirjoita toisella rivillä kohtaan päivä poistettavan varauksen päivä, kohta
 
 Avaa ohjelma komentoriviltä komennolla:    
 
-java -jar varauskalenteri-1.0-SNAPSHOT.jar    
+**java -jar varauskalenteri-1.0-SNAPSHOT.jar**    
 
 Sen jälkeen ohjelma kysyy, käytätkö graafista vai tekstipohjaista käyttöliittymää. Ota huomioon, että voit luoda admin-käyttäjän ainostaan
 tekstipohjaisesta käyttöliittymästä.
