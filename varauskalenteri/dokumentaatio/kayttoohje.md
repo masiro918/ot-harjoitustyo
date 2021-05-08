@@ -24,12 +24,12 @@ Sitten siirrytään itse jar-tiedoston luontiin. Saat generoitua jar-tiedoston, 
 
 **mav package**    
 
+Ohjelma on nyt asennettu.    
+
 Siirry sitten target-hakemistoon. Siellä pitäisi olla nyt tiedosto **varauskalenteri-1.0-SNAPSHOT.jar**. Tämä on nyt pysyvä ohjelmatiedosto. Saat nyt käynnistettyä milloin tahansa ohjelman, siirtymällä
 tähän hakemistoon ja ajamalla komomennon:    
 
 **java -jar varauskalenteri-1.0-SNAPSHOT.jar**    
-
-Ohjelma on nyt asennettu.    
 
 ## 2. graafisen käyttöliittymän käyttö    
 
@@ -48,9 +48,7 @@ Kun olet kirjaunut sisään, avauttu sinulle alla oleva näkymä. Alla olevassa 
 
 ## 2.3 uuden varauksen tekeminen
 
-Edellä oolleesta kuvasta näet, että toisen rivit tekstikentät ovat uuden varauksen luomista varten. Kirjoita kenttään "päivä" se päivä, jolle olet varauksen tekemässä (eli joku luku väliltä 1-31). Sitten
-kirjoita kenttään kuukausi varauksen kuukausi ilman mahdollisia ääkkösiä (esim heinäkuu -> heinakuu) ja kaikki kirjaimet pienellä. Sitten kellonaika kohtaan joku tuntiväli väliltä klo 8->16 tyyliin: 08-09,
-09-10 11-12 ... 15-16. Sen jälkeen kirjoita varauksen vuosi kenttään "vuosi" ja paina nappia "lisää varaus". Nyt varaus on kirjattu järjestelmään.    
+Edellä oolleesta kuvasta näet, että toisen rivit teksti- ja valikkokentät ovat uuden varauksen luomista varten. Kirjoita kenttään "päivä" se päivä, jolle olet varauksen tekemässä (eli joku luku väliltä 1-31). Sitten valitse seuraavasta valintalaatikosta kuukausi. Sitten valitse seuraavasta valintalaatikosta kellonaika. Sen jälkeen kirjoita varauksen vuosi kenttään "vuosi" ja paina nappia "lisää varaus". Nyt varaus on kirjattu järjestelmään.    
 
 ## 2.4 jo tehtyjen varausten haku
 
@@ -62,12 +60,5 @@ Kun haluat tarkastellan tietyn päivän varauksia, kirjoita haluttu päivä ensi
 
 :![picture alt](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/poista-nappi.jpg)  
 
-Kirjoita toisella rivillä kohtaan päivä poistettavan varauksen päivä, kohtaan kuukausi kuukausi (kaikki samalla tavalla kuin olisit lisäämässä varausta, eli ilman ääkkösiä yms.). Lopuksi paika poista-nappia.    
+Kirjoita toisella rivillä kohtaan päivä poistettavan varauksen päivä, sitten valitse valintalaatikosta kuukausi, sitten seruaavasta valintalaatiokosta kellonaika ja sitten lopuksi kirjoita viimeiseen kenttään vuosi. Lopuksi paika poista-nappia.    
 
-
-Avaa ohjelma komentoriviltä komennolla:    
-
-**java -jar varauskalenteri-1.0-SNAPSHOT.jar**    
-
-Sen jälkeen ohjelma kysyy, käytätkö graafista vai tekstipohjaista käyttöliittymää. Ota huomioon, että voit luoda admin-käyttäjän ainostaan
-tekstipohjaisesta käyttöliittymästä.
