@@ -16,6 +16,10 @@ public class TextBasedUserInterface {
     public static String loggedInUserType = null;
     public static int loggedInUserId = -1;
     
+    /**
+     * Pääohjelma
+     * @param args ei käytössä 
+     */
     public static void main(String[] args) {
         // ensin kirjautudaan sisään
         
@@ -31,7 +35,7 @@ public class TextBasedUserInterface {
         while (true) {
             System.out.println("Jos haluat luoda uudet tunnuket, kirjoita 1. Jos taas haluat kirjautua sisään, kirjoita 2. ");
             System.out.println("Luodaksesi admin-käyttäjän, kirjoita 3.");
-            //System.out.print(">");
+            
             choice = inputScanner.nextLine();
 
             if (choice.equals("1")) {
@@ -204,7 +208,6 @@ public class TextBasedUserInterface {
                     newReserv.setUserId(loggedInUserId);
                     newReserv.setYear(year);
                     
-                    //System.out.println(newReserv.toString());
                     
                     Controller.newReservation(newReserv);
                     System.out.println("Uusi varaus lisätty onnistuneesti!");
@@ -300,7 +303,6 @@ public class TextBasedUserInterface {
                 }
 
                 // salasanat eivät täsmänneet
-                // TODO: tämä uudelleen
                 System.out.println("Salasanat eivät täsmänneet! Yritä uudelleen.");
             }
         }
@@ -388,9 +390,4 @@ public class TextBasedUserInterface {
         }
         System.out.println("");
     }
-    /*
-    private static void createAdminAccount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    */
 }

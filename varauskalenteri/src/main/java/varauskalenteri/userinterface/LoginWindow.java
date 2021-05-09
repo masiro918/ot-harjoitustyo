@@ -30,7 +30,6 @@ import varauskalenteri.main.Controller;
  * @author Matias Siro
  */
 public class LoginWindow extends Application {
-// public class LoginWindow extends Application implements ActionListener {
     Button buttonLogin = new Button();
     Button buttonRegister = new Button();
     Text welcomeText = new Text("kirjaudu sisään tai luo uusi käyttäjätunnus");
@@ -82,17 +81,6 @@ public class LoginWindow extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
-    /*
-    public void actionPerformed(ActionEvent arg0) {
-        
-    }
-
-    @Override
-    public void actionPerformed(java.awt.event.ActionEvent arg0) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    */
     
     /**
      * Kirjautuu sisään.
@@ -130,7 +118,6 @@ public class LoginWindow extends Application {
         }
             
         if (loginOk == true) {
-            //MessageWindow.showMsgbox("käyttäjätunnus ja salasana olivat oikein!");
             try {
                 String usertype = Controller.getUserType(username);
                 ReservationWindow reservationWindow = new ReservationWindow(username, usertype);

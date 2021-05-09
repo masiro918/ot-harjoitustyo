@@ -17,16 +17,6 @@ import java.util.Scanner;
 public class MainProgram {
     public static void main(String[] args) {
         
-        /*
-        try {
-            // poistetaan vahna tietokanta
-            Path dbPath = Paths.get("database.db");
-            Files.delete(dbPath);
-        } catch (Exception e) {
-            System.err.println("Poikkeus tuhottaessa tietokantaa: " + e.getMessage());
-        }
-        */
-        
         // tarkistetaan, onko tietokanta jo olemassa
         
         File dbFile = new File("database.db");

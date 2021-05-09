@@ -18,7 +18,7 @@ import varauskalenteri.main.Controller;
 
 /**
  * Ikkuna, josta voi tehdä varauksia ja katsella varaustilannetta.
- * @author Matias
+ * @author Matias Siro
  */
 public class ReservationWindow {
     private String username = null;
@@ -35,16 +35,11 @@ public class ReservationWindow {
     
     
     private TextField textfieldAddDay = new TextField();
-    /*
-    private TextField textfieldAddMounth = new TextField();
-    private TextField textfieldAddTime = new TextField();
-    */
     private TextField textfieldAddYear = new TextField();
     
-    //private ComboBox comboboxDay = new ComboBox();
     private ComboBox comboboxMounth = new ComboBox();
     private ComboBox comboboxTime = new ComboBox();
-    //private ComboBox comboboxYear = new ComboBox();
+    
     /**
      * Konstruktori, jossa asetetaan käyttäjätunnus, jolla kirjautudaan sisään ja sen tyyppi.
      * @param username käyttäjätunnus
@@ -108,13 +103,9 @@ public class ReservationWindow {
         vBox.getChildren().add(hBox3);
         
         this.textfieldAddDay.setText("päivä");
-        //this.textfieldAddMounth.setText("kuukausi");
-        //this.textfieldAddTime.setText("kellonaika");
         this.textfieldAddYear.setText("vuosi");
         
         this.textfieldAddDay.setMaxWidth(80);
-        //this.textfieldAddMounth.setMaxWidth(200);
-        //this.textfieldAddTime.setMaxWidth(100);
         this.textfieldAddYear.setMaxWidth(80);
                
         init();
@@ -202,8 +193,6 @@ public class ReservationWindow {
      * Käsittelee tapahtuman, jossa näytetään haetut varaukset.
      */
     public void buttonViewReservationsActionHandler() throws Exception {
-        //TODO: järjestä kellonajanmukaan varaukset!
-        
         String _day = this.textfieldDay.getText();
         
         String[] blocks = _day.split("\\.");

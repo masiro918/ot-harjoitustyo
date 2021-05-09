@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
 /**
  * Tämä luokka sisältää ne haut ja lisäykset tietokantaa, joita tässä ohjelmassa tarvitaan.
  * Apuja tietokantaoperaatioihin haettu täältä: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
@@ -111,7 +112,7 @@ public class DbService {
         Integer id = newId("reservation");
         
         String sql = "insert into reservation (id, user_id, time, day, mounth, year) values (" + id + ", " + userId + ", '" + time + "', " + day + ", '" + mounth + "', " + year + ");";
-        //System.out.println(sql);
+        
         
         this.database.updateData(sql);
     }

@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 
 /**
  * Luokkan, jonka ainut metodi näyttää huomautusikkunan.
- * @author Matias
+ * @author Matias Siro
  */
 public class MessageWindow {
     

@@ -35,7 +35,7 @@ Tiedot tallennetaan tietokantaa kahteen eri tauluun: Reservation ja User. Näit�
 
 ## ohjelman heikkoudet/puutteet
 
-Ohjelman graafinen käyttöliittymä on huono. Se on aika kankea käytettävä. Lisäksi ohjelmassa käytetty MD5-kryptausta ei kuulemma enää pidetä kovin turvallisena. Myöskään SQL-inketion tukkimista ei ole tehty.  
+Ohjelman graafinen käyttöliittymä on huono. Kun käyttäjä hakee varauksia tietyltä päivältä, olisi hyvä, jos varaukset näkyisivät listassa aikajärjestyksessä. Se on aika kankea käytettävä. Lisäksi ohjelmassa käytetty MD5-kryptausta ei kuulemma enää pidetä kovin turvallisena. Myöskään SQL-inketion tukkimista ei ole tehty.  
 
  
 ### kuva pakkausarkkitehtuurista    

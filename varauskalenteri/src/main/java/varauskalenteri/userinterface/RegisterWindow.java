@@ -27,7 +27,7 @@ import varauskalenteri.main.Controller;
  * https://stackoverflow.com/questions/40757911/javafx-adding-actionlistener-to-button
  * https://stackoverflow.com/questions/33968515/how-to-set-an-action-on-javafx
  * https://www.tutorialkart.com/javafx/create-new-button-and-set-action-listener-in-javafx/
- * @author Matias
+ * @author Matias Siro
  */
 public class RegisterWindow {
     
@@ -39,6 +39,7 @@ public class RegisterWindow {
     private Text textPassword = new Text("salasana:                     ");
     private Text textPassword2 = new Text("salasana uudelleen:    ");
     private Button buttonConfirm = new Button("luo tunnus!");
+    
     /**
      * Parametritön konstruktori.
      */
