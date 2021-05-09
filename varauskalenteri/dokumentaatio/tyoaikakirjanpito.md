@@ -34,5 +34,6 @@
 | 5.4.  | 55min   | Alettu tekemään käyttöohjetta ohjelmalle. Lisäksi otin JavaDocin käyttöön |
 | 7.5.  | 1h10min | Dokumentaatiota laajennettu, muutettu pari elementtiä combobox-elementeiksi käyttöliittymässä, käyttöohjetta kehitetty jne. |
 | 8.5.  | 20min   | Päivitetty käyttöohjetta. |
+| 9.5.  | 50min   | Laajennettu dokumentaatiota. |
 
-Yhteensä aikaa on kulunut: 31h 40min.
+Yhteensä aikaa on kulunut: 32h 30min.
