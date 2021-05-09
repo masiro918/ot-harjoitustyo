@@ -26,7 +26,13 @@ Ohjelman rakenteesta. Alimmassa pakkauksessa on toiminnallisuudet, jossa käsite
 
 Yhtä ylempänä on main-pakkaus. Se sisältää vain yhden luokan. Tästä luokasta ei luoda oliota vaan kaikki tämän luokan metodit ovat staattisia. Tämä luokka tarjoaa metodeja, joita tarvitaan juuri tässä ohjelmassa (esim. uuden käyttäjätunnuksen luonti, varauksen lisäys ja poisto, varausten haku ja salasanan hash-arvon selvittäminen). Niissä tapauksissa kun käytetään tietokantaa, Controller-luokka tekee ne operaatiot antamalla ne DbService-oliolle hoidettavaksi, joka antaa sitten puolestaan Database-luokalle.  
 
-Kaikkein ylempänä on userinterface-pakkaus. Tämä pakkaus sisältää 6 luokkaa: MainProgram, TextBasedUserInterface ja 4 muuta luokkaa, jotka kuuluvat graafiseen käyttöliittymään. Sovelluslogiikkaa käytetään näissä luokissa Controller-luokan avulla. MainProgram on se luokka, joka käynnistyy ensimmäisenä, kun ohjelmaa aletaan ajaa. Se kysyy ainostaa, käytetäänkö graafista vai tekstipohjaista käyttöliittymää. Kun käyttäjä on tehnyt tämän valinnan, käynnistyy joko TextBasedUserInterface-luokka tai LoginWindow-luokka.  
+Kaikkein ylempänä on userinterface-pakkaus. Tämä pakkaus sisältää 6 luokkaa: MainProgram, TextBasedUserInterface ja 4 muuta luokkaa, jotka kuuluvat graafiseen käyttöliittymään. Sovelluslogiikkaa käytetään näissä luokissa Controller-luokan avulla. MainProgram on se luokka, joka käynnistyy ensimmäisenä, kun ohjelmaa aletaan ajaa. Se kysyy ainostaa, käytetäänkö graafista vai tekstipohjaista käyttöliittymää. Kun käyttäjä on tehnyt tämän valinnan, käynnistyy joko TextBasedUserInterface-luokka tai LoginWindow-luokka.    
+
+Pääset lukemaan luokkien dokumentaatiota, kun suoritat komennon, jolla generoidaan JavaDoc. Komento:  
+
+**mvn javadoc:javadoc**    
+
+Tämän jälkeen dokumentti löytyy hakemistosta: target/site/apidocs/, josta avaa tiedosto index.html webselaimessa.    
 
 
 ## tietojen tallentaminen
