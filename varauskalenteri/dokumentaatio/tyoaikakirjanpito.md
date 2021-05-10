@@ -35,5 +35,6 @@
 | 7.5.  | 1h10min | Dokumentaatiota laajennettu, muutettu pari elementtiä combobox-elementeiksi käyttöliittymässä, käyttöohjetta kehitetty jne. |
 | 8.5.  | 20min   | Päivitetty käyttöohjetta. |
 | 9.5.  | 50min   | Laajennettu dokumentaatiota. |
+| 10.5. | 1h25min | Päivitetty dokumentaatiota julkaisukuntoon. |
 
-Yhteensä aikaa on kulunut: 32h 30min.
+Yhteensä aikaa on kulunut: 33h 55min.
