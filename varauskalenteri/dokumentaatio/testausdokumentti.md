@@ -1,6 +1,8 @@
 # testausdokumentti
 
-Sovellusta on testattu yksikkötesteillä JUnit-työkalulla. Ainostaan pakkauksen userinterface luokkia ei ole testattu.    
+Sovellusta on testattu yksikkötesteillä JUnit-työkalulla. Ainostaan pakkauksen userinterface luokkia ei ole testattu. Voit luoda testikattavuusraportin komennolla:  
+**mvn javadoc:javadoc**  
+Tämän jälkeen raportti löytyy hakemistosta target/site/jacoco/ ja avaa sitten webseilaimessa tiedosto index.html
 
 ### yksikkötestaus
 

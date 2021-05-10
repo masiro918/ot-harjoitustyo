@@ -34,6 +34,12 @@ Pääset lukemaan luokkien dokumentaatiota, kun suoritat komennon, jolla generoi
 
 Tämän jälkeen dokumentti löytyy hakemistosta: target/site/apidocs/, josta avaa tiedosto index.html webselaimessa.    
 
+Testiraportin saat puolestaan komennolla:  
+
+**mvn test jacoco:report**    
+
+Tämän jälkeen testiraportti löytyy hakemistosta target/site/jacoco/, josta avaa tiedosto index.html webselaimessa.    
+
 
 ## tietojen tallentaminen
 
