@@ -218,12 +218,10 @@ public class Controller {
     public static boolean ifReservationExists(String mounth, int year, int day, String time) throws Exception {
         String sql = "select count(*) from reservation where day = " + day + " and  year = " + year + " and mounth = '" + mounth + "' and time = '" + time + "';";
         
-        //System.out.println(sql);
         DbService dbService = new DbService();
         int results = dbService.getCountReservation(day, year, mounth, time);
         dbService.closeService();
         
-        //System.out.println("answer: " + results.get(0));
         
         int reservations = results;
         

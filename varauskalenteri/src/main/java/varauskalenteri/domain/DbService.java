@@ -92,7 +92,7 @@ public class DbService {
         Integer id = newId("user");
         
         String sql = "insert into user (id, username, password, role) values (" + id + ", '" + username +  "', '" + password + "', '" + role + "');";
-        //System.out.println(sql);
+        
         this.database.updateData(sql);
     }
        

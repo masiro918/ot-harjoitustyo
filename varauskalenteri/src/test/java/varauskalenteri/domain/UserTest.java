@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  * Testaa luokkaa User.
- * @author Matias
+ * @author Matias Siro
  */
 public class UserTest {
     

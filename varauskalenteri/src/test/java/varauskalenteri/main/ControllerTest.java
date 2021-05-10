@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  * Testaa luokkaa Conroller.
- * @author Matias
+ * @author Matias Siro
  */
 public class ControllerTest {
     

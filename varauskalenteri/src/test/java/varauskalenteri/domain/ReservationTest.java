@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 /**
  * Testaa luokkaa ReservationTest.
- * @author Matias
+ * @author Matias Siro
  */
 public class ReservationTest {
     

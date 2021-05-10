@@ -98,7 +98,6 @@ public class Database {
             
             row = id + "|" + username + "|" + password + "|" + role;
             
-            //System.out.println(row);
             results.add(row);
         }
         
@@ -130,7 +129,6 @@ public class Database {
             String mounth = resultSet.getString("mounth");
             Integer year = resultSet.getInt("year");
             
-            //TODO: merkkijono
             row = id + "|" + time + "|" + day + "|" + mounth + "|" + year + "|" + userId;
             results.add(row);
         }
