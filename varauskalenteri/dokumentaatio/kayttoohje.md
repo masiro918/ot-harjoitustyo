@@ -6,7 +6,7 @@ Lataa ohjelman uusin release GitHubista. Pura ladattu paketti johonkin hakemisto
 
 **mvn compile exec:java -Dexec.mainClass=varauskalenteri.userinterface.MainProgram**    
 
-Tämä äskeinen komento kääntää ohjelman. Käännöksen jälkeen ohjelma käynnistyy. Kannattaa kuitenkin tässä kohtaan lopettaa ohjelman suoritus painamalla CTRL+D tai CTRL-C riippuen mitä käyttöjärjestelmää käytät.  
+Tämä äskeinen komento kääntää ohjelman. Käännöksen jälkeen ohjelma käynnistyy. Kannattaa kuitenkin tässä kohtaan lopettaa ohjelman suoritus painamalla CTRL+D tai CTRL-C riippuen mitä käyttöjärjestelmää käytät. Tämä tuottaa CTRL-D/C:n painaminen tuottaa virheen, mutta se ei haittaa tässä kohtaan.  
 
 Aja sitten testit komennolla:    
 
