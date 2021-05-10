@@ -3,7 +3,7 @@
 [linkki työaikakirjanpitoon](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/tyoaikakirjanpito.md)  
 [linkki vaatimusmäärittelyyn](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/vaatimusmaarittely.md)  
 [linkki arkkitehtuurikuvaukseen](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/arkkitehtuuri.md)  
-[linkki ohjelman käyttöohjeeseen](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/kayttoohje.md)  
+[linkki ohjelman käyttöohjeeseen ja asentamiseen](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/kayttoohje.md)  
 [linkki testausdokumenttiin](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/testausdokumentti.md)  
 
 ## yleistä tästä ohjelmasta  
