@@ -41,7 +41,7 @@ Tiedot tallennetaan tietokantaan kahteen eri tauluun: Reservation ja User. Näit
 
 ## ohjelman heikkoudet/puutteet
 
-Ohjelman graafinen käyttöliittymä on huono. Kun käyttäjä hakee varauksia tietyltä päivältä, olisi hyvä, jos varaukset näkyisivät listassa aikajärjestyksessä. Nyt varaukset eivät välttämättä näy listassa aikajärjestyksessä. Lisäksi graafinen käyttöliittymä on melko kankea käytettävä. Ohjelmassa käytetty MD5-kryptaus ei kuulemma enää pidetä kovin turvallisena. Myöskään SQL-injetion tukkimista ei ole tehty. Myös jotkut virheilmoitukset ovat huonot (esim. jos poistaa varausta jota ei ole olemassa, ohjelma väittää, että haku oli väärä.  
+Ohjelman graafinen käyttöliittymä on huono. Kun käyttäjä hakee varauksia tietyltä päivältä, olisi hyvä, jos varaukset näkyisivät listassa aikajärjestyksessä. Nyt varaukset eivät välttämättä näy listassa aikajärjestyksessä. Lisäksi graafinen käyttöliittymä on melko kankea käytettävä. Ohjelmassa käytetty MD5-kryptaus ei kuulemma enää pidetä kovin turvallisena. Myöskään SQL-injektion tukkimista ei ole tehty. Myös jotkut virheilmoitukset ovat huonot (esim. jos poistaa varausta jota ei ole olemassa, ohjelma väittää, että haku oli väärä.  
 
  
 ### kuva pakkausarkkitehtuurista    
