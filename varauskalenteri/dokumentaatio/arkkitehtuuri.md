@@ -22,7 +22,7 @@ Sovelluksen kaksi olennaista luokaa ovat User ja Reservation. Niiden määrittel
 Luokkien suhde toisiinsa:    
 
 :![kuva_luokka](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/user-reservation.jpg)  
-Ohjelman rakenteesta. Alimmassa pakkauksessa on toiminnallisuudet, jossa käsitellään tietokantaa sql-kielen tasolla. Kerrosta ylemässä pakkauksessa tietokantaa käsitellään luokkien (User ja Reservation) avulla. Näitä operaatioita tehdään luokan DbService avulla. Eli esimerkiksi, jos halutaan tehdä uusi varaus, muodostetaan ensiksi uusi Reservation-olio. Tämän jälkeen annetaan luotu Reservation-olio DbService-oliolle, joka antaa tiedon uudesta Reservation-oliosta kerrosta alemmalle Database-oliolle, joka suorittaa oikeanlaisen SQL-lauseen tietokannalle.  
+Ohjelman rakenteesta. Alimmassa pakkauksessa ovat toiminnallisuudet, jossa käsitellään tietokantaa sql-kielen tasolla. Kerrosta ylemässä pakkauksessa tietokantaa käsitellään luokkien (User ja Reservation) avulla. Näitä operaatioita tehdään luokan DbService avulla. Eli esimerkiksi, jos halutaan tehdä uusi varaus, muodostetaan ensiksi uusi Reservation-olio. Tämän jälkeen annetaan luotu Reservation-olio DbService-oliolle, joka antaa tiedon uudesta Reservation-oliosta kerrosta alemmalle Database-oliolle, joka suorittaa oikeanlaisen SQL-lauseen tietokannalle.  
 
 Yhtä ylempänä on main-pakkaus. Se sisältää vain yhden luokan. Tästä luokasta ei luoda oliota vaan kaikki tämän luokan metodit ovat staattisia. Tämä luokka tarjoaa metodeja, joita tarvitaan juuri tässä ohjelmassa (esim. uuden käyttäjätunnuksen luonti, varauksen lisäys ja poisto, varausten haku ja salasanan hash-arvon selvittäminen). Niissä tapauksissa kun käytetään tietokantaa, Controller-luokka tekee ne operaatiot antamalla ne DbService-oliolle hoidettavaksi, joka antaa sitten puolestaan Database-luokalle.  
 
@@ -47,7 +47,7 @@ Tiedot tallennetaan tietokantaan kahteen eri tauluun: Reservation ja User. Näit
 
 ## ohjelman heikkoudet/puutteet
 
-Ohjelman graafinen käyttöliittymä on huono. Kun käyttäjä hakee varauksia tietyltä päivältä, olisi hyvä, jos varaukset näkyisivät listassa aikajärjestyksessä. Nyt varaukset eivät välttämättä näy listassa aikajärjestyksessä. Lisäksi graafinen käyttöliittymä on melko kankea käytettävä. Ohjelmassa käytetty MD5-kryptaus ei kuulemma enää pidetä kovin turvallisena. Myöskään SQL-injektion tukkimista ei ole tehty. Myös jotkut virheilmoitukset ovat huonot (esim. jos poistaa varausta jota ei ole olemassa, ohjelma väittää, että haku oli väärä.  
+Ohjelman graafinen käyttöliittymä on huono. Kun käyttäjä hakee varauksia tietyltä päivältä, olisi hyvä, jos varaukset näkyisivät listassa aikajärjestyksessä. Nyt varaukset eivät välttämättä näy listassa aikajärjestyksessä. Lisäksi graafinen käyttöliittymä on melko kankea käytettävä. Ohjelmassa käytetty MD5-kryptausta ei kuulemma enää pidetä kovin turvallisena. Myöskään SQL-injektion tukkimista ei ole tehty. Myös jotkut virheilmoitukset ovat huonot (esim. jos poistaa varausta jota ei ole olemassa, ohjelma väittää, että haku oli väärä).  
 
  
 ### kuva pakkausarkkitehtuurista    

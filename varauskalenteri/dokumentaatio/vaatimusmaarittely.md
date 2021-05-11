@@ -17,7 +17,7 @@ tallennetaan tietokantaan selkokielisenä. Salasanasta tehdään MD5-tiiviste.
 
 ## käyttöliittymät
 
-Sovelluksella on kaksi eri käyttöliittymää: tekstipohajinen ja graafinen. Ainut toiminnallinen ero 
+Sovelluksella on kaksi eri käyttöliittymää: tekstipohjainen ja graafinen. Ainut toiminnallinen ero 
 näissä on se, että admin-käyttäjän pystyy luomaan vain tekstipohjaista käyttöliittymää käyttäen. Kun
 ohjelma käynnistetään, käyttäjältä kysytään, kumpaako käyttöliittymää hän haluaa käyttää.    
 

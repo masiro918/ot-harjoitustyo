@@ -6,7 +6,7 @@ Tämän jälkeen raportti löytyy hakemistosta target/site/jacoco/ ja avaa sitte
 
 ### yksikkötestaus
 
-Jos lasketaan pakkausten main, domain ja database rivikattuvuuksien keskiarvo, saadaan 77%. Samojen pakkausten haarautumakattavuus on 66%.    
+Jos lasketaan pakkausten main, domain ja database rivikattavuuksien keskiarvo, saadaan 77%. Samojen pakkausten haarautumakattavuus on 66%.    
 
 ![testikattavuusraportti](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/testikattavuusraportti.jpg)  
 

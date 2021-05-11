@@ -6,7 +6,7 @@ Lataa ohjelman uusin release GitHubista. Pura ladattu paketti johonkin hakemisto
 
 **mvn compile exec:java -Dexec.mainClass=varauskalenteri.userinterface.MainProgram**    
 
-Tämä äskeinen komento kääntää ohjelman. Käännöksen jälkeen ohjelma käynnistyy. Kannattaa kuitenkin tässä kohtaan lopettaa ohjelman suoritus painamalla CTRL+D tai CTRL-C riippuen mitä käyttöjärjestelmää käytät. Tämä tuottaa CTRL-D/C:n painaminen tuottaa virheen, mutta se ei haittaa tässä kohtaan.  
+Tämä äskeinen komento kääntää ohjelman. Käännöksen jälkeen ohjelma käynnistyy. Kannattaa kuitenkin tässä kohtaan lopettaa ohjelman suoritus painamalla CTRL+D tai CTRL-C riippuen mitä käyttöjärjestelmää käytät. Tämä CTRL-D/C:n painaminentuottaa tuottaa virheen, mutta se ei haittaa tässä kohtaan.  
 
 Aja sitten testit komennolla:    
 
@@ -48,7 +48,7 @@ Kun olet kirjaunut sisään, avauttu sinulle alla oleva näkymä. Alla olevassa 
 
 ## 2.3 uuden varauksen tekeminen
 
-Edellä olleesta kuvasta näet, että toisen rivit teksti- ja valikkokentät ovat uuden varauksen luomista varten. Kirjoita kenttään "päivä" se päivä, jolle olet varauksen tekemässä (eli joku luku väliltä 1-31). Sitten valitse seuraavasta valintalaatikosta kuukausi. Sitten valitse seuraavasta valintalaatikosta kellonaika. Sen jälkeen kirjoita varauksen vuosi kenttään "vuosi" ja paina nappia "lisää varaus". Nyt varaus on kirjattu järjestelmään.    
+Edellä olleesta kuvasta näet, että toisen rivin teksti- ja valikkokentät ovat uuden varauksen luomista varten. Kirjoita kenttään "päivä" se päivä, jolle olet varauksen tekemässä (eli joku luku väliltä 1-31). Sitten valitse seuraavasta valintalaatikosta kuukausi. Sitten valitse seuraavasta valintalaatikosta kellonaika. Sen jälkeen kirjoita varauksen vuosi kenttään "vuosi" ja paina nappia "lisää varaus". Nyt varaus on kirjattu järjestelmään.    
 
 ## 2.4 jo tehtyjen varausten haku
 

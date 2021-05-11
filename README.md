@@ -8,7 +8,7 @@
 
 ## yleistä tästä ohjelmasta  
 
-Kyseessä on ajanvarausohjelma. Tarkempi kuvaus ohjelmasta sen ja käyttö- ja asennusohje löytyy [täältä](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/kayttoohje.md). Jos haluat perehtyä ohjelman toteutukseen, voit lukea dokumentaatiota täältä [täältä](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio). Kyseessä on Java Maven-pohjainen ohjelma.    
+Kyseessä on ajanvarausohjelma. Tarkempi kuvaus ohjelmasta ja sen käyttö- ja asennusohje löytyy [täältä](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/kayttoohje.md). Jos haluat perehtyä ohjelman toteutukseen, voit lukea dokumentaatiota täältä [täältä](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio). Kyseessä on Java Maven-pohjainen ohjelma.    
 
 
 
