@@ -61,5 +61,9 @@ Kun haluat tarkastella tietyn päivän varauksia, kirjoita haluttu päivä ensim
 Jos olet kirjautunut admin-käyttäjällä sisään, on sinulla mahdollisuus poistaa mikä tahansa jo tehty varaus. Tällöin kirjoita toisella rivillä kohtaan päivä poistettavan varauksen päivä, sitten valitse valintalaatikosta kuukausi, sitten seruaavasta valintalaatiokosta kellonaika ja sitten lopuksi kirjoita viimeiseen kenttään vuosi. Lopuksi paina poista-nappia. 
 :![picture alt](https://github.com/masiro918/ot-harjoitustyo/blob/master/varauskalenteri/dokumentaatio/poista-nappi.jpg)  
 
+
+## 3. muuta huomioitavaa
+
+Jos haet joltain päivältä varauksia ja sen jälkeen lisäät samalle päivälle uuden varauksen, uusi varaus ei näy heti listassa. Tällöin sinun tulee hake uudelleen kaikki kyseisen päivän varaukset, jotta varauslista päivittyisi
     
 
